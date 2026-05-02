@@ -1,0 +1,55 @@
+# ============================================
+# .gitignore para el repositorio del curso
+# ============================================
+
+# --- Archivos auxiliares de LaTeX ---
+*.aux
+*.log
+*.toc
+*.out
+*.nav
+*.snm
+*.vrb
+*.synctex.gz
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.lof
+*.lot
+*.idx
+*.ind
+*.ilg
+
+# --- R ---
+.Rhistory
+.Rdata
+.RData
+.Rproj.user/
+*.Rproj
+.Rapp.history
+
+# --- Sistema operativo ---
+# Windows
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+
+# macOS (por si trabajas en otra máquina)
+.DS_Store
+._*
+
+# --- VSCode ---
+.vscode/
+*.code-workspace
+
+# --- Archivos temporales ---
+*~
+*.tmp
+*.bak
+*.swp
+
+# --- Python (por si usas scripts auxiliares) ---
+__pycache__/
+*.pyc
+*.pyo

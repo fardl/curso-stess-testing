@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stress Testing en Sistemas de Pensiones · MACROPOL</title>
+  <meta name="description" content="Curso aplicado de stress testing en sistemas de capitalización individual. 30 horas. MACROPOL SRL. Profesor Francisco A. Ramírez de León.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-meta">
+        <span class="brand">MACROPOL · SRL</span>
+        <span class="dot">·</span>
+        <span>Economía Aplicada y Políticas Públicas</span>
+      </div>
+      <h1 class="site-title">Stress Testing en Sistemas<br>de Capitalización Individual</h1>
+      <p class="subtitle">Curso aplicado · 30 horas · 6 módulos · 15 sesiones</p>
+      <p class="instructor">Francisco A. Ramírez de León</p>
+      <div class="header-stats">
+        <span><strong>Inicio</strong> 6 abril 2026</span>
+        <span><strong>Cierre</strong> 8 mayo 2026</span>
+        <span><strong>Horario</strong> Lunes a viernes · 4:00–6:00 p.m.</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="site-nav">
+    <div class="container">
+      <a href="#inicio">Inicio</a>
+      <a href="#filosofia">Filosofía</a>
+      <a href="#modulos">Módulos</a>
+      <a href="#calendario">Calendario</a>
+      <a href="#materiales">Materiales</a>
+      <a href="#evaluacion">Evaluación</a>
+      <a href="#bibliografia">Bibliografía</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- INICIO -->
+    <section id="inicio" class="section">
+      <div class="section-number">01</div>
+      <h2>El curso, en una idea</h2>
+      <p class="lead">
+        Aprender a hacer stress testing haciendo stress testing.
+        El estudiante llega sin haber realizado uno; sale con un ejercicio completo,
+        documentado y defendible ante un regulador, aplicado al sistema previsional dominicano.
+      </p>
+
+      <div class="three-pillars">
+        <div class="pillar">
+          <span class="pillar-num">M1–M2</span>
+          <h3>Definir y medir</h3>
+          <p>Qué es un stress testing. Identificar y cuantificar los riesgos previsionales: mercado, longevidad, liquidez.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-num">M3–M4</span>
+          <h3>Construir y simular</h3>
+          <p>Construir escenarios macro-financieros (ARIMA, VAR, Monte Carlo). Aplicar el choque al portafolio (GARCH, multifactorial).</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-num">M5–M6</span>
+          <h3>Estimar e integrar</h3>
+          <p>Impacto actuarial: longevidad y tasa de reemplazo bajo estrés. Integración final y reporte regulatorio completo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FILOSOFÍA -->
+    <section id="filosofia" class="section">
+      <div class="section-number">02</div>
+      <h2>Filosofía pedagógica</h2>
+      <p>Este curso se diseña con una orientación <strong>radicalmente aplicada</strong>. Cuatro principios la sostienen:</p>
+
+      <div class="principles">
+        <article class="principle">
+          <span class="principle-num">I.</span>
+          <h3>Mínima teoría, máxima práctica</h3>
+          <p>La parte conceptual se reduce a lecturas previas de 1–2 páginas que el estudiante revisa fuera de clase. En los slides aparece solo una definición general por concepto. El 80% del tiempo de aula se dedica a demostraciones de herramientas y ejercicios en <code>R</code>.</p>
+        </article>
+
+        <article class="principle">
+          <span class="principle-num">II.</span>
+          <h3>Cada módulo entrega un output concreto</h3>
+          <p>Cada sesión produce un entregable que el estudiante incorpora a su proyecto final. El hilo conductor es siempre la misma pregunta: <em>¿qué necesito hacer ahora para avanzar en mi ejercicio de stress testing?</em></p>
+        </article>
+
+        <article class="principle">
+          <span class="principle-num">III.</span>
+          <h3>Las herramientas son el contenido</h3>
+          <p>ARIMA, GARCH, VAR, Monte Carlo, tablas de mortalidad, VaR, CVaR. Cada sesión presenta una o dos herramientas: qué es, para qué sirve en pensiones, cómo se usa en código, cómo se interpreta.</p>
+        </article>
+
+        <article class="principle">
+          <span class="principle-num">IV.</span>
+          <h3>Datos simulados realistas</h3>
+          <p>Todos los ejercicios usan datos simulados que imitan el sistema previsional dominicano: fondos AFP, rentabilidades históricas, demografía, salarios. Los scripts son autocontenidos, comentados línea a línea y reproducibles.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- MÓDULOS -->
+    <section id="modulos" class="section">
+      <div class="section-number">03</div>
+      <h2>Estructura de los módulos</h2>
+      <p>Seis módulos encadenados como un pipeline. Lo producido en cada uno alimenta directamente al siguiente.</p>
+
+      <div class="modules">
+        <article class="module">
+          <header>
+            <span class="module-tag">Módulo 1</span>
+            <span class="module-hours">4 horas · 2 sesiones</span>
+          </header>
+          <h3>Fundamentos de stress testing en pensiones</h3>
+          <p>Qué es un stress testing y por qué importa en sistemas de capitalización individual. Marco regulatorio (SIPEN, mejores prácticas internacionales). Definición del alcance del ejercicio que cada estudiante construirá.</p>
+          <div class="module-output"><strong>Output:</strong> documento de alcance del ejercicio personal (1 página).</div>
+        </article>
+
+        <article class="module">
+          <header>
+            <span class="module-tag">Módulo 2</span>
+            <span class="module-hours">5 horas · 3 sesiones</span>
+          </header>
+          <h3>Identificación y medición de riesgos previsionales</h3>
+          <p>Mapeo de riesgos: mercado, crédito, longevidad, liquidez, operacional. Métricas básicas: VaR, CVaR, duración. Implementación en <code>R</code> sobre un fondo AFP simulado.</p>
+          <div class="module-output"><strong>Output:</strong> matriz de riesgos cuantificada del fondo simulado.</div>
+        </article>
+
+        <article class="module module-current">
+          <header>
+            <span class="module-tag">Módulo 3</span>
+            <span class="module-hours">6 horas · 3 sesiones</span>
+          </header>
+          <h3>Construcción de escenarios macro-financieros</h3>
+          <p>Tres herramientas centrales: ARIMA univariado, VAR multivariado y Monte Carlo. Construcción de tres escenarios obligatorios: base, histórico (replicar 2008) e hipotético (alza de tasas inducida).</p>
+          <div class="module-output"><strong>Output:</strong> tres escenarios con 5,000 simulaciones cada uno.</div>
+        </article>
+
+        <article class="module">
+          <header>
+            <span class="module-tag">Módulo 4</span>
+            <span class="module-hours">5 horas · 3 sesiones</span>
+          </header>
+          <h3>Stress testing del portafolio previsional</h3>
+          <p>Modelos GARCH para volatilidad condicional. Simulación multifactorial. Aplicación de los tres escenarios del M3 al portafolio del fondo. Estimación de la rentabilidad bajo estrés.</p>
+          <div class="module-output"><strong>Output:</strong> distribuciones de rentabilidad bajo cada escenario.</div>
+        </article>
+
+        <article class="module">
+          <header>
+            <span class="module-tag">Módulo 5</span>
+            <span class="module-hours">5 horas · 2 sesiones</span>
+          </header>
+          <h3>Stress testing actuarial y demográfico</h3>
+          <p>Tablas de mortalidad y proyecciones de longevidad. Estimación de la tasa de reemplazo bajo estrés. Integración del impacto financiero (M4) con el actuarial.</p>
+          <div class="module-output"><strong>Output:</strong> distribución de tasa de reemplazo bajo estrés.</div>
+        </article>
+
+        <article class="module">
+          <header>
+            <span class="module-tag">Módulo 6</span>
+            <span class="module-hours">5 horas · 2 sesiones</span>
+          </header>
+          <h3>Stress testing integrado y reporte regulatorio</h3>
+          <p>Integración de los outputs anteriores. Trazabilidad de supuestos. Redacción del informe técnico siguiendo la estructura de un reporte regulatorio. Presentación del ejercicio completo.</p>
+          <div class="module-output"><strong>Output:</strong> ejercicio de stress testing completo + informe técnico.</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CALENDARIO -->
+    <section id="calendario" class="section">
+      <div class="section-number">04</div>
+      <h2>Calendario de sesiones</h2>
+      <p>Quince sesiones de dos horas, todas en horario de 4:00 a 6:00 p.m.</p>
+
+      <table class="schedule">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Fecha</th>
+            <th>Módulo</th>
+            <th>Tema central</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>6 abril</td><td>M1</td><td>Qué es un stress testing en pensiones</td></tr>
+          <tr><td>2</td><td>8 abril</td><td>M1</td><td>Marco regulatorio y alcance del ejercicio</td></tr>
+          <tr><td>3</td><td>10 abril</td><td>M2</td><td>Mapa de riesgos previsionales</td></tr>
+          <tr><td>4</td><td>13 abril</td><td>M2</td><td>VaR y CVaR aplicados al fondo AFP</td></tr>
+          <tr><td>5</td><td>15 abril</td><td>M2</td><td>Duración y matriz de riesgos cuantificada</td></tr>
+          <tr class="highlight"><td>6</td><td>17 abril</td><td>M3</td><td>ARIMA univariado para rentabilidades</td></tr>
+          <tr class="highlight"><td>7</td><td>20 abril</td><td>M3</td><td>VAR multivariado para correlaciones</td></tr>
+          <tr class="highlight"><td>8</td><td>22 abril</td><td>M3</td><td>Monte Carlo: tres escenarios</td></tr>
+          <tr><td>9</td><td>24 abril</td><td>M4</td><td>GARCH para volatilidad condicional</td></tr>
+          <tr><td>10</td><td>27 abril</td><td>M4</td><td>Simulación multifactorial del portafolio</td></tr>
+          <tr><td>11</td><td>29 abril</td><td>M4</td><td>Distribuciones de rentabilidad bajo estrés</td></tr>
+          <tr><td>12</td><td>1 mayo</td><td>M5</td><td>Tablas de mortalidad y longevidad</td></tr>
+          <tr><td>13</td><td>4 mayo</td><td>M5</td><td>Tasa de reemplazo bajo estrés</td></tr>
+          <tr><td>14</td><td>6 mayo</td><td>M6</td><td>Integración y trazabilidad de supuestos</td></tr>
+          <tr><td>15</td><td>8 mayo</td><td>M6</td><td>Presentación del ejercicio final</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- MATERIALES -->
+    <section id="materiales" class="section">
+      <div class="section-number">05</div>
+      <h2>Materiales del curso</h2>
+      <p>Cada módulo incluye una presentación Beamer, un script en <code>R</code> autocontenido, datos simulados y una lectura previa de 1–2 páginas. Se publican aquí progresivamente.</p>
+
+      <div class="materials-grid">
+        <a class="material-card" href="materiales/Programa_StressTesting.pdf">
+          <span class="material-type">Programa</span>
+          <h3>Sílabo del curso</h3>
+          <p>Programa completo: módulos, calendario, evaluación y bibliografía.</p>
+          <span class="material-link">Descargar PDF →</span>
+        </a>
+
+        <div class="material-card disabled">
+          <span class="material-type">Módulo 1</span>
+          <h3>Fundamentos</h3>
+          <p>Disponible al inicio del módulo.</p>
+          <span class="material-link">Próximamente</span>
+        </div>
+
+        <div class="material-card disabled">
+          <span class="material-type">Módulo 2</span>
+          <h3>Identificación de riesgos</h3>
+          <p>Disponible al inicio del módulo.</p>
+          <span class="material-link">Próximamente</span>
+        </div>
+
+        <a class="material-card" href="materiales/M3_MACROPOL_Professional.pdf">
+          <span class="material-type">Módulo 3</span>
+          <h3>Escenarios macro-financieros</h3>
+          <p>Beamer Metropolis con ARIMA, VAR y Monte Carlo aplicados a tres escenarios obligatorios.</p>
+          <span class="material-link">Descargar PDF →</span>
+        </a>
+
+        <a class="material-card" href="materiales/M3_Script_Completo.R">
+          <span class="material-type">Módulo 3 · Código</span>
+          <h3>Script completo en R</h3>
+          <p>Pipeline ARIMA + VAR + Monte Carlo con 5,000 simulaciones. Datos simulados del sistema previsional RD.</p>
+          <span class="material-link">Descargar .R →</span>
+        </a>
+
+        <div class="material-card disabled">
+          <span class="material-type">Módulo 4</span>
+          <h3>Portafolio bajo estrés</h3>
+          <p>Disponible al inicio del módulo.</p>
+          <span class="material-link">Próximamente</span>
+        </div>
+
+        <div class="material-card disabled">
+          <span class="material-type">Módulo 5</span>
+          <h3>Actuarial y longevidad</h3>
+          <p>Disponible al inicio del módulo.</p>
+          <span class="material-link">Próximamente</span>
+        </div>
+
+        <div class="material-card disabled">
+          <span class="material-type">Módulo 6</span>
+          <h3>Reporte regulatorio</h3>
+          <p>Disponible al inicio del módulo.</p>
+          <span class="material-link">Próximamente</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVALUACIÓN -->
+    <section id="evaluacion" class="section">
+      <div class="section-number">06</div>
+      <h2>Evaluación</h2>
+      <p>La evaluación se distribuye entre los outputs intermedios de cada módulo y el ejercicio integrado final. Esto refleja la lógica del curso: el aprendizaje es el ejercicio mismo.</p>
+
+      <div class="eval-grid">
+        <div class="eval-item">
+          <div class="eval-weight">30<span>%</span></div>
+          <h3>Outputs por módulo</h3>
+          <p>Seis entregables, uno por módulo. Cada output del módulo M<em>n</em> es un insumo directo para el módulo M<em>n+1</em>.</p>
+        </div>
+        <div class="eval-item">
+          <div class="eval-weight">25<span>%</span></div>
+          <h3>Ejercicios en clase</h3>
+          <p>Resolución guiada de ejercicios prácticos durante las sesiones. Se evalúa la consistencia de la asistencia y la participación.</p>
+        </div>
+        <div class="eval-item">
+          <div class="eval-weight">45<span>%</span></div>
+          <h3>Ejercicio integrado final</h3>
+          <p>Stress testing completo sobre un fondo AFP simulado, con código reproducible, informe técnico y presentación oral en la sesión 15.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BIBLIOGRAFÍA -->
+    <section id="bibliografia" class="section">
+      <div class="section-number">07</div>
+      <h2>Bibliografía</h2>
+      <p>Organizada en tres capas. La capa <em>Core</em> es referencia obligatoria; las otras dos son de apoyo y profundización.</p>
+
+      <h3 class="biblio-tier">Capa Core · referencia obligatoria</h3>
+      <ul class="biblio">
+        <li><strong>International Monetary Fund</strong> (2012). <em>A Guide to IMF Stress Testing: Methods and Models</em>. IMF.</li>
+        <li><strong>Farmer, J. D. et al.</strong> (eds.) (2012). <em>Handbook of Financial Stress Testing</em>. Cambridge University Press.</li>
+        <li><strong>Daníelsson, J.</strong> (2011). <em>Financial Risk Forecasting</em>. Wiley.</li>
+      </ul>
+
+      <h3 class="biblio-tier">Capa Soporte · fundamentos y aplicación</h3>
+      <ul class="biblio">
+        <li><strong>Quagliariello, M.</strong> (ed.) (2009). <em>Stress-testing the Banking System: Methodologies and Applications</em>. Cambridge University Press.</li>
+        <li><strong>Siddique, A. &amp; Hasan, I.</strong> (eds.) (2013). <em>Stress Testing: Approaches, Methods and Applications</em>. Risk Books.</li>
+        <li><strong>Bellini, T.</strong> (2017). <em>Stress Testing and Risk Integration in Banks</em>. Academic Press.</li>
+        <li><strong>Rachev, S. T. et al.</strong> (2007). <em>Financial Econometrics: From Basics to Advanced Modeling Techniques</em>. Wiley.</li>
+      </ul>
+
+      <h3 class="biblio-tier">Capa Complementaria · profundización</h3>
+      <ul class="biblio">
+        <li><strong>Bodie, Z., Kane, A. &amp; Marcus, A. J.</strong> (2021). <em>Investments</em> (12va ed.). McGraw-Hill.</li>
+        <li><strong>Golin, J. &amp; Delhaise, P.</strong> (2013). <em>The Bank Credit Analysis Handbook</em>. Wiley.</li>
+        <li><strong>Bank of England</strong> (2022). <em>Stress Testing the UK Banking System: Key Elements of the 2022 Annual Cyclical Scenario</em>.</li>
+      </ul>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="section">
+      <div class="section-number">08</div>
+      <h2>Contacto</h2>
+      <div class="contact-card">
+        <p class="contact-name">Francisco A. Ramírez de León</p>
+        <p class="contact-line"><span>Empresa</span> MACROPOL · SRL</p>
+        <p class="contact-line"><span>Especialidad</span> Economía aplicada y políticas públicas</p>
+        <p class="contact-line"><span>Curso</span> Stress Testing en Pensiones</p>
+        <p class="contact-note">Para inscripciones, propuestas de capacitación in-house o consultoría, contactar directamente a MACROPOL.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 MACROPOL SRL · Economía Aplicada y Políticas Públicas</p>
+      <p class="footer-meta">Curso impartido por Francisco A. Ramírez de León · Sitio hospedado en GitHub Pages</p>
+    </div>
+  </footer>
+
+</body>
+</html>
