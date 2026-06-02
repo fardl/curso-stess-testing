@@ -1,0 +1,20 @@
+\frametitle{Implementación: objeto de escenarios}
+\begin{lstlisting}
+escenarios <- bind_rows(
+  base_arima %>% mutate(escenario = "baseline_arima"),
+  base_var   %>% mutate(escenario = "baseline_var"),
+  adv_hist   %>% mutate(escenario = "adverso_historico"),
+  adv_hip    %>% mutate(escenario = "adverso_hipotetico"),
+  mc_p05     %>% mutate(escenario = "montecarlo_p05"),
+  mc_p50     %>% mutate(escenario = "montecarlo_p50")
+) %>%
+  pivot_longer(cols = -c(fecha, escenario),
+               names_to = "variable",
+               values_to = "valor") %>%
+  mutate(
+    modulo_origen = "M3",
+    fecha_generacion = Sys.Date()
+  )
+
+write_csv(escenarios, "outputs/escenarios_macrofinancieros.csv")
+\end{lstlisting}

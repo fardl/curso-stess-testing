@@ -1,0 +1,280 @@
+% ============================================================
+\section{Taller práctico: VAR para economía abierta}
+
+% ============================================================
+\begin{frame}{Taller práctico: economía abierta}
+
+\begin{block}{Objetivo}
+Construir escenarios macro-financieros para una economía pequeña y abierta utilizando un modelo VAR que incorpore variables domésticas y externas.
+\end{block}
+
+\begin{itemize}
+    \item Evaluar la transmisión de shocks externos hacia la economía local.
+    \item Simular trayectorias para alimentar ejercicios de stress testing.
+    \item Comparar escenarios baseline, adverso externo, conjunto extremo y condicional.
+\end{itemize}
+
+\end{frame}
+
+% ============================================================
+\begin{frame}{Variables del modelo VAR}
+
+\begin{columns}[T]
+
+\begin{column}{0.48\textwidth}
+\begin{block}{Variables domésticas}
+\small
+\begin{itemize}
+    \item Crecimiento económico
+    \item Inflación
+    \item Tasa interbancaria
+    \item Depreciación cambiaria
+    \item EMBI
+\end{itemize}
+\end{block}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\begin{block}{Variables externas}
+\small
+\begin{itemize}
+    \item Precio internacional del petróleo
+    \item Tasa de interés de la FED
+    \item Crecimiento económico de EE.UU.
+\end{itemize}
+\end{block}
+\end{column}
+
+\end{columns}
+
+\vspace{0.5em}
+
+\begin{alertblock}{Idea central}
+El modelo permite estudiar cómo un deterioro del entorno internacional se transmite a inflación, tipo de cambio, tasas, crecimiento y riesgo país.
+\end{alertblock}
+
+\end{frame}
+
+% ============================================================
+\begin{frame}{Narrativa del escenario adverso externo}
+
+\begin{block}{Escenario}
+A partir del inicio del horizonte de proyección, la economía enfrenta un deterioro del entorno internacional.
+\end{block}
+
+\begin{itemize}
+    \item Aumento del precio internacional del petróleo.
+    \item Incremento de la tasa de interés de la FED.
+    \item Desaceleración del crecimiento de EE.UU.
+    \item Presiones sobre el tipo de cambio.
+    \item Aumento del EMBI.
+    \item Mayor inflación y respuesta de la tasa doméstica.
+    \item Menor crecimiento económico.
+\end{itemize}
+
+\end{frame}
+
+% ============================================================
+\begin{frame}{Calibración del shock adverso externo}
+
+\begin{block}{Unidades}
+Los shocks están expresados como múltiplos de la desviación estándar histórica de cada variable.
+\end{block}
+
+\begin{table}
+\centering
+\small
+\begin{tabular}{lcc}
+\toprule
+Variable & Shock & Interpretación \\
+\midrule
+Crecimiento & $-1.5$ & menor actividad \\
+Inflación & $+1.5$ & mayor presión inflacionaria \\
+Interbancaria & $+1.0$ & respuesta monetaria \\
+Depreciación FX & $+2.0$ & presión cambiaria \\
+EMBI & $+2.0$ & mayor riesgo país \\
+Precio petróleo & $+2.5$ & shock externo de costos \\
+Tasa FED & $+2.0$ & condiciones financieras externas \\
+Crecimiento EE.UU. & $-2.0$ & menor demanda externa \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+% ============================================================
+\begin{frame}[fragile]{Estructura del script}
+
+\small
+
+\begin{verbatim}
+# 1. Limpieza de sesión
+# 2. Carga de paquetes
+# 3. Parámetros generales
+# 4. Carga y preparación de datos
+# 5. Estimación del VAR
+# 6. Escenario adverso externo
+# 7. Escenario conjunto extremo
+# 8. Escenario condicional
+# 9. Tablas y gráficos
+\end{verbatim}
+
+\begin{block}{Producto final}
+Un script reproducible en R que genere escenarios macro-financieros de economía abierta.
+\end{block}
+
+\end{frame}
+
+% ============================================================
+\begin{frame}[fragile]{Código base: variables del VAR}
+
+\small
+
+\begin{verbatim}
+variables_var <- c(
+  "crecimiento",
+  "inflacion",
+  "interbancaria",
+  "deprec_fx",
+  "embi",
+  "oil_price",
+  "fed_rate",
+  "us_growth"
+)
+\end{verbatim}
+
+\begin{alertblock}{Nota}
+Las tres últimas variables representan el bloque externo del modelo.
+\end{alertblock}
+
+\end{frame}
+
+% ============================================================
+\begin{frame}[fragile]{Código base: estimación del VAR}
+
+\small
+
+\begin{verbatim}
+Y <- macro %>%
+  select(all_of(variables_var)) %>%
+  na.omit()
+
+modelo_var <- VAR(
+  y = Y,
+  p = 2,
+  type = "const"
+)
+
+roots(modelo_var)
+\end{verbatim}
+
+\begin{block}{Diagnóstico}
+Las raíces del VAR deben estar dentro del círculo unitario para que el modelo sea estable.
+\end{block}
+
+\end{frame}
+
+% ============================================================
+\begin{frame}[fragile]{Código base: shock adverso externo}
+
+\small
+
+\begin{verbatim}
+shock_externo <- c(
+  crecimiento   = -1.5,
+  inflacion     =  1.5,
+  interbancaria =  1.0,
+  deprec_fx     =  2.0,
+  embi          =  2.0,
+  oil_price     =  2.5,
+  fed_rate      =  2.0,
+  us_growth     = -2.0
+)
+
+adverso_externo <- escenario_var_shock(
+  modelo_var = modelo_var,
+  h = h,
+  shock = shock_externo
+)
+\end{verbatim}
+
+\end{frame}
+
+% ============================================================
+\begin{frame}{Índice de severidad conjunta}
+
+\begin{block}{Idea}
+El escenario conjunto extremo no se obtiene tomando percentiles variable por variable.
+\end{block}
+
+\begin{enumerate}
+    \item Se simulan muchas trayectorias conjuntas del VAR.
+    \item Se calcula un índice de severidad para cada trayectoria.
+    \item Se selecciona la trayectoria ubicada en la cola adversa.
+\end{enumerate}
+
+\vspace{0.5em}
+
+\begin{alertblock}{Variables que aumentan la severidad}
+Mayor inflación, tasa interbancaria, depreciación, EMBI, precio del petróleo y tasa FED; menor crecimiento local y menor crecimiento de EE.UU.
+\end{alertblock}
+
+\end{frame}
+
+% ============================================================
+\begin{frame}[fragile]{Código base: escenario condicional}
+
+\small
+
+\begin{verbatim}
+restricciones <- tibble(
+  crecimiento = c(1.0, 1.2, 1.5, 1.8, 2.0, rep(2.5, h - 5)),
+  inflacion = c(8.0, 7.5, 7.0, 6.5, 6.0, rep(5.5, h - 5)),
+  interbancaria = c(9.0, 9.0, 8.75, 8.5, 8.25, rep(8.0, h - 5)),
+  deprec_fx = c(8.0, 7.0, 6.0, 5.0, 4.5, rep(4.0, h - 5)),
+  embi = c(650, 625, 600, 575, 550, rep(525, h - 5)),
+  oil_price = c(95, 92, 90, 88, 85, rep(82, h - 5)),
+  fed_rate = c(6.0, 5.8, 5.5, 5.25, 5.0, rep(4.75, h - 5)),
+  us_growth = c(0.5, 0.8, 1.0, 1.2, 1.5, rep(1.8, h - 5))
+)
+\end{verbatim}
+
+\end{frame}
+
+% ============================================================
+\begin{frame}{Entregable del ejercicio}
+
+\begin{block}{Producto final}
+Una tabla consolidada con cinco períodos históricos y las trayectorias proyectadas para cada escenario.
+\end{block}
+
+\begin{table}
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+Periodo & Escenario & Variable & Valor \\
+\midrule
+2025-08 & Histórico & Inflación & 4.2 \\
+2025-09 & Histórico & Inflación & 4.5 \\
+2026-01 & Baseline & Inflación & 4.8 \\
+2026-01 & Adverso externo & Inflación & 7.5 \\
+2026-01 & Condicional & Inflación & 8.0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+% ============================================================
+\begin{frame}{Preguntas guía para los grupos}
+
+\begin{enumerate}
+    \item ¿Cuál es el shock externo dominante en el escenario?
+    \item ¿Qué variable doméstica reacciona con mayor intensidad?
+    \item ¿Cómo se transmite el shock del petróleo a la inflación?
+    \item ¿Qué rol juega la tasa FED en el EMBI y el tipo de cambio?
+    \item ¿Qué escenario luce más severo para el portafolio previsional?
+\end{enumerate}
+
+\end{frame}

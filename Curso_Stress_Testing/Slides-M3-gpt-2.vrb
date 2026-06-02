@@ -1,0 +1,17 @@
+\frametitle{Código base: escenario condicional}
+
+\small
+
+\begin{verbatim}
+restricciones <- tibble(
+  crecimiento = c(1.0, 1.2, 1.5, 1.8, 2.0, rep(2.5, h - 5)),
+  inflacion = c(8.0, 7.5, 7.0, 6.5, 6.0, rep(5.5, h - 5)),
+  interbancaria = c(9.0, 9.0, 8.75, 8.5, 8.25, rep(8.0, h - 5)),
+  deprec_fx = c(8.0, 7.0, 6.0, 5.0, 4.5, rep(4.0, h - 5)),
+  embi = c(650, 625, 600, 575, 550, rep(525, h - 5)),
+  oil_price = c(95, 92, 90, 88, 85, rep(82, h - 5)),
+  fed_rate = c(6.0, 5.8, 5.5, 5.25, 5.0, rep(4.75, h - 5)),
+  us_growth = c(0.5, 0.8, 1.0, 1.2, 1.5, rep(1.8, h - 5))
+)
+\end{verbatim}
+

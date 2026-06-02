@@ -1,0 +1,182 @@
+\documentclass[12pt]{article}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\geometry{margin=1in}
+
+\title{Módulo 2: Identificación y Medición de Riesgos Previsionales}
+\author{MACROPOL}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Contexto}
+
+El stress testing en sistemas de pensiones de capitalización individual requiere una adecuada identificación y medición de los riesgos previsionales. A diferencia del sistema bancario, donde el foco es la solvencia, en pensiones el análisis se centra en la suficiencia de las pensiones futuras y en la estabilidad del ahorro acumulado.
+
+Los sistemas previsionales están expuestos a riesgos múltiples y correlacionados, cuya materialización puede comprometer la sostenibilidad del sistema y el bienestar de los afiliados.
+
+\textbf{Idea central:} el stress testing es tan robusto como la medición de los riesgos que incorpora.
+
+\section{Modelo / Herramienta}
+
+\subsection{Clasificación de riesgos}
+
+\begin{itemize}
+\item \textbf{Riesgo de mercado:} variaciones en precios de activos financieros.
+\item \textbf{Riesgo de longevidad:} aumento en la esperanza de vida.
+\item \textbf{Riesgo macroeconómico:} cambios en crecimiento, inflación y tasas de interés.
+\item \textbf{Riesgo de liquidez:} necesidad de liquidar activos en condiciones adversas.
+\end{itemize}
+
+\subsection{Dinámica del fondo de pensiones}
+
+\begin{equation}
+W_{t+1} = W_t (1 + r_t) + c_t
+\end{equation}
+
+donde:
+\begin{itemize}
+\item $W_t$: saldo acumulado
+\item $r_t$: retorno del portafolio
+\item $c_t$: contribuciones
+\end{itemize}
+
+\subsection{Tasa de reemplazo}
+
+\begin{equation}
+RR = \frac{\text{Pensión}}{\text{Último salario}}
+\end{equation}
+
+\subsection{Modelación de riesgos}
+
+\subsubsection{Riesgo de mercado}
+
+\begin{equation}
+r_t = \ln\left(\frac{P_t}{P_{t-1}}\right)
+\end{equation}
+
+Modelo de volatilidad (GARCH):
+
+\begin{equation}
+\sigma_t^2 = \alpha_0 + \alpha_1 \epsilon_{t-1}^2 + \beta \sigma_{t-1}^2
+\end{equation}
+
+\subsubsection{Riesgo macroeconómico}
+
+\begin{equation}
+Y_t = A Y_{t-1} + \epsilon_t
+\end{equation}
+
+donde $Y_t$ incluye PIB, inflación y tasas de interés.
+
+\subsubsection{Riesgo de longevidad}
+
+Modelo Lee-Carter:
+
+\begin{equation}
+\ln(m_{x,t}) = a_x + b_x k_t + \epsilon_{x,t}
+\end{equation}
+
+\subsection{Interacción de riesgos}
+
+\begin{equation}
+\Sigma =
+\begin{bmatrix}
+\sigma^2_{r} & \rho_{r,y} \\
+\rho_{r,y} & \sigma^2_{y}
+\end{bmatrix}
+\end{equation}
+
+Los riesgos están correlacionados, lo que amplifica los efectos en escenarios adversos.
+
+\section{Implementación}
+
+\subsection{Simulación de retornos}
+
+\begin{verbatim}
+returns <- diff(log(prices))
+volatility <- sd(returns)
+\end{verbatim}
+
+\subsection{Modelo VAR}
+
+\begin{verbatim}
+library(vars)
+model <- VAR(data, p=2)
+forecast <- predict(model, n.ahead=12)
+\end{verbatim}
+
+\subsection{Simulación Monte Carlo}
+
+\begin{verbatim}
+sim_returns <- rnorm(1000, mean=mean(returns), sd=sd(returns))
+wealth <- cumprod(1 + sim_returns)
+\end{verbatim}
+
+\section{Ejercicio Aplicado}
+
+\textbf{Escenario adverso:}
+\begin{itemize}
+\item Caída de mercado: -20\%
+\item Aumento de tasas: +200 pb
+\item Incremento en longevidad: +2 años
+\end{itemize}
+
+\textbf{Tareas:}
+\begin{itemize}
+\item Simular la trayectoria del fondo
+\item Calcular la tasa de reemplazo
+\item Comparar con escenario baseline
+\end{itemize}
+
+\section{Interpretación}
+
+\subsection{Baseline vs adverso}
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Variable & Baseline & Adverso \\
+\midrule
+Retornos & Normales & Negativos \\
+Longevidad & Estable & Aumenta \\
+PIB & Crecimiento & Recesión \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Insights}
+
+\begin{itemize}
+\item El riesgo relevante es conjunto, no individual
+\item La tasa de reemplazo es altamente sensible a shocks
+\item La correlación entre riesgos amplifica pérdidas
+\end{itemize}
+
+\section{Implicaciones Regulatorias}
+
+El análisis de riesgos previsionales es fundamental para:
+
+\begin{itemize}
+\item Supervisión de fondos de pensiones
+\item Diseño de portafolios de inversión
+\item Reformas previsionales
+\end{itemize}
+
+El regulador no solo evalúa pérdidas financieras, sino el impacto sobre el bienestar previsional.
+
+\section{Mensaje Final}
+
+\begin{center}
+\textit{El stress testing no comienza con escenarios, sino con una comprensión profunda de los riesgos.}
+\end{center}
+
+\end{document}

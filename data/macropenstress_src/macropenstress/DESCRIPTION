@@ -1,0 +1,25 @@
+Package: macropenstress
+Type: Package
+Title: Stress Testing Macro-Financiero para Pensiones
+Version: 0.1.8
+Authors@R: person("MACROPOL", "Curso", email = "info@macropol.com", role = c("aut", "cre"))
+Description: Herramientas didacticas para construir escenarios baseline y adversos en sistemas de pensiones de capitalizacion individual usando ARIMA, VAR, Monte Carlo, trayectorias conjuntas extremas y VAR condicional.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 4.1.0)
+Imports:
+    stats,
+    utils,
+    forecast,
+    vars,
+    MASS,
+    ggplot2,
+    dplyr,
+    tidyr,
+    tibble,
+    readr,
+    lubridate
+Suggests:
+    testthat (>= 3.0.0)
+RoxygenNote: 7.3.1

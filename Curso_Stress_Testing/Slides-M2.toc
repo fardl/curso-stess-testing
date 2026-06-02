@@ -1,0 +1,3 @@
+\babel@toc {spanish}{}\relax 
+\beamer@sectionintoc {1}{Módulo 2: Identificación y Medición de Riesgos Previsionales}{2}{0}{1}
+\beamer@sectionintoc {2}{Ejercicio Integrador: De Riesgos a Escenarios}{45}{0}{2}

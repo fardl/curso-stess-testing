@@ -1,0 +1,959 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+
+% ------------------------------------------------------------
+% Tema y paquetes
+% ------------------------------------------------------------
+\usetheme{Madrid}
+\usecolortheme{seahorse}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb, bm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% ------------------------------------------------------------
+% Colores
+% ------------------------------------------------------------
+\definecolor{macropblue}{RGB}{0,64,128}
+\definecolor{macropgray}{RGB}{80,80,80}
+\definecolor{macropred}{RGB}{150,30,30}
+\definecolor{macropgreen}{RGB}{20,120,80}
+\definecolor{codebg}{RGB}{245,247,250}
+
+\setbeamercolor{title}{fg=white,bg=macropblue}
+\setbeamercolor{frametitle}{fg=white,bg=macropblue}
+\setbeamercolor{block title}{fg=white,bg=macropblue}
+\setbeamercolor{block body}{bg=blue!3}
+\setbeamercolor{alerted text}{fg=macropred}
+
+% ------------------------------------------------------------
+% Código R
+% ------------------------------------------------------------
+\lstdefinelanguage{R}{
+  keywords={library, data.frame, lm, summary, predict, mean, sd, quantile, cbind, matrix,
+  if, else, for, in, function, return, list, rep, seq, set.seed, rnorm, qnorm, pnorm},
+  otherkeywords={<-, ~, $, \%, \%*\%},
+  sensitive=true,
+  morecomment=[l]{\#},
+  morestring=[b]",
+  morestring=[b]'
+}
+\lstdefinestyle{Rstyle}{
+  language=R,
+  backgroundcolor=\color{codebg},
+  basicstyle=\ttfamily\scriptsize,
+  keywordstyle=\color{macropblue}\bfseries,
+  commentstyle=\color{macropgreen},
+  stringstyle=\color{macropred},
+  frame=single,
+  breaklines=true,
+  showstringspaces=false,
+  columns=fullflexible,
+  literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+           {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+           {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {ü}{{\"u}}1 {¿}{{?`}}1 {¡}{{!`}}1
+}
+
+% ------------------------------------------------------------
+% Metadatos
+% ------------------------------------------------------------
+\title[Stress Testing del Portafolio]{Módulo 4: Stress Testing del Portafolio Previsional}
+\subtitle{De escenarios macro-financieros a pérdidas, rentabilidad y suficiencia previsional}
+\author[MACROPOL]{MACROPOL: Economía Aplicada y Políticas Públicas}
+\institute{Curso: Stress Testing en Sistemas de Pensiones de Capitalización Individual}
+\date{2026}
+
+% ------------------------------------------------------------
+\begin{document}
+
+% ============================================================
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ============================================================
+\begin{frame}{Ruta del módulo}
+\begin{block}{Objetivo}
+Traducir los escenarios macro-financieros construidos en el Módulo 3 en impactos cuantitativos sobre el portafolio previsional, la rentabilidad acumulada y la suficiencia futura de las pensiones.
+\end{block}
+
+\begin{enumerate}
+  \item Conexión con Módulo 3: escenario, narrativa y trayectorias.
+  \item Modelo multifactorial del portafolio previsional.
+  \item Volatilidad condicional: ARCH/GARCH.
+  \item Correlaciones en crisis y pérdida de diversificación.
+  \item Simulación de rentabilidad y pérdidas extremas.
+  \item Lectura regulatoria: límites, concentración y resiliencia.
+\end{enumerate}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Conexión directa con el Módulo 3}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{block}{Módulo 3: Construcción de escenarios}
+\begin{itemize}
+  \item ARIMA para variables individuales.
+  \item VAR para interdependencias macro-financieras.
+  \item Monte Carlo para trayectorias alternativas.
+  \item Choques históricos vs. hipotéticos.
+\end{itemize}
+\end{block}
+
+\column{0.48\textwidth}
+\begin{block}{Módulo 4: Impacto en portafolio}
+\begin{itemize}
+  \item Betas del portafolio frente a factores.
+  \item Volatilidad condicional bajo estrés.
+  \item Correlaciones que aumentan en crisis.
+  \item Distribución de rentabilidades y pérdidas.
+\end{itemize}
+\end{block}
+\end{columns}
+
+\vspace{0.4cm}
+\centering
+\Large
+\alert{El escenario macro-financiero deja de ser una narrativa: se convierte en pérdida previsional cuantificable.}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Del Módulo 3 al Módulo 4: insumos y productos}
+\begin{center}
+\begin{tikzpicture}[node distance=1.45cm, every node/.style={font=\small}]
+\node[draw, rounded corners, fill=blue!8, text width=3.0cm, align=center] (m3) {Módulo 3\\ Escenario macro-financiero};
+\node[draw, rounded corners, fill=blue!8, right of=m3, xshift=2.6cm, text width=3.0cm, align=center] (factores) {Factores de riesgo\\ tasas, FX, equity, spreads};
+\node[draw, rounded corners, fill=blue!8, right of=factores, xshift=2.8cm, text width=3.0cm, align=center] (port) {Modelo de portafolio\\ sensibilidades y pesos};
+\node[draw, rounded corners, fill=red!8, right of=port, xshift=2.6cm, text width=2.0cm, align=center] (impacto) {Pérdidas\\ rentabilidad y saldo};
+
+\draw[->, thick] (m3) -- (factores);
+\draw[->, thick] (factores) -- (port);
+\draw[->, thick] (port) -- (impacto);
+\end{tikzpicture}
+\end{center}
+
+\begin{block}{Producto del Módulo 4}
+Una matriz de impacto que conecte cada choque macro-financiero con:
+\begin{itemize}
+  \item pérdida de valor del portafolio,
+  \item rentabilidad acumulada bajo escenario adverso,
+  \item sensibilidad por clase de activo,
+  \item implicación sobre tasas de reemplazo futuras.
+\end{itemize}
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Baseline vs. adverso: separación conceptual}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{block}{Escenario baseline}
+\begin{itemize}
+  \item Crecimiento converge a potencial.
+  \item Inflación retorna a meta.
+  \item Tasas se normalizan.
+  \item Spreads financieros estables.
+  \item Correlaciones históricas promedio.
+\end{itemize}
+\end{block}
+
+\column{0.48\textwidth}
+\begin{alertblock}{Escenario adverso}
+\begin{itemize}
+  \item Recesión o desaceleración fuerte.
+  \item Inflación persistente.
+  \item Aumento de tasas y spreads.
+  \item Depreciación cambiaria.
+  \item Correlaciones aumentan y la diversificación falla.
+\end{itemize}
+\end{alertblock}
+\end{columns}
+
+\vspace{0.3cm}
+\begin{block}{Regla de enseñanza}
+Baseline describe la trayectoria esperada. El adverso evalúa resiliencia, no predicción.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Narrativa económica vs. modelo cuantitativo}
+\begin{table}
+\centering
+\small
+\begin{tabular}{p{0.45\textwidth} p{0.45\textwidth}}
+\toprule
+\textbf{Narrativa económica} & \textbf{Modelo cuantitativo} \\
+\midrule
+``Shock externo eleva tasas internacionales y reduce apetito por riesgo'' &
+Trayectoria de tasa libre de riesgo, spread soberano, equity global y tipo de cambio. \\
+\addlinespace
+``Inflación persistente erosiona retornos reales'' &
+Deflactación de rentabilidad nominal y ajuste de curva de tasas. \\
+\addlinespace
+``Los activos se vuelven más correlacionados'' &
+Matriz de correlación estresada o modelo DCC-GARCH. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{block}{Mensaje central}
+La narrativa justifica la plausibilidad del shock; el modelo cuantitativo mide su magnitud en el portafolio.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Supuestos vs. resultados}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{block}{Supuestos}
+\begin{itemize}
+  \item Pesos iniciales del portafolio.
+  \item Duración de bonos.
+  \item Betas frente a factores.
+  \item Matriz de correlaciones.
+  \item Horizonte del stress test.
+\end{itemize}
+\end{block}
+
+\column{0.48\textwidth}
+\begin{block}{Resultados}
+\begin{itemize}
+  \item Pérdida total del fondo.
+  \item Contribución por factor.
+  \item VaR y Expected Shortfall.
+  \item Máximo drawdown.
+  \item Reducción del saldo acumulado.
+\end{itemize}
+\end{block}
+\end{columns}
+
+\vspace{0.3cm}
+\centering
+\alert{Una buena presentación regulatoria nunca mezcla supuestos con resultados.}
+\end{frame}
+
+% ============================================================
+\section{Contexto}
+
+\begin{frame}{Contexto: riesgo financiero como riesgo previsional}
+\begin{block}{Intuición económica}
+En un sistema de capitalización individual, el afiliado acumula un saldo que depende de aportes, comisiones y rentabilidad. Por tanto, un shock de mercado no solo reduce riqueza financiera: reduce potencialmente la pensión futura.
+\end{block}
+
+\[
+S_T=\sum_{t=1}^{T} c_t \prod_{j=t}^{T}(1+r_j)
+\]
+
+\begin{itemize}
+  \item $S_T$: saldo acumulado al retiro.
+  \item $c_t$: contribución neta.
+  \item $r_j$: rentabilidad del fondo.
+\end{itemize}
+
+\begin{alertblock}{Implicación}
+La variable crítica del Módulo 4 es $r_t$: la rentabilidad bajo estrés.
+\end{alertblock}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Riesgos principales del portafolio previsional}
+\begin{table}
+\centering
+\small
+\begin{tabular}{p{0.27\textwidth} p{0.38\textwidth} p{0.25\textwidth}}
+\toprule
+\textbf{Riesgo} & \textbf{Canal de pérdida} & \textbf{Indicador} \\
+\midrule
+Tasa de interés & Caída de precio de bonos ante aumento de tasas & Duración / DV01 \\
+Accionario & Menor precio de acciones locales y externas & Beta equity \\
+Cambiario & Pérdida o ganancia por exposición en moneda extranjera & Exposición FX \\
+Crédito & Aumento de spreads o deterioro de rating & Spread duration \\
+Inflación & Reducción de rentabilidad real & Retorno real \\
+Liquidez & Venta forzada con descuentos & Haircut / bid-ask \\
+Correlación & Falla de diversificación en crisis & Matriz $\rho$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Mapa de transmisión macro-financiera}
+\begin{center}
+\begin{tikzpicture}[node distance=1.35cm, every node/.style={font=\small}]
+\node[draw, rounded corners, fill=blue!8, text width=4.1cm, align=center] (shock) {Shock macro\\ inflación, crecimiento, tasas};
+\node[draw, rounded corners, fill=blue!8, below of=shock, text width=5.1cm, align=center] (mercado) {Precios financieros\\ bonos, acciones, FX, spreads};
+\node[draw, rounded corners, fill=blue!8, below of=mercado, text width=4.1cm, align=center] (rent) {Rentabilidad del fondo\\ nominal y real};
+\node[draw, rounded corners, fill=red!8, below of=rent, text width=3.1cm, align=center] (saldo) {Saldo individual\\ acumulado};
+\node[draw, rounded corners, fill=red!8, below of=saldo, text width=3.1cm, align=center] (pension) {Pensión esperada\\ tasa de reemplazo};
+
+\draw[->, thick] (shock) -- (mercado);
+\draw[->, thick] (mercado) -- (rent);
+\draw[->, thick] (rent) -- (saldo);
+\draw[->, thick] (saldo) -- (pension);
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Pregunta regulatoria del módulo}
+\begin{block}{Pregunta central}
+¿Bajo qué combinaciones de choques macro-financieros el portafolio previsional pierde valor suficiente para comprometer la suficiencia futura de las pensiones?
+\end{block}
+
+\begin{columns}[T]
+\column{0.32\textwidth}
+\begin{block}{Micro}
+Impacto por fondo, clase de activo y cohorte de afiliados.
+\end{block}
+
+\column{0.32\textwidth}
+\begin{block}{Macro}
+Impacto agregado sobre ahorro previsional y confianza del sistema.
+\end{block}
+
+\column{0.32\textwidth}
+\begin{block}{Política}
+Necesidad de límites, coberturas, liquidez y reglas de ciclo de vida.
+\end{block}
+\end{columns}
+\end{frame}
+
+% ============================================================
+\section{Modelo / Herramienta}
+
+\begin{frame}{Modelo multifactorial del portafolio}
+\begin{block}{Modelo base}
+\[
+R_{p,t}=\alpha+\bm{\beta}'\bm{F}_t+\varepsilon_t
+\]
+\end{block}
+
+\begin{itemize}
+  \item $R_{p,t}$: retorno del portafolio previsional.
+  \item $\bm{F}_t$: vector de factores macro-financieros.
+  \item $\bm{\beta}$: sensibilidad del fondo a cada factor.
+  \item $\varepsilon_t$: componente idiosincrático no explicado.
+\end{itemize}
+
+\begin{alertblock}{Lectura previsional}
+Las betas muestran qué factores del escenario adverso reducen más la rentabilidad del fondo.
+\end{alertblock}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Factores del Módulo 3 que entran al Módulo 4}
+\begin{table}
+\centering
+\small
+\begin{tabular}{p{0.30\textwidth} p{0.33\textwidth} p{0.25\textwidth}}
+\toprule
+\textbf{Variable del escenario} & \textbf{Factor financiero} & \textbf{Activo afectado} \\
+\midrule
+Tasa de política & Curva soberana local & Bonos locales \\
+Inflación esperada & Tasa real / retorno real & Bonos nominales y saldo real \\
+Tipo de cambio & Retorno FX & Activos externos \\
+PIB / actividad & Prima de riesgo accionario & Acciones locales \\
+Tasa Fed / global & Curva internacional & Bonos externos \\
+Riesgo país & Spread soberano & Bonos soberanos y corporativos \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Retorno del portafolio por clases de activo}
+\[
+R_{p,t}=\sum_{i=1}^{N} w_i R_{i,t}
+\]
+
+\begin{block}{Conexión con escenarios}
+Cada $R_{i,t}$ puede modelarse como función de factores:
+\[
+R_{i,t}=a_i+\bm{b}_i'\bm{F}_t+u_{i,t}
+\]
+\end{block}
+
+\begin{itemize}
+  \item Los pesos $w_i$ reflejan la política de inversión.
+  \item Las sensibilidades $\bm{b}_i$ reflejan riesgo de mercado.
+  \item El escenario adverso genera una trayectoria para $\bm{F}_t$.
+\end{itemize}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Renta fija: duración y choque de tasas}
+\begin{block}{Aproximación de primer orden}
+\[
+\frac{\Delta P}{P}\approx -D_{\text{mod}}\Delta y
+\]
+\end{block}
+
+\begin{itemize}
+  \item $D_{\text{mod}}$: duración modificada.
+  \item $\Delta y$: cambio en rendimiento.
+  \item Un aumento de tasas genera pérdida de precio.
+\end{itemize}
+
+\begin{alertblock}{Implicación para pensiones}
+Fondos con alta proporción de bonos largos son vulnerables a escenarios de inflación persistente y endurecimiento monetario.
+\end{alertblock}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Renta fija: duración, convexidad y estrés}
+\begin{block}{Aproximación con convexidad}
+\[
+\frac{\Delta P}{P}\approx -D_{\text{mod}}\Delta y+\frac{1}{2}C(\Delta y)^2
+\]
+\end{block}
+
+\begin{itemize}
+  \item La convexidad corrige la pérdida para choques grandes.
+  \item En stress testing, choques de tasas suelen ser suficientemente grandes para requerir convexidad.
+  \item Para fondos previsionales, importa el efecto acumulado sobre el saldo, no solo la pérdida instantánea.
+\end{itemize}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Acciones y activos externos}
+\begin{block}{Modelo de retorno accionario}
+\[
+R^{eq}_{t}=\alpha+\beta_g R^{global}_{t}+\beta_l R^{local}_{t}+\beta_{fx}\Delta e_t+\varepsilon_t
+\]
+\end{block}
+
+\begin{itemize}
+  \item $\beta_g$: sensibilidad al ciclo financiero global.
+  \item $\beta_l$: sensibilidad al mercado local.
+  \item $\beta_{fx}$: exposición cambiaria neta.
+\end{itemize}
+
+\begin{alertblock}{Lectura de estrés}
+Una depreciación puede compensar pérdidas externas en moneda local, pero aumenta riesgo si hay descalce o cobertura incompleta.
+\end{alertblock}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Volatilidad condicional: por qué GARCH}
+\begin{block}{Hecho estilizado}
+Los retornos financieros presentan \textit{volatility clustering}: períodos tranquilos y períodos turbulentos.
+\end{block}
+
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{block}{Volatilidad constante}
+\[
+R_t=\mu+\sigma z_t
+\]
+Supone que el riesgo es igual todos los días.
+\end{block}
+
+\column{0.48\textwidth}
+\begin{alertblock}{Volatilidad condicional}
+\[
+R_t=\mu+\sigma_t z_t
+\]
+Permite que el riesgo aumente durante crisis.
+\end{alertblock}
+\end{columns}
+\end{frame}
+
+% ============================================================
+\begin{frame}{ARCH y GARCH}
+\begin{block}{ARCH(1)}
+\[
+\sigma_t^2=\omega+\alpha \varepsilon_{t-1}^2
+\]
+\end{block}
+
+\begin{block}{GARCH(1,1)}
+\[
+\sigma_t^2=\omega+\alpha \varepsilon_{t-1}^2+\beta\sigma_{t-1}^2
+\]
+\end{block}
+
+\begin{table}
+\centering
+\small
+\begin{tabular}{lll}
+\toprule
+\textbf{Parámetro} & \textbf{Lectura técnica} & \textbf{Lectura económica} \\
+\midrule
+$\alpha$ & respuesta a shocks recientes & intensidad del pánico \\
+$\beta$ & persistencia de volatilidad & duración de la crisis \\
+$\alpha+\beta$ & persistencia total & velocidad de normalización \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Correlaciones bajo estrés}
+\begin{block}{Problema}
+La diversificación funciona en tiempos normales, pero puede debilitarse cuando los activos caen simultáneamente.
+\end{block}
+
+\[
+\sigma^2_{p,t}=\bm{w}'\bm{\Sigma}_t\bm{w}
+\]
+
+\[
+\bm{\Sigma}_t=
+\begin{bmatrix}
+\sigma_{1,t}^2 & \rho_{12,t}\sigma_{1,t}\sigma_{2,t} \\
+\rho_{21,t}\sigma_{2,t}\sigma_{1,t} & \sigma_{2,t}^2
+\end{bmatrix}
+\]
+
+\begin{alertblock}{Implicación}
+Un escenario adverso debe estresar retornos, volatilidades y correlaciones.
+\end{alertblock}
+\end{frame}
+
+% ============================================================
+\begin{frame}{DCC-GARCH: idea general}
+\begin{block}{Modelo}
+\[
+H_t=D_t R_t D_t
+\]
+\end{block}
+
+\begin{itemize}
+  \item $H_t$: matriz de covarianzas condicionales.
+  \item $D_t$: matriz diagonal de volatilidades condicionales.
+  \item $R_t$: matriz de correlaciones condicionales.
+\end{itemize}
+
+\begin{block}{Uso en stress testing}
+Permite evaluar escenarios donde no solo aumenta la volatilidad, sino también la co-movilidad entre clases de activo.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}{VaR y Expected Shortfall}
+\begin{block}{Value-at-Risk}
+\[
+VaR_{\alpha}=\inf\{l: P(L\leq l)\geq \alpha\}
+\]
+\end{block}
+
+\begin{block}{Expected Shortfall}
+\[
+ES_{\alpha}=E[L \mid L>VaR_{\alpha}]
+\]
+\end{block}
+
+\begin{alertblock}{Lectura regulatoria}
+El VaR responde: ``¿cuánto se pierde en un percentil?'' El ES responde: ``¿cuánto se pierde si se materializa la cola?''
+\end{alertblock}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Simulación de rentabilidad bajo escenarios}
+\begin{block}{Trayectoria simulada}
+\[
+R_{p,t}^{(s)}=\alpha+\bm{\beta}'\bm{F}_{t}^{(s)}+\sigma_t z_t^{(s)}
+\]
+\end{block}
+
+\begin{itemize}
+  \item $s$: simulación o trayectoria.
+  \item $\bm{F}_{t}^{(s)}$: trayectoria macro-financiera del Módulo 3.
+  \item $\sigma_t$: volatilidad condicional estimada en el Módulo 4.
+  \item $z_t^{(s)}$: shock aleatorio, normal o t-Student.
+\end{itemize}
+\end{frame}
+
+% ============================================================
+\section{Implementación}
+
+\begin{frame}[fragile]{Estructura de datos en R}
+\begin{lstlisting}[style=Rstyle]
+# Base mínima para el módulo 4
+# ret_port: rentabilidad del fondo previsional
+# tasa, fx, equity, spread, inflacion: factores del módulo 3
+
+datos <- data.frame(
+  fecha      = fechas,
+  ret_port   = ret_fondo,
+  tasa       = delta_tasa,
+  fx         = delta_tipo_cambio,
+  equity     = ret_equity_global,
+  spread     = delta_spread_soberano,
+  inflacion  = inflacion_mensual
+)
+\end{lstlisting}
+
+\begin{block}{Puente con Módulo 3}
+Las variables \texttt{tasa}, \texttt{fx}, \texttt{equity}, \texttt{spread} e \texttt{inflacion} provienen de las trayectorias baseline y adversas generadas previamente.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}[fragile]{Modelo multifactorial en R}
+\begin{lstlisting}[style=Rstyle]
+modelo_mf <- lm(
+  ret_port ~ tasa + fx + equity + spread + inflacion,
+  data = datos
+)
+
+summary(modelo_mf)
+betas <- coef(modelo_mf)
+\end{lstlisting}
+
+\begin{block}{Interpretación}
+\begin{itemize}
+  \item Coeficiente positivo: el factor aumenta la rentabilidad.
+  \item Coeficiente negativo: el factor reduce la rentabilidad.
+  \item Magnitud: sensibilidad del fondo ante el shock.
+\end{itemize}
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}[fragile]{Aplicación de escenarios baseline y adverso}
+\begin{lstlisting}[style=Rstyle]
+# escenarios_m3 contiene trayectorias generadas en el módulo 3
+# columnas: tasa, fx, equity, spread, inflacion
+
+escenarios_m3$rp_hat <- predict(
+  modelo_mf,
+  newdata = escenarios_m3
+)
+
+aggregate(rp_hat ~ escenario, data = escenarios_m3, mean)
+\end{lstlisting}
+
+\begin{alertblock}{Resultado esperado}
+El mismo modelo se aplica a dos narrativas: baseline y adversa. La diferencia entre ambos mide el costo financiero del estrés.
+\end{alertblock}
+\end{frame}
+
+% ============================================================
+\begin{frame}[fragile]{GARCH en R}
+\begin{lstlisting}[style=Rstyle]
+library(rugarch)
+
+spec <- ugarchspec(
+  variance.model = list(model = "sGARCH",
+                        garchOrder = c(1, 1)),
+  mean.model     = list(armaOrder = c(0, 0)),
+  distribution.model = "std"
+)
+
+fit_garch <- ugarchfit(spec = spec, data = datos$ret_port)
+show(fit_garch)
+\end{lstlisting}
+
+\begin{block}{Uso}
+La volatilidad condicional estimada permite proyectar pérdidas más realistas durante episodios de estrés.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}[fragile]{Volatilidad condicional y VaR en R}
+\begin{lstlisting}[style=Rstyle]
+sigma_t <- sigma(fit_garch)
+mu_t    <- fitted(fit_garch)
+
+alpha <- 0.99
+q_t <- qt(alpha, df = 6)   # aproximación t-Student
+
+VaR_99 <- -(mu_t + sigma_t * q_t)
+summary(VaR_99)
+\end{lstlisting}
+
+\begin{alertblock}{Cuidado}
+El VaR debe interpretarse como pérdida potencial bajo supuestos de distribución. En crisis, conviene complementarlo con Expected Shortfall y escenarios determinísticos.
+\end{alertblock}
+\end{frame}
+
+% ============================================================
+\begin{frame}[fragile]{Simulación Monte Carlo del portafolio}
+\begin{lstlisting}[style=Rstyle]
+set.seed(123)
+
+B <- 10000
+mu <- mean(datos$ret_port)
+sig <- sd(datos$ret_port)
+
+sim_ret <- rnorm(B, mean = mu, sd = sig)
+loss <- -sim_ret
+
+VaR_95 <- quantile(loss, 0.95)
+ES_95  <- mean(loss[loss > VaR_95])
+
+c(VaR_95 = VaR_95, ES_95 = ES_95)
+\end{lstlisting}
+
+\begin{block}{Conexión con Módulo 3}
+En lugar de simular solo retornos históricos, puede alimentarse la simulación con trayectorias de factores generadas por VAR o ARIMA.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}[fragile]{Stress test determinístico por clase de activo}
+\begin{lstlisting}[style=Rstyle]
+pesos <- c(bonos = 0.55, equity = 0.25, externo = 0.15, liquidez = 0.05)
+
+shock_adverso <- c(
+  bonos   = -0.12,
+  equity  = -0.30,
+  externo = -0.18,
+  liquidez = 0.02
+)
+
+perdida_port <- sum(pesos * shock_adverso)
+perdida_port
+\end{lstlisting}
+
+\begin{alertblock}{Interpretación}
+La pérdida agregada se descompone por clase de activo, lo que facilita decisiones regulatorias sobre límites, concentración y cobertura.
+\end{alertblock}
+\end{frame}
+
+% ============================================================
+\begin{frame}[fragile]{Impacto sobre saldo acumulado}
+\begin{lstlisting}[style=Rstyle]
+saldo_inicial <- 100
+r_base <- 0.05
+r_adv  <- perdida_port
+
+saldo_base <- saldo_inicial * (1 + r_base)
+saldo_adv  <- saldo_inicial * (1 + r_adv)
+
+impacto_saldo <- saldo_adv - saldo_base
+impacto_pct   <- impacto_saldo / saldo_base
+
+c(saldo_base = saldo_base,
+  saldo_adverso = saldo_adv,
+  impacto_pct = impacto_pct)
+\end{lstlisting}
+
+\begin{block}{Lectura previsional}
+Un shock financiero transitorio puede tener efectos persistentes si ocurre cerca de la edad de retiro o si reduce la base sobre la cual se capitalizan retornos futuros.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}[fragile]{Correlación estresada: ejemplo simple}
+\begin{lstlisting}[style=Rstyle]
+vol <- c(bonos = 0.08, equity = 0.18, externo = 0.16)
+
+R_normal <- matrix(c(
+  1.00, 0.20, 0.30,
+  0.20, 1.00, 0.55,
+  0.30, 0.55, 1.00), 3, 3)
+
+R_stress <- matrix(c(
+  1.00, 0.65, 0.70,
+  0.65, 1.00, 0.85,
+  0.70, 0.85, 1.00), 3, 3)
+
+Sigma_normal <- diag(vol) %*% R_normal %*% diag(vol)
+Sigma_stress <- diag(vol) %*% R_stress %*% diag(vol)
+\end{lstlisting}
+\end{frame}
+
+% ============================================================
+\begin{frame}[fragile]{Comparación de volatilidad de portafolio}
+\begin{lstlisting}[style=Rstyle]
+w <- c(0.55, 0.25, 0.20)
+
+vol_port_normal <- sqrt(t(w) %*% Sigma_normal %*% w)
+vol_port_stress <- sqrt(t(w) %*% Sigma_stress %*% w)
+
+c(normal = vol_port_normal,
+  stress = vol_port_stress)
+\end{lstlisting}
+
+\begin{alertblock}{Mensaje}
+El portafolio puede parecer diversificado con correlaciones normales, pero mucho menos resiliente bajo correlaciones de crisis.
+\end{alertblock}
+\end{frame}
+
+% ============================================================
+\section{Ejercicio}
+
+\begin{frame}{Ejercicio aplicado: caso de fondo previsional}
+\begin{block}{Portafolio inicial}
+\begin{itemize}
+  \item 55\% bonos soberanos y corporativos locales.
+  \item 25\% acciones globales.
+  \item 15\% renta fija externa.
+  \item 5\% liquidez.
+\end{itemize}
+\end{block}
+
+\begin{alertblock}{Escenario adverso proveniente del Módulo 3}
+\begin{itemize}
+  \item Aumento de tasas locales: +300 puntos básicos.
+  \item Caída de equity global: -30\%.
+  \item Aumento de spread soberano: +250 puntos básicos.
+  \item Depreciación cambiaria: +18\%.
+  \item Inflación anual: 9\%.
+\end{itemize}
+\end{alertblock}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Tareas del ejercicio}
+\begin{enumerate}
+  \item Traducir el escenario macro-financiero en retornos por clase de activo.
+  \item Calcular pérdida total del portafolio.
+  \item Descomponer contribución a pérdida por factor.
+  \item Comparar baseline vs. adverso.
+  \item Estimar VaR y Expected Shortfall.
+  \item Evaluar impacto en saldo de un afiliado:
+  \begin{itemize}
+    \item joven: 30 años,
+    \item medio: 45 años,
+    \item próximo al retiro: 60 años.
+  \end{itemize}
+  \item Formular recomendaciones regulatorias.
+\end{enumerate}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Plantilla de resultados}
+\begin{table}
+\centering
+\scriptsize
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Clase de activo} & \textbf{Peso} & \textbf{Ret. baseline} & \textbf{Ret. adverso} & \textbf{Contrib. pérdida} \\
+\midrule
+Bonos locales & 55\% & 6\% & -12\% &  \\
+Acciones globales & 25\% & 8\% & -30\% &  \\
+Renta fija externa & 15\% & 5\% & -18\% &  \\
+Liquidez & 5\% & 3\% & 2\% &  \\
+\midrule
+\textbf{Total} & 100\% & & & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{block}{Pregunta de decisión}
+¿Qué clase de activo explica la mayor pérdida y qué medida regulatoria sería proporcional al riesgo observado?
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Discusión en clase}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{block}{Preguntas técnicas}
+\begin{itemize}
+  \item ¿La pérdida viene de tasas, equity o FX?
+  \item ¿Cuánto aumenta el riesgo con correlaciones de crisis?
+  \item ¿Qué cambia si usamos t-Student en lugar de normal?
+\end{itemize}
+\end{block}
+
+\column{0.48\textwidth}
+\begin{block}{Preguntas regulatorias}
+\begin{itemize}
+  \item ¿Se requieren límites por duración?
+  \item ¿Debe haber cobertura cambiaria mínima?
+  \item ¿Conviene un glide path por edad?
+  \item ¿Qué divulgar al afiliado?
+\end{itemize}
+\end{block}
+\end{columns}
+\end{frame}
+
+% ============================================================
+\section{Interpretación}
+
+\begin{frame}{Lectura de resultados}
+\begin{block}{No basta reportar pérdida total}
+El reporte debe explicar:
+\begin{itemize}
+  \item qué factor explica la pérdida,
+  \item si la pérdida es transitoria o persistente,
+  \item qué grupo de afiliados es más vulnerable,
+  \item qué margen de acción tiene el regulador,
+  \item qué supuestos dominan los resultados.
+\end{itemize}
+\end{block}
+
+\begin{alertblock}{Clave}
+La interpretación convierte un ejercicio estadístico en una herramienta de supervisión.
+\end{alertblock}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Implicaciones por cohorte de afiliados}
+\begin{table}
+\centering
+\small
+\begin{tabular}{p{0.25\textwidth} p{0.35\textwidth} p{0.30\textwidth}}
+\toprule
+\textbf{Cohorte} & \textbf{Vulnerabilidad} & \textbf{Respuesta de política} \\
+\midrule
+Jóvenes & Mayor tiempo para recuperar pérdidas & Portafolio más diversificado y crecimiento de largo plazo \\
+Edad media & Riesgo de trayectoria y acumulación parcial & Rebalanceo y control de drawdowns \\
+Próximos al retiro & Alta exposición al momento de conversión a pensión & Glide path, liquidez y menor duración \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Decisiones regulatorias vinculadas al Módulo 4}
+\begin{itemize}
+  \item Límites de concentración por emisor, sector y moneda.
+  \item Límites de duración o sensibilidad a tasas.
+  \item Reglas de cobertura cambiaria.
+  \item Requerimientos de liquidez para retiros, traspasos o beneficios.
+  \item Escenarios regulatorios comunes para comparar AFP.
+  \item Reporte de pérdidas por factor y por cohorte.
+  \item Revisión de multifondos y reglas de ciclo de vida.
+\end{itemize}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Formato mínimo de reporte regulatorio}
+\begin{enumerate}
+  \item \textbf{Escenario}: baseline y adverso, con narrativa y supuestos.
+  \item \textbf{Metodología}: modelo multifactorial, GARCH, correlaciones y simulación.
+  \item \textbf{Resultados}: pérdida total, VaR, ES, drawdown y saldo.
+  \item \textbf{Descomposición}: contribución por activo, factor y moneda.
+  \item \textbf{Sensibilidades}: tasas, FX, equity, spreads e inflación.
+  \item \textbf{Recomendaciones}: límites, coberturas, liquidez y divulgación.
+\end{enumerate}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Mensajes clave}
+\begin{enumerate}
+  \item El Módulo 3 produce trayectorias macro-financieras; el Módulo 4 las transforma en pérdidas de portafolio.
+  \item El riesgo financiero es riesgo previsional cuando afecta el saldo acumulado.
+  \item Las betas muestran los canales de transmisión.
+  \item GARCH permite capturar aumento y persistencia de volatilidad.
+  \item Las correlaciones de crisis reducen la diversificación efectiva.
+  \item VaR y ES deben complementarse con escenarios narrativos plausibles.
+  \item El resultado final debe informar decisiones regulatorias.
+\end{enumerate}
+\end{frame}
+
+
+
+% ============================================================
+\begin{frame}
+\centering
+\Huge Gracias
+\vspace{0.6cm}
+
+
+\end{frame}
+
+\end{document}

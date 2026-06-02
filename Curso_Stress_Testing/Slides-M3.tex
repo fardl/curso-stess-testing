@@ -1,0 +1,346 @@
+\documentclass{beamer}
+
+% Tema
+\usetheme{Madrid}
+\usecolortheme{default}
+
+% Paquetes
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+% Información
+\title{Módulo 3: Construcción de Escenarios Macro-Financieros}
+\author{MACROPOL}
+\date{\today}
+
+\begin{document}
+
+%------------------------------------------------
+\frame{\titlepage}
+
+%-----------------------------------------------
+\begin{frame}{Contexto}
+\begin{itemize}
+    \item El nucleo del stress testing previsional es el escenario macro-financiero que alimenta todos los modelos.
+    \item Intuicion economica:
+    \begin{itemize}
+        \item Los sistemas de pensiones de capitalizacion individual est\'an expuestos a:
+        \begin{itemize}
+            \item Ciclos econ\'omicos (crecimiento, desempleo)
+            \item Condiciones fiancieras (tasas, inflaciones, retornos)
+        \end{itemize}
+        \item Un shcok macroeconomico se transmite a:
+        \begin{itemize}
+            \item Retabilidad del portafolio
+            \item Densidad de cotizacoines
+            \item Tasas de reemplazo
+        \end{itemize}
+    \end{itemize}
+    \item El diseño de escenarios es el componente central del stress testing.
+\end{itemize}
+    
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Objetivos del módulo}
+\begin{itemize}
+\item Diseñar escenarios macro-financieros consistentes
+\item Diferenciar baseline vs adverso
+\item Modelar variables con ARIMA y VAR
+\item Implementar simulación Monte Carlo
+\item Traducir escenarios a inputs previsionales
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Tipos de escenarios}
+\begin{tabular}{c|c}
+     Tipo de escenario  &  Descripc\'on \\
+     Base               & Trayectoria esperada (consistente con proyecciones oficiales \\
+     Adverso            & Shock severo pero plausible
+     Severo externo     & Evento                                                                                                      
+\end{tabular}
+    
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Arquitectura del stress testing}
+\centering
+Di
+
+\begin{enumerate}
+\item Escenario macro
+\item Variables financieras
+\item Retornos del portafolio
+\item Acumulación de fondos
+\item Tasa de reemplazo
+\end{enumerate}
+\end{frame}
+
+%----------------------------------------
+\begin{frame}{Enfoques de construccion}
+\begin{itemize}
+    \item Escenarios hist\'orico reproducen crisis pasadas"
+    \begin{itemize}
+        \item Crisis financiera global 2008
+        \item  Crisis de deuda sobrerana
+    \end{itemize}
+    \item Tiene la ventaja del realismo
+    \item Tiene la limitacion de no cubrir riesgos nuevos
+    
+\end{itemize}
+\
+    
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}{Tipos de escenarios}
+\begin{itemize}
+\item \textbf{Baseline:} trayectoria esperada
+\item \textbf{Adverso:} shock plausible severo
+\item \textbf{Extremo:} evento de cola
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Narrativa económica}
+\textbf{Ejemplo adverso:}
+\begin{itemize}
+\item Crisis global
+\item PIB: -3\%
+\item Tasas: +300 bps
+\item Bolsa: -25\%
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Variables clave}
+\textbf{Macroeconómicas}
+\begin{itemize}
+\item PIB
+\item Inflación
+\item Tasa de interés
+\end{itemize}
+
+\textbf{Financieras}
+\begin{itemize}
+\item Acciones
+\item Bonos
+\item Tipo de cambio
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Enfoque metodológico}
+\begin{itemize}
+\item ARIMA: dinámica individual
+\item VAR: interdependencia
+\item Monte Carlo: distribución de resultados
+\end{itemize}
+\end{frame}
+
+%================================================
+\section{ARIMA}
+
+%------------------------------------------------
+\begin{frame}{Intuición ARIMA}
+\begin{itemize}
+\item Las series macro tienen persistencia
+\item El pasado contiene información relevante
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Modelo ARIMA}
+\[
+y_t = c + \sum \phi_i y_{t-i} + \sum \theta_j \epsilon_{t-j} + \epsilon_t
+\]
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Interpretación económica}
+\begin{itemize}
+\item AR: inercia
+\item MA: shocks
+\item Diferenciación: tendencia
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}[fragile]{Implementación en R}
+\begin{verbatim}
+library(forecast)
+
+model <- auto.arima(inflacion)
+forecast_values <- forecast(model, h=12)
+
+plot(forecast_values)
+\end{verbatim}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Uso en pensiones}
+\begin{itemize}
+\item Inflación → salario real
+\item Tasas → valorización de bonos
+\end{itemize}
+\end{frame}
+
+%================================================
+\section{VAR}
+
+%------------------------------------------------
+\begin{frame}{Intuición VAR}
+\begin{itemize}
+\item La economía es un sistema interconectado
+\item Shock en una variable afecta a otras
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Modelo VAR}
+\[
+Y_t = A_1 Y_{t-1} + \dots + A_p Y_{t-p} + \epsilon_t
+\]
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Interpretación}
+\begin{itemize}
+\item Captura interdependencias
+\item Permite shocks consistentes
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}[fragile]{Implementación en R}
+\begin{verbatim}
+library(vars)
+
+data <- cbind(pib, inflacion, tasa)
+var_model <- VAR(data, p=2)
+
+irf <- irf(var_model)
+plot(irf)
+\end{verbatim}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Aplicación en pensiones}
+\begin{itemize}
+\item Genera trayectorias coherentes
+\item Evita inconsistencias macro
+\end{itemize}
+\end{frame}
+
+%================================================
+\section{Monte Carlo}
+
+%------------------------------------------------
+\begin{frame}{Intuición}
+\begin{itemize}
+\item No hay un solo futuro
+\item Se modela una distribución de resultados
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Modelo}
+\[
+X_{t+1} = \mu + \sigma \epsilon_t
+\]
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}[fragile]{Implementación en R}
+\begin{verbatim}
+set.seed(123)
+
+n_sim <- 1000
+returns <- matrix(rnorm(n_sim*120, 
+mean=0.05, sd=0.1), ncol=120)
+
+sim_paths <- apply(returns, 1, cumsum)
+\end{verbatim}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Outputs}
+\begin{itemize}
+\item Percentiles (P5, P50, P95)
+\item Distribución de pensiones
+\end{itemize}
+\end{frame}
+
+%================================================
+\section{Diseño de Escenarios}
+
+%------------------------------------------------
+\begin{frame}{Choques históricos}
+\begin{itemize}
+\item Crisis 2008
+\item COVID-19
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Choques hipotéticos}
+\begin{itemize}
+\item Subida abrupta de tasas
+\item Crisis externa
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Consistencia macro}
+\textbf{Regla clave:}
+\begin{itemize}
+\item No inconsistencias (ej: PIB cae y bolsa sube fuertemente)
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Baseline vs Adverso}
+\begin{tabular}{lcc}
+\hline
+Variable & Baseline & Adverso \\
+\hline
+PIB & 4\% & -2\% \\
+Inflación & 3\% & 7\% \\
+Bolsa & 8\% & -20\% \\
+\hline
+\end{tabular}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Pipeline completo}
+\begin{enumerate}
+\item Estimar modelos
+\item Generar shocks
+\item Simular trayectorias
+\item Evaluar impacto previsional
+\end{enumerate}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Ejercicio aplicado}
+\textbf{Caso: República Dominicana}
+\begin{itemize}
+\item Estimar VAR
+\item Simular shock externo
+\item Generar trayectorias
+\item Evaluar impacto en AFP
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Cierre}
+\begin{itemize}
+\item El escenario define el stress test
+\item Es el vínculo entre macroeconomía y pensiones
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\end{document}

@@ -1,0 +1,73 @@
+\documentclass{beamer}
+
+% Tema
+\usetheme{Madrid}
+\usecolortheme{default}
+
+% Paquetes
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+% Información
+\title{Módulo 3: Construcción de Escenarios Macro-Financieros}
+\author{MACROPOL}
+\date{\today}
+
+\begin{document}
+
+%------------------------------------------------
+\frame{\titlepage}
+
+\begin{frame}{¿Qué haremos hoy y qué output producimos?}
+\begin{itemize}
+    \item Aprenderemos a distinguir tipos de escenarios en stress testing
+    \item Construiremos una taxonomía aplicada al sistema previsional dominicano
+    \item *Output de hoy:* Tabla de taxonomía de escenarios con variables relevantes para AFP/SIPEN
+    \item *Conexión al pipeline:* Esta tabla es el esqueleto sobre el que calibraremos shocks en 3.2 y 3.3
+
+\end{itemize}
+    
+\end{frame}
+\begin{frame}{Frame Title}
+El problema central: ¿qué le puede pasar al portafolio de una AFP?
+Una AFP dominicana invierte en bonos soberanos, instrumentos del BC, y activos del exterior
+Su portafolio es vulnerable a shocks de tasa de interés, tipo de cambio, inflación y crecimiento
+Un stress test pregunta: *¿cuánto pierde ese portafolio si el entorno se deteriora?*
+Para responder esa pregunta necesitamos primero *construir el entorno deteriorado* → eso es un escenario
+Referencia: IMF Stress Testing Guide, Cap. 3; Farmer et al., Cap. 5
+
+    
+\end{frame}
+
+\begin{frame}{Frame Title}
+ ¿Qué es un escenario macroeconómico? (definición de trabajo)
+Un escenario es un conjunto coherente de valores para variables macro-financieras bajo condiciones de estrés
+No es una predicción: es una pregunta disciplinada del tipo *"¿qué pasa si...?"*
+Tres requisitos: *plausibilidad* (puede ocurrir), *severidad* (es peor que lo normal), *coherencia interna* (las variables se mueven juntas con lógica económica)
+Referencia: Siddique & Hasan, Cap. 2; IMF Stress Testing Guide
+    
+\end{frame}
+
+\begin{frame}{Frame Title}
+Taxonomía de escenarios: tres tipos que usaremos en este curso
+Escenario histórico: reproduce un episodio real de estrés con sus magnitudes observadas (ej: crisis bancaria RD 2003, COVID-2020, crisis financiera global 2008)
+Escenario hipotético: construido con lógica económica, no observado pero plausible (ej: caída del turismo + depreciación cambiaria + alza de tasas simultánea)
+Escenario adverso severo: versión extrema, baja probabilidad pero alto impacto; exigido por reguladores (ej: SIPEN, FMI en evaluaciones FSAP)
+*Los tres forman nuestro conjunto final de M3*
+Referencia: Farmer et al., Cap. 5; IMF Stress Testing Guide, Cap. 4
+    
+\end{frame}
+
+\begin{frame}{Frame Title}
+Variables macro-financieras relevantes para el sistema dominicano
+Tasa de interés: rendimiento de bonos soberanos DOP, tasa de política monetaria del BCRD
+Tipo de cambio: DOP/USD (exposición de activos externos de las AFP)
+Inflación: erosiona el valor real de las pensiones y afecta la tasa de descuento actuarial
+Crecimiento del PIB: determina la masa salarial y por tanto las cotizaciones al sistema
+Spread soberano: riesgo país que afecta el valor de mercado de los bonos en cartera
+Referencia: SIPEN — Informes de Portafolio AFP;
+    
+\end{frame}
+%------------------------------------------------
+\end{document}

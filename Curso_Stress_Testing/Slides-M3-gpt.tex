@@ -1,0 +1,1513 @@
+\documentclass[10pt,aspectratio=169]{beamer}
+
+% ============================================================
+% Módulo 3: Construcción de Escenarios Macro-Financieros
+% Curso: Stress Testing en Sistemas de Pensiones de Capitalización Individual
+% MACROPOL
+% ============================================================
+
+\usetheme{metropolis}
+\usecolortheme{seahorse}
+\usefonttheme{professionalfonts}
+
+\usepackage[spanish,es-noquoting]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{xcolor}
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+% ------------------------------------------------------------
+% Colores
+% ------------------------------------------------------------
+\definecolor{MacropolBlue}{RGB}{0,67,122}
+\definecolor{MacropolTeal}{RGB}{0,134,150}
+\definecolor{MacropolGray}{RGB}{80,80,80}
+\definecolor{SoftBlue}{RGB}{235,244,250}
+\definecolor{SoftRed}{RGB}{252,238,238}
+\definecolor{SoftGreen}{RGB}{235,248,240}
+\definecolor{CodeBg}{RGB}{248,248,248}
+
+\setbeamercolor{title}{fg=MacropolBlue}
+\setbeamercolor{frametitle}{fg=MacropolBlue}
+\setbeamercolor{structure}{fg=MacropolBlue}
+\setbeamercolor{block title}{bg=MacropolBlue,fg=white}
+\setbeamercolor{block body}{bg=SoftBlue,fg=black}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+% ------------------------------------------------------------
+% R listings
+% ------------------------------------------------------------
+\lstdefinelanguage{R}{
+  keywords={function,if,else,for,while,repeat,in,next,break,TRUE,FALSE,NULL,NA,NaN,Inf},
+  otherkeywords={<-,<<-,$,~},
+  sensitive=true,
+  morecomment=[l]\#,
+  morestring=[b]",
+  morestring=[b]'
+}
+
+\lstset{
+  language=R,
+  basicstyle=\ttfamily\scriptsize,
+  keywordstyle=\color{MacropolBlue}\bfseries,
+  commentstyle=\color{MacropolGray}\itshape,
+  stringstyle=\color{MacropolTeal},
+  backgroundcolor=\color{CodeBg},
+  frame=single,
+  rulecolor=\color{MacropolGray!40},
+  breaklines=true,
+  showstringspaces=false,
+  columns=fullflexible
+}
+
+% ------------------------------------------------------------
+% Macros
+% ------------------------------------------------------------
+\newcommand{\baseline}{\textcolor{MacropolTeal}{\textbf{baseline}}}
+\newcommand{\adverso}{\textcolor{red!70!black}{\textbf{adverso}}}
+\newcommand{\R}{\texttt{R}}
+\newcommand{\dd}{\mathrm{d}}
+
+% ------------------------------------------------------------
+% Metadata
+% ------------------------------------------------------------
+\title[Stress Testing Pensiones -- Módulo 3]{Módulo 3: Construcción de Escenarios Macro-Financieros}
+\subtitle{ARIMA, VAR, Monte Carlo y diseño de choques para sistemas de pensiones}
+\author{MACROPOL: Economía Aplicada y Políticas Públicas}
+\institute{Curso: Stress Testing en Sistemas de Pensiones de Capitalización Individual}
+\date{}
+
+\begin{document}
+
+% ============================================================
+\begin{frame}
+\titlepage
+\end{frame}
+
+% ============================================================
+\begin{frame}{¿Dónde estamos en el curso?}
+\begin{block}{Módulo 3 dentro del flujo de stress testing previsional}
+El módulo transforma una \textbf{narrativa macroeconómica} en trayectorias cuantitativas de variables que luego alimentan el stress test del portafolio, el módulo actuarial y el reporte regulatorio.
+\end{block}
+
+\begin{center}
+\begin{tikzpicture}[node distance=0.5cm, every node/.style={font=\scriptsize}]
+\node[draw, rounded corners, fill=SoftBlue, minimum width=2.4cm, minimum height=0.8cm] (m1) {M1 Fundamentos};
+\node[draw, rounded corners, fill=SoftBlue, right=of m1, minimum width=2.6cm, minimum height=0.8cm] (m2) {M2 Riesgos};
+\node[draw, rounded corners, fill=SoftGreen, right=of m2, minimum width=3.0cm, minimum height=0.8cm] (m3) {\textbf{M3 Escenarios}};
+\node[draw, rounded corners, fill=SoftBlue, right=of m3, minimum width=2.7cm, minimum height=0.8cm] (m4) {M4 Portafolio};
+\node[draw, rounded corners, fill=SoftBlue, below=0.7cm of m4, minimum width=2.7cm, minimum height=0.8cm] (m5) {M5 Actuarial};
+\node[draw, rounded corners, fill=SoftBlue, left=of m5, minimum width=3.0cm, minimum height=0.8cm] (m6) {M6 Reporte};
+
+\draw[-{Latex}, thick] (m1) -- (m2);
+\draw[-{Latex}, thick] (m2) -- (m3);
+\draw[-{Latex}, thick] (m3) -- (m4);
+\draw[-{Latex}, thick] (m4) -- (m5);
+\draw[-{Latex}, thick] (m5) -- (m6);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Producto del módulo:} matriz de escenarios macro-financieros por horizonte, variable y severidad.
+\end{frame}
+
+% ============================================================
+\begin{frame}{Objetivos de aprendizaje}
+Al finalizar el módulo, los participantes podrán:
+
+\begin{enumerate}
+  \item Construir un escenario \baseline{} y uno \adverso{} para variables macro-financieras relevantes.
+  \item Estimar modelos ARIMA para proyecciones univariadas.
+  \item Estimar modelos VAR para capturar interdependencias macro-financieras.
+  \item Generar trayectorias Monte Carlo y bandas de incertidumbre.
+  \item Calibrar choques históricos e hipotéticos con trazabilidad regulatoria.
+  \item Implementar un flujo reproducible en \R{}.
+\end{enumerate}
+
+% \vspace{0.4em}
+% \begin{block}{Principio conductor}
+% No buscamos ``predecir el futuro''. Buscamos construir trayectorias \textbf{coherentes, severas y plausibles} para evaluar la resiliencia del sistema previsional.
+% \end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Ruta gradual del módulo}
+\begin{center}
+\begin{tikzpicture}[node distance=0.35cm, every node/.style={font=\scriptsize}]
+\node[draw, rounded corners, fill=SoftBlue, minimum width=2.5cm, minimum height=0.8cm] (n1) {1. Datos};
+\node[draw, rounded corners, fill=SoftBlue, right=of n1, minimum width=2.5cm, minimum height=0.8cm] (n2) {2. ARIMA};
+\node[draw, rounded corners, fill=SoftBlue, right=of n2, minimum width=2.5cm, minimum height=0.8cm] (n3) {3. VAR};
+\node[draw, rounded corners, fill=SoftBlue, right=of n3, minimum width=2.5cm, minimum height=0.8cm] (n4) {4. Monte Carlo};
+\node[draw, rounded corners, fill=SoftBlue, below=0.55cm of n4, minimum width=2.5cm, minimum height=0.8cm] (n5) {5. Choques};
+\node[draw, rounded corners, fill=SoftGreen, left=of n5, minimum width=2.5cm, minimum height=0.8cm] (n6) {6. Taller R};
+
+\draw[-{Latex}, thick] (n1) -- (n2);
+\draw[-{Latex}, thick] (n2) -- (n3);
+\draw[-{Latex}, thick] (n3) -- (n4);
+\draw[-{Latex}, thick] (n4) -- (n5);
+\draw[-{Latex}, thick] (n5) -- (n6);
+\end{tikzpicture}
+\end{center}
+
+\begin{columns}
+\column{0.48\textwidth}
+\begin{block}{De menor a mayor complejidad}
+\begin{itemize}
+  \item Una variable: ARIMA.
+  \item Varias variables: VAR.
+  \item Muchas trayectorias: Monte Carlo.
+  \item Narrativa adversa: choques calibrados.
+\end{itemize}
+\end{block}
+\column{0.48\textwidth}
+\begin{block}{De modelo a decisión}
+\begin{itemize}
+  \item Escenarios reproducibles.
+  \item Supuestos auditables.
+  \item Impactos comparables.
+  \item Reglas de acción supervisora.
+\end{itemize}
+\end{block}
+\end{columns}
+\end{frame}
+
+% ============================================================
+\section{1. Contexto: de narrativa macro a escenario previsional}
+
+% ============================================================
+\begin{frame}{Contexto: ¿qué es un escenario macro-financiero?}
+\begin{block}{Definición operativa}
+Un escenario es una trayectoria conjunta de variables macroeconómicas y financieras bajo una narrativa específica, con horizonte, frecuencia, severidad y supuestos explícitos.
+\end{block}
+
+\begin{table}
+\small
+\begin{tabular}{p{3.2cm}p{4.2cm}p{4.2cm}}
+\toprule
+Componente & \baseline{} & \adverso{} \\
+\midrule
+Narrativa & Normalización gradual & Desaceleración + tasas altas + depreciación \\
+Modelo & Proyección central & Proyección condicionada a choques \\
+Supuestos & Política y mercado sin disrupciones & Persistencia de inflación y prima de riesgo \\
+Resultado & Trayectoria esperada & Pérdida de valor y deterioro de aportes \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Canales e indicadores relevantes para pensiones de capitalización individual}
+\begin{columns}
+\column{0.52\textwidth}
+\begin{block}{Canal financiero}
+\begin{itemize}
+  \item Tasa de interés local.
+  \item Inflación y tasa real.
+  \item Tipo de cambio.
+  \item Spread soberano.
+  \item Rentabilidad de bonos y renta variable.
+\end{itemize}
+\end{block}
+
+\column{0.42\textwidth}
+\begin{block}{Canal previsional}
+\begin{itemize}
+  \item Salario real.
+  \item Empleo formal.
+  \item Densidad de cotización.
+  \item Aportes.
+  \item Saldo acumulado.
+\end{itemize}
+\end{block}
+\end{columns}
+
+\vspace{0.4em}
+\begin{center}
+\begin{tikzpicture}[node distance=0.6cm, every node/.style={font=\scriptsize}]
+\node[draw, rounded corners, fill=SoftRed, minimum width=3cm, minimum height=0.8cm] (shock) {Choque macro};
+\node[draw, rounded corners, fill=SoftBlue, right=of shock, minimum width=3.4cm, minimum height=0.8cm] (risk) {Factores de riesgo};
+\node[draw, rounded corners, fill=SoftGreen, right=of risk, minimum width=3.2cm, minimum height=0.8cm] (pension) {Balance previsional};
+\draw[-{Latex}, thick] (shock) -- (risk);
+\draw[-{Latex}, thick] (risk) -- (pension);
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{¿Qué son los factores de riesgo?}
+
+En un sistema de capitalización individual, los \textbf{factores de riesgo} son variables que afectan:
+
+\begin{itemize}
+    \item el valor del portafolio previsional;
+    \item el saldo acumulado del afiliado;
+    \item la pensión esperada;
+    \item la tasa de reemplazo.
+\end{itemize}
+
+
+\begin{block}{Definición}
+Un factor de riesgo es toda variable que, al cambiar, modifica los activos, pasivos o beneficios previsionales.
+\end{block}
+
+
+\[
+Resultado_t = f(F_1, F_2, \ldots, F_n)
+\]
+
+\begin{itemize}
+    \item $F_i$: factores de riesgo
+    \item $Resultado_t$: saldo, pensión o tasa de reemplazo
+\end{itemize}
+
+
+\textbf{Idea clave:} no se estresa directamente la pensión; se estresan los factores que la determinan.
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Tipos de factores de riesgo previsional}
+\textbf{Módulo 2: Identificación y Medición de Riesgos Previsionales}
+
+\begin{columns}[T]
+
+\begin{column}{0.32\textwidth}
+\begin{block}{Macroeconómicos}
+\begin{itemize}
+    \item PIB
+    \item inflación
+    \item tasas de interés
+    \item desempleo
+\end{itemize}
+\end{block}
+\end{column}
+
+\begin{column}{0.32\textwidth}
+\begin{block}{Financieros}
+\begin{itemize}
+    \item retornos
+    \item volatilidad
+    \item correlaciones
+    \item riesgo de crédito
+\end{itemize}
+\end{block}
+\end{column}
+
+\begin{column}{0.32\textwidth}
+\begin{block}{Actuariales}
+\begin{itemize}
+    \item longevidad
+    \item edad de retiro
+    \item densidad de cotización
+    \item trayectoria salarial
+\end{itemize}
+\end{block}
+\end{column}
+
+\end{columns}
+
+
+\begin{exampleblock}{Ejemplo de portafolio}
+\[
+R_p = \sum_{i=1}^{N} w_i R_i
+\]
+
+Los factores de riesgo son:
+\[
+R_i,\quad \sigma_i,\quad \rho_{ij}
+\]
+\end{exampleblock}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Baseline vs. escenario adverso}
+\textbf{Del factor de riesgo al impacto previsional}
+
+\vspace{0.2cm}
+
+\begin{table}
+\centering
+\small
+\begin{tabular}{lcc}
+\hline
+\textbf{Factor} & \textbf{Baseline} & \textbf{Escenario adverso} \\
+\hline
+Retornos financieros & normales & caída de mercado \\
+Tasa de interés & estable & shock de tasas \\
+Inflación & controlada & aumento persistente \\
+Longevidad & tendencia esperada & mayor esperanza de vida \\
+Densidad de cotización & estable & caída por desempleo \\
+\hline
+\end{tabular}
+\end{table}
+
+\vspace{0.3cm}
+
+\begin{block}{Intuición económica}
+\begin{itemize}
+    \item Shock financiero $\rightarrow$ menor saldo acumulado.
+    \item Shock de longevidad $\rightarrow$ menor pensión mensual.
+    \item Shock laboral $\rightarrow$ menor densidad de cotización.
+    \item Shock combinado $\rightarrow$ deterioro de la tasa de reemplazo.
+\end{itemize}
+\end{block}
+
+\vspace{0.2cm}
+
+\textbf{Lectura regulatoria:} identificar qué factores explican la vulnerabilidad permite diseñar respuestas de política pública.
+
+\end{frame}
+%------------------------------------------------
+% ============================================================
+\begin{frame}{Modelo conceptual del escenario}
+\begin{center}
+\begin{tikzpicture}[node distance=0.6cm, every node/.style={font=\scriptsize}]
+\node[draw, rounded corners, fill=SoftBlue, minimum width=3.0cm, minimum height=0.9cm] (data) {Datos históricos};
+\node[draw, rounded corners, fill=SoftBlue, right=of data, minimum width=3.0cm, minimum height=0.9cm] (model) {Modelo estadístico};
+\node[draw, rounded corners, fill=SoftRed, right=of model, minimum width=3.0cm, minimum height=0.9cm] (shock) {Choque adverso};
+\node[draw, rounded corners, fill=SoftGreen, below=0.8cm of model, minimum width=3.6cm, minimum height=0.9cm] (scenario) {Trayectoria del escenario};
+\node[draw, rounded corners, fill=SoftBlue, right=of scenario, minimum width=3.1cm, minimum height=0.9cm] (use) {Inputs M4--M5};
+
+\draw[-{Latex}, thick] (data) -- (model);
+\draw[-{Latex}, thick] (model) -- (shock);
+\draw[-{Latex}, thick] (model) -- (scenario);
+\draw[-{Latex}, thick] (shock) -- (scenario);
+\draw[-{Latex}, thick] (scenario) -- (use);
+\end{tikzpicture}
+\end{center}
+
+\begin{block}{Separación clave}
+\textbf{Narrativa económica}: por qué ocurre el shock. \\
+\textbf{Modelo cuantitativo}: cómo se propaga a las variables. \\
+\textbf{Resultado}: cuánto cambia el balance previsional.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Datos: estructura mínima para el taller}
+\begin{table}
+\small
+\begin{tabular}{lll}
+\toprule
+Variable & Frecuencia sugerida & Transformación \\
+\midrule
+PIB real (IMAE) & Mensual/Trimestral & Crecimiento interanual o trimestral anualizado \\
+Inflación & Mensual / trimestral & Variación anual o trimestral \\
+Tasa de política & Mensual / trimestral & Nivel o cambio en puntos básicos \\
+Tipo de cambio & Mensual / trimestral & Depreciación porcentual \\
+Spread soberano & Mensual / trimestral & Nivel o cambio en puntos básicos \\
+Rentabilidad fondo & Mensual / trimestral & Retorno logarítmico \\
+Salario real & Mensual / trimestral & Crecimiento real \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{block}{Regla práctica}
+El modelo más sofisticado no compensa datos mal transformados. La consistencia de frecuencia, unidades y signos es parte del control regulatorio.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}[fragile]{Implementación: plantilla de datos en R}
+\begin{lstlisting}
+# Paquetes sugeridos
+library(readr)
+library(dplyr)
+library(lubridate)
+library(tsibble)
+
+datos <- read_csv("datos_macro_pensiones.csv") %>%
+  mutate(fecha = ymd(fecha)) %>%
+  arrange(fecha)
+
+# Variables transformadas
+datos_modelo <- datos %>%
+  mutate(
+    inflacion = 100 * (log(ipc) - lag(log(ipc), 12)),
+    deprec_fx = 100 * (log(tc) - lag(log(tc), 12)),
+    ret_fondo = 100 * (log(valor_cuota) - lag(log(valor_cuota))),
+    salario_real = 100 * (log(salario_nominal/ipc) -
+                          lag(log(salario_nominal/ipc), 12))
+  ) %>%
+  tidyr::drop_na()
+\end{lstlisting}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{De shocks macro a impacto previsional: rol de ARIMA y VAR}
+
+\textbf{Problema central del stress testing}
+
+\vspace{0.2cm}
+
+Los escenarios macroeconómicos (ej: recesión, crisis financiera) no impactan directamente las pensiones.
+
+\begin{block}{Desafío}
+¿Cómo transformar un \textbf{shock macro} en cambios cuantificables en:
+\begin{itemize}
+    \item retornos del portafolio,
+    \item tasas de interés,
+    \item salarios,
+    \item densidad de cotización?
+\end{itemize}
+\end{block}
+
+\vspace{0.3cm}
+
+\textbf{Solución: Modelos de series de tiempo}
+\end{frame}
+
+\begin{frame}{De shocks macro a impacto previsional: rol de ARIMA y VAR}
+
+
+\begin{columns}[T]
+
+\begin{column}{0.48\textwidth}
+\begin{block}{ARIMA}
+\begin{itemize}
+    \item Modela dinámica individual
+    \item Captura persistencia y ciclos
+    \item Útil para:
+    \begin{itemize}
+        \item inflación
+        \item tasas de interés
+    \end{itemize}
+\end{itemize}
+\end{block}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\begin{block}{VAR}
+\begin{itemize}
+    \item Modela interacción entre variables
+    \item Captura transmisión de shocks
+    \item Útil para:
+    \begin{itemize}
+        \item PIB, tasas, mercados
+        \item salarios y empleo
+    \end{itemize}
+\end{itemize}
+\end{block}
+\end{column}
+
+\end{columns}
+
+\vspace{0.3cm}
+
+\begin{exampleblock}{Cadena de transmisión}
+\[
+\text{Shock macro} \rightarrow \text{Variables macro (VAR)} \rightarrow \text{Factores financieros/actuariales} \rightarrow \text{Pensión}
+\]
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}{De shocks macro a impacto previsional: rol de ARIMA y VAR}
+
+\begin{block}{Intuición económica}
+\begin{itemize}
+    \item Recesión $\rightarrow$ ↓ PIB $\rightarrow$ ↓ empleo $\rightarrow$ ↓ cotizaciones
+    \item Crisis financiera $\rightarrow$ ↓ retornos $\rightarrow$ ↓ saldo acumulado
+    \item Inflación persistente $\rightarrow$ ↓ tasas reales $\rightarrow$ ↓ rendimiento real
+\end{itemize}
+\end{block}
+
+\vspace{0.2cm}
+
+\textbf{Mensaje clave:} ARIMA y VAR permiten traducir narrativas macro en \textbf{trayectorias cuantitativas coherentes} para el stress testing.
+
+\end{frame}
+%------------------------------------------------
+
+% ============================================================
+\section{2. Modelos ARIMA}
+
+% ============================================================
+\begin{frame}{Contexto: ¿cuándo usar ARIMA en escenarios previsionales?}
+\begin{block}{Uso principal}
+ARIMA es el punto de entrada para construir trayectorias \baseline{} de una variable individual cuando queremos capturar persistencia, reversión y shocks idiosincráticos.
+\end{block}
+
+\begin{columns}
+\column{0.48\textwidth}
+\begin{block}{Útil para}
+\begin{itemize}
+  \item Inflación.
+  \item Tasa de interés.
+  \item Rentabilidad agregada.
+  \item Salario real.
+\end{itemize}
+\end{block}
+
+\column{0.48\textwidth}
+\begin{block}{Limitación}
+\begin{itemize}
+  \item No impone coherencia entre variables.
+  \item No explica contagio macro-financiero.
+  \item Es más débil para escenarios condicionados.
+\end{itemize}
+\end{block}
+\end{columns}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Modelo / Herramienta: ARIMA}
+Sea $y_t$ una variable macro-financiera. Un modelo ARIMA$(p,d,q)$ se define como:
+
+\[
+\phi(L)(1-L)^d y_t = c + \theta(L)\varepsilon_t,
+\quad \varepsilon_t \sim (0,\sigma^2)
+\]
+
+\begin{itemize}
+  \item $p$: rezagos autorregresivos.
+  \item $d$: diferenciación necesaria para estacionariedad.
+  \item $q$: rezagos del error.
+  \item $\phi(L)$ y $\theta(L)$: polinomios en el operador rezago.
+\end{itemize}
+
+\begin{block}{Intuición económica}
+El pasado reciente contiene información sobre la velocidad de reversión, persistencia inflacionaria o inercia de tasas. ARIMA formaliza esa memoria.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}{ARIMA: flujo de estimación gradual}
+\begin{enumerate}
+  \item Graficar la serie y detectar quiebres, tendencia o estacionalidad.
+  \item Transformar: log, diferencias, tasas de crecimiento.
+  \item Evaluar estacionariedad.
+  \item Seleccionar $(p,d,q)$ por AIC/BIC y criterio económico.
+  \item Diagnosticar residuos.
+  \item Proyectar \baseline{}.
+  \item Condicionar o desplazar la trayectoria para un \adverso{} simple.
+\end{enumerate}
+
+\vspace{0.4em}
+\begin{block}{Regla de enseñanza}
+Primero se valida la historia económica de la serie; luego se valida la especificación estadística.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}[fragile]{Implementación: ARIMA para inflación}
+\begin{lstlisting}
+library(forecast)
+library(ggplot2)
+
+# Serie mensual de inflacion
+infl_ts <- ts(datos_modelo$inflacion,
+              start = c(2007, 1), frequency = 12)
+
+# Seleccion automatica, pero revisada por el analista
+fit_arima <- auto.arima(infl_ts,
+                        seasonal = FALSE,
+                        stepwise = FALSE,
+                        approximation = FALSE)
+
+summary(fit_arima)
+checkresiduals(fit_arima)
+
+# Proyeccion baseline
+fc_base <- forecast(fit_arima, h = 8, level = c(50, 80, 95))
+autoplot(fc_base)
+\end{lstlisting}
+\end{frame}
+
+% ─────────────────────────────────────────────────────────────
+\begin{frame}{De ARIMA a Escenario Adverso de Inflación}
+  \footnotesize
+\begin{block}{Regla general}
+\[
+\pi^{adv}_{t+h} = \hat{\pi}_{t+h} + k_h \cdot \sigma_{\varepsilon}
+\]
+\end{block}
+
+\begin{itemize}
+\item $\hat{\pi}_{t+h}$: pronóstico baseline (ARIMA)
+\item $\sigma_{\varepsilon}$: desviación estándar de residuos
+\item $k_h$: perfil dinámico del shock
+\end{itemize}
+
+\vspace{0.4cm}
+
+\begin{block}{Perfil del shock ($k_h$)}
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Horizonte & $k_h$ & Interpretación \\
+\midrule
+$t+1$ & 1.5 & shock máximo \\
+$t+2$ & 1.5 & persistencia \\
+$t+3$ & 1.5 & persistencia \\
+$t+4$ & 1.0 & inicio reversión \\
+$t+5$ & 0.8 & reversión \\
+$t+6$ & 0.5 & disipación \\
+$t+7+$ & 0.0 & normalización \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{block}
+\end{frame}
+
+%\vspace{0.3cm}
+\begin{frame}{De ARIMA a Escenario Adverso de Inflación}
+\begin{block}{Traducción a puntos porcentuales}
+\[
+Shock_{t+h} = k_h \cdot \sigma_{\varepsilon}
+\]
+\small
+Ejemplo: si $\sigma = 0.8$, entonces shock máximo $= 1.5 \times 0.8 = 1.2$ p.p.
+\end{block}
+
+\vspace{0.3cm}
+
+\begin{alertblock}{Supuesto clave}
+La tasa nominal se mantiene constante para aislar el efecto inflacionario.
+\end{alertblock}
+
+\end{frame}
+
+% ─────────────────────────────────────────────────────────────
+\begin{frame}{Supuestos vs Resultados del Escenario}
+
+\begin{columns}
+
+\column{0.48\textwidth}
+\begin{block}{Supuestos}
+\begin{itemize}
+\item Horizonte: 24 meses
+\item Shock máximo: $1.5\sigma$
+\item Persistencia: 3 meses
+\item Reversión: gradual
+\item Tasa nominal: baseline
+\end{itemize}
+\end{block}
+
+\column{0.48\textwidth}
+\begin{block}{Resultados}
+\begin{itemize}
+\item Inflación máxima
+\item Shock en p.p.
+\item Tasa real mínima
+\item Meses con tasa real negativa
+\end{itemize}
+\end{block}
+
+\end{columns}
+
+\vspace{0.4cm}
+
+\begin{alertblock}{Mensaje clave}
+El modelo ARIMA genera el baseline. \\
+El escenario adverso depende de supuestos explícitos del analista.
+\end{alertblock}
+
+\end{frame}
+
+
+
+% ============================================================
+\begin{frame}{Ejercicio ARIMA}
+\begin{block}{Caso aplicado}
+El regulador requiere un escenario de inflación para evaluar el retorno real de los fondos de pensiones durante los próximos 8 trimestres.
+\end{block}
+
+\begin{enumerate}
+  \item Estimar un ARIMA para inflación.
+  \item Generar la trayectoria \baseline{}.
+  \item Construir un \adverso{} con inflación 1.5 desviaciones estándar por encima del baseline durante cuatro trimestres.
+  \item Calcular tasa real aproximada:
+  \[
+  r^{real}_t \approx i_t - \pi_t
+  \]
+  \item Explicar el impacto esperado sobre bonos, salarios reales y aportes.
+\end{enumerate}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Interpretación ARIMA para decisión regulatoria}
+\begin{columns}
+\column{0.48\textwidth}
+\begin{block}{Qué mirar}
+\begin{itemize}
+  \item Persistencia del shock.
+  \item Ancho de intervalos de predicción.
+  \item Sesgo de residuos.
+  \item Sensibilidad del retorno real.
+\end{itemize}
+\end{block}
+
+\column{0.48\textwidth}
+\begin{block}{Decisiones posibles}
+\begin{itemize}
+  \item Exigir escenarios de inflación más severos.
+  \item Revisar supuestos de tasa real.
+  \item Pedir análisis de sensibilidad de portafolio.
+  \item Alinear horizonte con madurez de activos.
+\end{itemize}
+\end{block}
+\end{columns}
+
+\vspace{0.4em}
+\begin{block}{Mensaje}
+ARIMA produce una primera línea base. El stress test requiere luego consistencia multivariada.
+\end{block}
+\end{frame}
+
+% ============================================================
+\section{3. Modelos VAR}
+
+% ============================================================
+\begin{frame}{Contexto: por qué pasar de ARIMA a VAR}
+\begin{block}{Motivación}
+En pensiones, los shocks no llegan aislados: inflación, tasas, tipo de cambio, PIB y spreads se mueven conjuntamente. VAR captura esa propagación empírica.
+\end{block}
+
+\begin{center}
+\begin{tikzpicture}[node distance=0.7cm, every node/.style={font=\scriptsize}]
+\node[draw, rounded corners, fill=SoftRed, minimum width=2.2cm, minimum height=0.75cm] (fx) {FX};
+\node[draw, rounded corners, fill=SoftRed, above right=of fx, minimum width=2.2cm, minimum height=0.75cm] (inf) {Inflación};
+\node[draw, rounded corners, fill=SoftRed, below right=of fx, minimum width=2.2cm, minimum height=0.75cm] (spread) {Spread};
+\node[draw, rounded corners, fill=SoftBlue, right=2.2cm of fx, minimum width=2.2cm, minimum height=0.75cm] (rate) {Tasa};
+\node[draw, rounded corners, fill=SoftGreen, right=of rate, minimum width=2.2cm, minimum height=0.75cm] (port) {Portafolio};
+
+\draw[-{Latex}, thick] (fx) -- (inf);
+\draw[-{Latex}, thick] (fx) -- (spread);
+\draw[-{Latex}, thick] (inf) -- (rate);
+\draw[-{Latex}, thick] (spread) -- (rate);
+\draw[-{Latex}, thick] (rate) -- (port);
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Modelo / Herramienta: VAR}
+Sea $\bm y_t$ un vector de variables macro-financieras:
+
+\[
+\bm y_t =
+\begin{bmatrix}
+\Delta PIB_t \\
+\pi_t \\
+i_t \\
+\Delta FX_t \\
+spread_t
+\end{bmatrix}
+\]
+
+Un VAR$(p)$ se escribe como:
+
+\[
+\bm y_t = \bm c + A_1 \bm y_{t-1} + \cdots + A_p \bm y_{t-p} + \bm u_t,
+\quad \bm u_t \sim (0,\Sigma_u)
+\]
+
+\begin{block}{Intuición económica}
+Cada variable responde a su propia historia y a la historia de las demás. El modelo estima cómo se transmite un shock de una variable al sistema.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}{VAR: decisiones técnicas críticas}
+\begin{table}
+\small
+\begin{tabular}{p{3.2cm}p{7.6cm}}
+\toprule
+Decisión & Criterio aplicado \\
+\midrule
+Variables & Relevancia previsional y disponibilidad de datos \\
+Transformación & Estacionariedad e interpretación económica \\
+Número de rezagos & AIC/BIC, frecuencia y parsimonia \\
+Ordenamiento & Supuesto de identificación de shocks \\
+Estabilidad & Raíces dentro del círculo unitario \\
+Diagnóstico & Autocorrelación, normalidad, heterocedasticidad \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{block}{Regla regulatoria}
+Todo VAR usado para stress testing debe documentar variables, transformaciones, rezagos, identificación y pruebas de estabilidad.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}[fragile]{Implementación: estimación VAR en R}
+\begin{lstlisting}
+library(vars)
+
+Y <- datos_modelo %>%
+  select(pib_crec, inflacion, tasa_policy,
+         deprec_fx, spread_soberano) %>%
+  as.matrix()
+
+# Seleccion de rezagos
+VARselect(Y, lag.max = 6, type = "const")
+
+# Estimacion
+fit_var <- VAR(Y, p = 2, type = "const")
+summary(fit_var)
+
+# Diagnosticos
+serial.test(fit_var, lags.pt = 8, type = "PT.asymptotic")
+arch.test(fit_var, lags.multi = 4)
+roots(fit_var)  # estabilidad
+\end{lstlisting}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Impulso-respuesta: leer la propagación del shock}
+\[
+IRF_{j,k}(h) = \frac{\partial y_{j,t+h}}{\partial u_{k,t}}
+\]
+
+\begin{block}{Ejemplo de lectura}
+Un shock al tipo de cambio puede elevar inflación, inducir aumento de tasas, reducir crecimiento y afectar el valor de bonos. Esa secuencia es la narrativa cuantificada.
+\end{block}
+
+\begin{columns}
+\column{0.50\textwidth}
+\begin{itemize}
+  \item $h=1$: impacto inmediato.
+  \item $h=4$: persistencia anual.
+  \item $h=8$: reversión o acumulación.
+\end{itemize}
+
+\column{0.45\textwidth}
+\begin{itemize}
+  \item Signo esperado.
+  \item Magnitud económica.
+  \item Duración del impacto.
+  \item Coherencia con la narrativa.
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% ============================================================
+\begin{frame}[fragile]{Implementación: IRF y escenario condicionado}
+\begin{lstlisting}
+# Respuesta de variables ante shock cambiario
+irf_fx <- irf(fit_var,
+              impulse = "deprec_fx",
+              response = c("inflacion", "tasa_policy",
+                           "pib_crec", "spread_soberano"),
+              n.ahead = 8,
+              boot = TRUE,
+              ci = 0.90)
+
+plot(irf_fx)
+
+# Pronostico baseline multivariado
+fc_var <- predict(fit_var, n.ahead = 8, ci = 0.95)
+
+# Extraer trayectoria central
+base_var <- sapply(fc_var$fcst, function(x) x[, "fcst"])
+\end{lstlisting}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Construcción de escenario adverso con VAR}
+\begin{block}{Idea}
+El escenario adverso puede generarse imponiendo un shock inicial y dejando que el VAR propague efectos dinámicos.
+\end{block}
+
+\[
+\bm y_{t+1}^{adv} =
+\hat{\bm c} + \hat A_1 \bm y_t + \cdots + \hat A_p \bm y_{t-p+1}
++ \bm s_{t+1}
+\]
+
+donde $\bm s_{t+1}$ es el vector de choques calibrados.
+
+\vspace{0.6em}
+\begin{table}
+\small
+\begin{tabular}{lcc}
+\toprule
+Variable & Shock inicial & Narrativa \\
+\midrule
+PIB & $-2\sigma$ & Desaceleración real \\
+Inflación & $+1\sigma$ & Presión de precios \\
+Tasa & $+150$ pb & Endurecimiento monetario \\
+FX & $+2\sigma$ & Depreciación \\
+Spread & $+200$ pb & Riesgo soberano \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Ejercicio VAR}
+\begin{block}{Caso aplicado}
+Diseñar un escenario adverso para el portafolio de pensiones ante depreciación cambiaria y aumento de spread soberano.
+\end{block}
+
+\begin{enumerate}
+  \item Estimar un VAR con PIB, inflación, tasa interbancaria, tipo de cambio y spread.
+  \item Construir una trayectoria adversa de 8 trimestres.
+  \item Comparar contra el \baseline{}.
+  \item Traducir los resultados a factores para el módulo 4: tasas, precios de bonos y rentabilidad esperada.
+\end{enumerate}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Interpretación VAR para política pública}
+\begin{columns}
+\column{0.48\textwidth}
+\begin{block}{Ventajas}
+\begin{itemize}
+  \item Coherencia entre variables.
+  \item Propagación dinámica.
+  \item Lectura de canales.
+  \item Útil para sensibilidad supervisora.
+\end{itemize}
+\end{block}
+
+\column{0.48\textwidth}
+\begin{block}{Riesgos}
+\begin{itemize}
+  \item Relaciones inestables en crisis.
+  \item Identificación sensible al ordenamiento.
+  \item Muestras pequeñas.
+  \item Extrapolación fuera de historia.
+\end{itemize}
+\end{block}
+\end{columns}
+
+\vspace{0.4em}
+\begin{block}{Mensaje regulatorio}
+El VAR no ``descubre'' el escenario adverso. Ayuda a hacerlo consistente, trazable y replicable.
+\end{block}
+\end{frame}
+
+% ============================================================
+\section{4. Simulación Monte Carlo}
+
+% ============================================================
+\begin{frame}{Contexto: de una trayectoria a muchas trayectorias}
+\begin{block}{Problema}
+Un solo escenario central oculta incertidumbre. Monte Carlo permite generar miles de trayectorias compatibles con el modelo y medir distribución de resultados.
+\end{block}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+\draw[->] (0,0) -- (8,0) node[right]{horizonte};
+\draw[->] (0,0) -- (0,3.2) node[above]{variable};
+\foreach \i in {1,...,18}{
+  \draw[MacropolBlue!35, thin] plot[smooth] coordinates {
+    (0,1.4)
+    (1,{1.4+rand*0.5})
+    (2,{1.4+rand*0.7})
+    (3,{1.5+rand*0.9})
+    (4,{1.5+rand*1.1})
+    (5,{1.6+rand*1.2})
+    (6,{1.6+rand*1.3})
+    (7,{1.6+rand*1.4})
+  };
+}
+\draw[MacropolBlue, very thick] plot[smooth] coordinates {(0,1.4)(1,1.45)(2,1.5)(3,1.55)(4,1.6)(5,1.62)(6,1.65)(7,1.67)};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Modelo / Herramienta: Monte Carlo sobre VAR}
+Para un VAR estimado:
+
+\[
+\bm y_t = \hat{\bm c} + \hat A_1 \bm y_{t-1} + \cdots + \hat A_p \bm y_{t-p} + \bm u_t
+\]
+
+Simulamos:
+
+\[
+\bm u_t^{(m)} \sim \mathcal{N}(0,\hat \Sigma_u),
+\quad m = 1,\ldots,M
+\]
+
+\[
+\bm y_{t+h}^{(m)} =
+\hat{\bm c} + \hat A_1 \bm y_{t+h-1}^{(m)} + \cdots + \hat A_p \bm y_{t+h-p}^{(m)}
++ \bm u_{t+h}^{(m)}
+\]
+
+\begin{block}{Intuición}
+El modelo define la dinámica; Monte Carlo explora la incertidumbre de shocks futuros y su correlación.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}[fragile]{Implementación: simulación Monte Carlo simple}
+\begin{lstlisting}
+library(MASS)
+
+B <- Bcoef(fit_var)          # coeficientes por ecuacion
+Sigma <- summary(fit_var)$covres
+K <- ncol(Y)
+H <- 8
+M <- 5000
+
+# Funcion ilustrativa
+sim_paths <- array(NA, dim = c(H, K, M))
+
+
+for (m in 1:M) {
+  y_lag <- tail(Y, 2)
+  for (h in 1:H) {
+    shock <- mvrnorm(1, mu = rep(0, K), Sigma = Sigma)
+    y_new <- base_var[h, ] + shock
+    sim_paths[h, , m] <- y_new
+  }
+}
+
+# Percentiles por horizonte y variable
+p05 <- apply(sim_paths, c(1, 2), quantile, probs = 0.05)
+p50 <- apply(sim_paths, c(1, 2), quantile, probs = 0.50)
+p95 <- apply(sim_paths, c(1, 2), quantile, probs = 0.95)
+\end{lstlisting}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Cómo convertir simulaciones en escenarios}
+\begin{table}
+\small
+\begin{tabular}{lll}
+\toprule
+Escenario & Regla cuantitativa & Uso \\
+\midrule
+Baseline & Percentil 50 & Planeación central \\
+Adverso moderado & Percentil 10 o 5 & Sensibilidad supervisora \\
+Adverso severo & Percentil 1 o combinación de colas & Resiliencia extrema \\
+Reverse stress & Trayectoria que rompe umbral & Identificar vulnerabilidad crítica \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{block}{Cuidado}
+Los percentiles marginales no siempre forman una trayectoria económicamente coherente. Para stress testing, preferir trayectorias conjuntas simuladas o escenarios condicionados.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Ejercicio Monte Carlo}
+\begin{block}{Caso aplicado}
+El comité técnico quiere saber la probabilidad de que la tasa real sea negativa por cuatro trimestres y afecte la rentabilidad real del fondo.
+\end{block}
+
+\begin{enumerate}
+  \item Simular 5,000 trayectorias de inflación y tasa nominal.
+  \item Calcular $r^{real}_{t,h} \approx i_{t,h}-\pi_{t,h}$.
+  \item Estimar:
+  \[
+  P(r^{real}_{t,h}<0 \text{ por 4 trimestres})
+  \]
+  \item Reportar percentiles de pérdida real acumulada.
+  \item Traducir el resultado a una alerta de supervisión.
+\end{enumerate}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Interpretación: de probabilidad a acción}
+\begin{columns}
+\column{0.48\textwidth}
+\begin{block}{Indicadores técnicos}
+\begin{itemize}
+  \item Percentiles de variables.
+  \item Probabilidad de umbral.
+  \item Duración del shock.
+  \item Correlación en estrés.
+\end{itemize}
+\end{block}
+
+\column{0.48\textwidth}
+\begin{block}{Acciones regulatorias}
+\begin{itemize}
+  \item Pedir análisis de liquidez.
+  \item Revisar límites de concentración.
+  \item Solicitar plan de comunicación.
+  \item Aumentar frecuencia de monitoreo.
+\end{itemize}
+\end{block}
+\end{columns}
+
+\vspace{0.5em}
+\begin{block}{Mensaje}
+Monte Carlo no reemplaza al escenario narrativo. Lo complementa con distribución, probabilidad y sensibilidad.
+\end{block}
+\end{frame}
+
+% ============================================================
+\section{5. Choques históricos vs. hipotéticos}
+
+% ============================================================
+\begin{frame}{Contexto: dos familias de choques}
+\begin{table}
+\small
+\begin{tabular}{p{3.0cm}p{4.2cm}p{4.2cm}}
+\toprule
+Tipo & Ventaja & Riesgo \\
+\midrule
+Histórico & Observable, comunicable, trazable & Puede no repetir estructura actual \\
+Hipotético & Diseñado para vulnerabilidades actuales & Puede parecer arbitrario \\
+Híbrido & Combina severidad observada y narrativa actual & Requiere mayor documentación \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{block}{Principio}
+El shock debe ser suficientemente severo para revelar vulnerabilidades, pero suficientemente plausible para guiar decisiones.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Choques históricos}
+\begin{block}{Definición}
+Reproducen movimientos observados en episodios pasados: crisis financiera global, pandemia, crisis cambiaria, alza abrupta de tasas o episodio de estrés soberano.
+\end{block}
+
+\begin{columns}
+\column{0.48\textwidth}
+\begin{block}{Cómo calibrar}
+\begin{itemize}
+  \item Identificar ventana de estrés.
+  \item Medir cambios máximos acumulados.
+  \item Escalar a frecuencia del modelo.
+  \item Ajustar por condiciones actuales.
+\end{itemize}
+\end{block}
+
+\column{0.48\textwidth}
+\begin{block}{Aplicación previsional}
+\begin{itemize}
+  \item Caída de valor cuota.
+  \item Aumento de tasa y pérdida en bonos.
+  \item Menor salario real.
+  \item Menor densidad de cotización.
+\end{itemize}
+\end{block}
+\end{columns}
+\end{frame}
+
+% ============================================================
+\begin{frame}[fragile]{Implementación: shock histórico}
+\begin{lstlisting}
+# Ventana historica de estres
+shock_hist <- datos_modelo %>%
+  filter(fecha >= ymd("2020-03-01"),
+         fecha <= ymd("2020-12-31")) %>%
+  summarise(
+    shock_pib    = min(pib_crec, na.rm = TRUE),
+    shock_infl   = max(inflacion, na.rm = TRUE),
+    shock_tasa   = max(tasa_policy - first(tasa_policy), na.rm = TRUE),
+    shock_fx     = max(deprec_fx, na.rm = TRUE),
+    shock_spread = max(spread_soberano - first(spread_soberano),
+                       na.rm = TRUE)
+  )
+
+shock_hist
+\end{lstlisting}
+
+\begin{block}{Lectura}
+El episodio histórico se traduce a un vector de shocks. Luego se decide si se aplica directamente o se reescala según el balance de riesgos actual.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Choques hipotéticos}
+\begin{block}{Definición}
+Se diseñan desde una narrativa de riesgo prospectiva: política monetaria restrictiva prolongada, choque externo, salida de capitales o deterioro fiscal.
+\end{block}
+
+\begin{table}
+\small
+\begin{tabular}{lcc}
+\toprule
+Variable & Baseline & Adverso hipotético \\
+\midrule
+PIB real & 4.0\% & 0.5\% \\
+Inflación & 4.5\% & 8.0\% \\
+Tasa política & 6.0\% & 9.0\% \\
+Depreciación & 3.0\% & 12.0\% \\
+Spread soberano & 350 pb & 600 pb \\
+Salario real & 2.0\% & -1.5\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Narrativa económica vs modelo cuantitativo}
+\begin{columns}
+\column{0.48\textwidth}
+\begin{block}{Narrativa}
+\begin{itemize}
+  \item Choque externo eleva precios importados.
+  \item Depreciación presiona inflación.
+  \item Banco central sube tasa.
+  \item Spread sube por aversión al riesgo.
+  \item Crecimiento y empleo se debilitan.
+\end{itemize}
+\end{block}
+
+\column{0.48\textwidth}
+\begin{block}{Modelo}
+\begin{itemize}
+  \item VAR propaga relaciones dinámicas.
+  \item ARIMA aporta baseline por variable.
+  \item Monte Carlo cuantifica incertidumbre.
+  \item Choques exógenos imponen severidad.
+  \item Reglas de percentil documentan plausibilidad.
+\end{itemize}
+\end{block}
+\end{columns}
+
+\vspace{0.4em}
+\begin{block}{Resultado}
+Trayectoria trimestral coherente para alimentar modelos de portafolio y proyección de aportes.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Supuestos vs resultados}
+\begin{table}
+\small
+\begin{tabular}{p{4.2cm}p{6.8cm}}
+\toprule
+Supuestos & Resultados \\
+\midrule
+Magnitud del shock inicial & Trayectoria proyectada por horizonte \\
+Ordenamiento del VAR & Respuesta acumulada de variables \\
+Ventana histórica elegida & Severidad observada y reescalada \\
+Distribución de residuos & Percentiles Monte Carlo \\
+Horizonte y frecuencia & Pérdidas temporales y recuperación \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{block}{Disciplina de reporte}
+Nunca presentar un resultado de stress testing sin separar explícitamente qué fue supuesto y qué fue generado por el modelo.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Ejercicio: comparar choque histórico e hipotético}
+\begin{block}{Tarea}
+Construir dos escenarios adversos de 8 trimestres para el mismo conjunto de variables.
+\end{block}
+
+\begin{enumerate}
+  \item Escenario A: calibrado con la peor ventana histórica disponible.
+  \item Escenario B: diseñado por narrativa hipotética de tasas altas y depreciación.
+  \item Comparar severidad por variable.
+  \item Identificar cuál es más dañino para:
+  \begin{itemize}
+    \item valor de bonos;
+    \item retorno real;
+    \item salario real;
+    \item aportes esperados.
+  \end{itemize}
+  \item Elegir cuál debe ir al reporte regulatorio y justificar.
+\end{enumerate}
+\end{frame}
+
+% ============================================================
+\section{6. Taller práctico en R}
+
+% ============================================================
+\begin{frame}{Taller práctico: producto final}
+\begin{block}{Entregable}
+Un script reproducible en \R{} que genere una matriz de escenarios macro-financieros lista para ser usada en el stress testing del portafolio previsional.
+\end{block}
+
+\begin{table}
+\small
+\begin{tabular}{lllll}
+\toprule
+fecha & escenario & variable & valor & fuente \\
+\midrule
+2026T1 & baseline & inflación & 4.5 & ARIMA/VAR \\
+2026T1 & adverso & inflación & 8.0 & VAR + shock \\
+2026T1 & adverso & spread & 600 & shock hipotético \\
+2026T1 & p05 & retorno real & -3.2 & Monte Carlo \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Estructura del script del taller}
+\begin{enumerate}
+  \item \texttt{00\_paquetes.R}: paquetes y funciones auxiliares.
+  \item \texttt{01\_datos.R}: importación, limpieza y transformaciones.
+  \item \texttt{02\_arima.R}: modelos univariados y baseline.
+  \item \texttt{03\_var.R}: modelo multivariado e impulso-respuesta.
+  \item \texttt{04\_montecarlo.R}: simulaciones y percentiles.
+  \item \texttt{05\_choques.R}: escenarios histórico e hipotético.
+  \item \texttt{06\_exportar.R}: tablas para módulos 4 y 5.
+\end{enumerate}
+
+\vspace{0.5em}
+\begin{block}{Buenas prácticas}
+Semilla fija, diccionario de variables, unidades explícitas, versiones de paquetes y exportación en formato largo.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}[fragile]{Implementación: objeto de escenarios}
+\begin{lstlisting}
+escenarios <- bind_rows(
+  base_arima %>% mutate(escenario = "baseline_arima"),
+  base_var   %>% mutate(escenario = "baseline_var"),
+  adv_hist   %>% mutate(escenario = "adverso_historico"),
+  adv_hip    %>% mutate(escenario = "adverso_hipotetico"),
+  mc_p05     %>% mutate(escenario = "montecarlo_p05"),
+  mc_p50     %>% mutate(escenario = "montecarlo_p50")
+) %>%
+  pivot_longer(cols = -c(fecha, escenario),
+               names_to = "variable",
+               values_to = "valor") %>%
+  mutate(
+    modulo_origen = "M3",
+    fecha_generacion = Sys.Date()
+  )
+
+write_csv(escenarios, "outputs/escenarios_macrofinancieros.csv")
+\end{lstlisting}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Guía de trabajo en grupos}
+\begin{table}
+\small
+\begin{tabular}{p{2.7cm}p{4.2cm}p{4.2cm}}
+\toprule
+Grupo & Foco técnico & Pregunta de decisión \\
+\midrule
+A & ARIMA inflación y tasa & ¿El baseline es razonable? \\
+B & VAR macro-financiero & ¿El shock se propaga con coherencia? \\
+C & Monte Carlo & ¿Qué percentil debe usarse como adverso? \\
+D & Choque histórico/hipotético & ¿Cuál escenario es más relevante para supervisión? \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{block}{Discusión plenaria}
+Cada grupo presenta una recomendación regulatoria, no solo un resultado estadístico.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Cómo enseñarlo en clase}
+\begin{columns}
+\column{0.48\textwidth}
+\begin{block}{Secuencia docente}
+\begin{enumerate}
+  \item Intuición económica.
+  \item Ecuación mínima.
+  \item Código ejecutable.
+  \item Diagnóstico.
+  \item Decisión.
+\end{enumerate}
+\end{block}
+
+\column{0.48\textwidth}
+\begin{block}{Ritmo sugerido}
+\begin{itemize}
+  \item 20 min: concepto.
+  \item 30 min: demostración en R.
+  \item 40 min: práctica guiada.
+  \item 20 min: interpretación regulatoria.
+  \item 10 min: cierre y checklist.
+\end{itemize}
+\end{block}
+\end{columns}
+
+\vspace{0.4em}
+\begin{block}{Principio pedagógico}
+Cada técnica debe terminar en una tabla de decisión: variable, shock, severidad, canal previsional y acción supervisora.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Checklist regulatorio del escenario}
+\begin{enumerate}
+  \item ¿Está claramente separado el \baseline{} del \adverso{}?
+  \item ¿La narrativa económica explica el origen del shock?
+  \item ¿El modelo cuantitativo es replicable?
+  \item ¿Los supuestos están documentados?
+  \item ¿La severidad es extrema pero plausible?
+  \item ¿Las variables son relevantes para pensiones?
+  \item ¿El horizonte coincide con el uso del stress test?
+  \item ¿Los resultados se exportan para portafolio y actuarial?
+  \item ¿Existe análisis de sensibilidad?
+  \item ¿La conclusión guía una decisión regulatoria?
+\end{enumerate}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Cierre: mapa de decisión}
+\begin{center}
+\begin{tikzpicture}[node distance=0.65cm, every node/.style={font=\scriptsize}]
+\node[draw, rounded corners, fill=SoftBlue, minimum width=3.0cm, minimum height=0.8cm] (arima) {ARIMA};
+\node[draw, rounded corners, fill=SoftBlue, right=of arima, minimum width=3.0cm, minimum height=0.8cm] (var) {VAR};
+\node[draw, rounded corners, fill=SoftBlue, right=of var, minimum width=3.0cm, minimum height=0.8cm] (mc) {Monte Carlo};
+\node[draw, rounded corners, fill=SoftRed, below=0.85cm of var, minimum width=3.3cm, minimum height=0.8cm] (shock) {Choques};
+\node[draw, rounded corners, fill=SoftGreen, below=0.85cm of shock, minimum width=4.0cm, minimum height=0.8cm] (esc) {Escenario macro-financiero};
+\node[draw, rounded corners, fill=SoftBlue, below=0.85cm of esc, minimum width=4.0cm, minimum height=0.8cm] (decision) {Decisión regulatoria};
+
+\draw[-{Latex}, thick] (arima) -- (var);
+\draw[-{Latex}, thick] (var) -- (mc);
+\draw[-{Latex}, thick] (var) -- (shock);
+\draw[-{Latex}, thick] (mc) -- (shock);
+\draw[-{Latex}, thick] (shock) -- (esc);
+\draw[-{Latex}, thick] (esc) -- (decision);
+\end{tikzpicture}
+\end{center}
+
+\begin{block}{Mensaje final}
+El objetivo del módulo no es elegir el modelo ``más complejo'', sino construir escenarios que sean defendibles, reproducibles y útiles para proteger la suficiencia previsional.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Lectura aplicada sugerida}
+\begin{itemize}
+  \item Diseño de escenarios y calibración de choques: severidad, plausibilidad y objetividad.
+  \item Uso de escenarios en stress testing: diferencias entre pruebas de estrés y métricas probabilísticas.
+  \item Modelos macro-financieros para escenarios: ARMA/ARIMA, VAR, GARCH, BVAR y extensiones.
+  \item Validación: robustez conceptual, sensibilidad y revisión independiente.
+\end{itemize}
+
+\vspace{0.6em}
+\begin{block}{Para conectar con el módulo 4}
+Exportar tasas, spreads, inflación, FX y retornos simulados como factores de riesgo del portafolio previsional.
+\end{block}
+\end{frame}
+
+% ============================================================
+\begin{frame}{Anexo: plantilla de discusión de escenarios}
+\small
+\begin{tabular}{p{2.7cm}p{8.3cm}}
+\toprule
+Elemento & Pregunta guía \\
+\midrule
+Narrativa & ¿Qué evento causa el escenario adverso? \\
+Canal financiero & ¿Cómo afecta tasas, spreads, FX y retornos? \\
+Canal previsional & ¿Cómo afecta aportes, salario real y saldo acumulado? \\
+Modelo & ¿ARIMA, VAR, Monte Carlo o combinación? \\
+Severidad & ¿Histórica, hipotética, percentil o híbrida? \\
+Plausibilidad & ¿Por qué el escenario es defendible ante un comité? \\
+Uso & ¿Qué decisión regulatoria se activa? \\
+\bottomrule
+\end{tabular}
+\end{frame}
+
+% ============================================================
+\end{document}

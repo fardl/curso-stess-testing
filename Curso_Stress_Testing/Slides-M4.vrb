@@ -1,0 +1,14 @@
+\frametitle{Comparación de volatilidad de portafolio}
+\begin{lstlisting}[style=Rstyle]
+w <- c(0.55, 0.25, 0.20)
+
+vol_port_normal <- sqrt(t(w) %*% Sigma_normal %*% w)
+vol_port_stress <- sqrt(t(w) %*% Sigma_stress %*% w)
+
+c(normal = vol_port_normal,
+  stress = vol_port_stress)
+\end{lstlisting}
+
+\begin{alertblock}{Mensaje}
+El portafolio puede parecer diversificado con correlaciones normales, pero mucho menos resiliente bajo correlaciones de crisis.
+\end{alertblock}

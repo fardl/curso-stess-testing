@@ -1,0 +1,841 @@
+fecha,escenario,variable,valor,unidad,fuente,modulo_origen,fecha_generacion
+2026-01-01,baseline_arima,crecimiento,2.308820747126459,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-01-01,baseline_arima,inflacion,4.977364940561845,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-01-01,baseline_arima,interbancaria,7.145718602735849,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-01-01,baseline_arima,deprec_fx,4.028651961988658,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-01-01,baseline_arima,embi,1.6924776162649946,puntos_base,ARIMA univariado,M3,2026-05-05
+2026-02-01,baseline_arima,crecimiento,2.2589615131095897,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-02-01,baseline_arima,inflacion,4.808071726029794,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-02-01,baseline_arima,interbancaria,7.198786927014071,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-02-01,baseline_arima,deprec_fx,3.623322461458403,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-02-01,baseline_arima,embi,1.698748535450482,puntos_base,ARIMA univariado,M3,2026-05-05
+2026-03-01,baseline_arima,crecimiento,3.8135619373539207,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-03-01,baseline_arima,inflacion,4.776976246450045,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-03-01,baseline_arima,interbancaria,7.171430373005937,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-03-01,baseline_arima,deprec_fx,3.339411992248499,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-03-01,baseline_arima,embi,1.7184056676151402,puntos_base,ARIMA univariado,M3,2026-05-05
+2026-04-01,baseline_arima,crecimiento,3.8782272717559536,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-04-01,baseline_arima,inflacion,4.895073483483606,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-04-01,baseline_arima,interbancaria,7.174911165846655,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-04-01,baseline_arima,deprec_fx,4.3905882447567395,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-04-01,baseline_arima,embi,1.7225316984212486,puntos_base,ARIMA univariado,M3,2026-05-05
+2026-05-01,baseline_arima,crecimiento,3.063007048654006,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-05-01,baseline_arima,inflacion,4.740310897125725,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-05-01,baseline_arima,interbancaria,7.104236970159424,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-05-01,baseline_arima,deprec_fx,4.944069269245748,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-05-01,baseline_arima,embi,1.7371837324499035,puntos_base,ARIMA univariado,M3,2026-05-05
+2026-06-01,baseline_arima,crecimiento,5.325149834490506,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-06-01,baseline_arima,inflacion,4.852298699858576,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-06-01,baseline_arima,interbancaria,7.026197559030508,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-06-01,baseline_arima,deprec_fx,4.9933105943273715,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-06-01,baseline_arima,embi,1.733930931126079,puntos_base,ARIMA univariado,M3,2026-05-05
+2026-07-01,baseline_arima,crecimiento,4.50116837899648,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-07-01,baseline_arima,inflacion,4.971824515016252,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-07-01,baseline_arima,interbancaria,7.051261028533279,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-07-01,baseline_arima,deprec_fx,4.353129016069732,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-07-01,baseline_arima,embi,1.7365954141526874,puntos_base,ARIMA univariado,M3,2026-05-05
+2026-08-01,baseline_arima,crecimiento,5.615126354288903,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-08-01,baseline_arima,inflacion,4.804227939011297,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-08-01,baseline_arima,interbancaria,7.1715728177675295,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-08-01,baseline_arima,deprec_fx,3.7624902768743955,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-08-01,baseline_arima,embi,1.7373579627356683,puntos_base,ARIMA univariado,M3,2026-05-05
+2026-09-01,baseline_arima,crecimiento,6.414709262570734,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-09-01,baseline_arima,inflacion,4.875394763075153,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-09-01,baseline_arima,interbancaria,7.355256344290761,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-09-01,baseline_arima,deprec_fx,3.5267780437243705,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-09-01,baseline_arima,embi,1.7492155332973223,puntos_base,ARIMA univariado,M3,2026-05-05
+2026-10-01,baseline_arima,crecimiento,7.727475820046521,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-10-01,baseline_arima,inflacion,4.589466229440748,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-10-01,baseline_arima,interbancaria,7.4591066651252715,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-10-01,baseline_arima,deprec_fx,3.1883342079310224,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-10-01,baseline_arima,embi,1.7595405086381093,puntos_base,ARIMA univariado,M3,2026-05-05
+2026-11-01,baseline_arima,crecimiento,6.037861956332758,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-11-01,baseline_arima,inflacion,4.138840734478696,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-11-01,baseline_arima,interbancaria,7.484346362476237,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-11-01,baseline_arima,deprec_fx,3.148159180046099,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-11-01,baseline_arima,embi,1.7523301930635473,puntos_base,ARIMA univariado,M3,2026-05-05
+2026-12-01,baseline_arima,crecimiento,6.896872276906995,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-12-01,baseline_arima,inflacion,3.96581643159311,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-12-01,baseline_arima,interbancaria,7.470420571755075,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-12-01,baseline_arima,deprec_fx,3.5352909562968406,porcentaje,ARIMA univariado,M3,2026-05-05
+2026-12-01,baseline_arima,embi,1.7556914912530164,puntos_base,ARIMA univariado,M3,2026-05-05
+2027-01-01,baseline_arima,crecimiento,6.5108751062696335,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-01-01,baseline_arima,inflacion,3.886957636216386,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-01-01,baseline_arima,interbancaria,7.458524251913335,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-01-01,baseline_arima,deprec_fx,3.594533461203359,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-01-01,baseline_arima,embi,1.7572177274396164,puntos_base,ARIMA univariado,M3,2026-05-05
+2027-02-01,baseline_arima,crecimiento,5.764779173183237,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-02-01,baseline_arima,inflacion,3.927042380734174,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-02-01,baseline_arima,interbancaria,7.454305035700161,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-02-01,baseline_arima,deprec_fx,3.6858963906157047,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-02-01,baseline_arima,embi,1.7562891417888455,puntos_base,ARIMA univariado,M3,2026-05-05
+2027-03-01,baseline_arima,crecimiento,5.9381241432134715,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-03-01,baseline_arima,inflacion,3.967058932032061,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-03-01,baseline_arima,interbancaria,7.456580603355119,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-03-01,baseline_arima,deprec_fx,3.7426095556292736,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-03-01,baseline_arima,embi,1.7408555870384612,puntos_base,ARIMA univariado,M3,2026-05-05
+2027-04-01,baseline_arima,crecimiento,5.624289567635868,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-04-01,baseline_arima,inflacion,3.8295422475005267,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-04-01,baseline_arima,interbancaria,7.456309079333022,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-04-01,baseline_arima,deprec_fx,3.3972736908392704,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-04-01,baseline_arima,embi,1.7179673305245202,puntos_base,ARIMA univariado,M3,2026-05-05
+2027-05-01,baseline_arima,crecimiento,5.294055119069422,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-05-01,baseline_arima,inflacion,3.9158021653039747,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-05-01,baseline_arima,interbancaria,7.461957427291131,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-05-01,baseline_arima,deprec_fx,3.2043634787185313,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-05-01,baseline_arima,embi,1.7434911880436312,puntos_base,ARIMA univariado,M3,2026-05-05
+2027-06-01,baseline_arima,crecimiento,5.499460189920558,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-06-01,baseline_arima,inflacion,3.9904924915845768,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-06-01,baseline_arima,interbancaria,7.468212492142297,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-06-01,baseline_arima,deprec_fx,3.1657375093902407,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-06-01,baseline_arima,embi,1.745932340643641,puntos_base,ARIMA univariado,M3,2026-05-05
+2027-07-01,baseline_arima,crecimiento,5.270034887061268,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-07-01,baseline_arima,inflacion,3.9968502748759853,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-07-01,baseline_arima,interbancaria,7.466206449613567,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-07-01,baseline_arima,deprec_fx,3.337319119584862,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-07-01,baseline_arima,embi,1.7592140324102805,puntos_base,ARIMA univariado,M3,2026-05-05
+2027-08-01,baseline_arima,crecimiento,5.313413229039958,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-08-01,baseline_arima,inflacion,3.9912064429867398,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-08-01,baseline_arima,interbancaria,7.456553226745682,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-08-01,baseline_arima,deprec_fx,3.495389061859355,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-08-01,baseline_arima,embi,1.7670487118196199,puntos_base,ARIMA univariado,M3,2026-05-05
+2027-09-01,baseline_arima,crecimiento,5.339833753411582,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-09-01,baseline_arima,inflacion,3.935201679550238,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-09-01,baseline_arima,interbancaria,7.441807121651687,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-09-01,baseline_arima,deprec_fx,3.5474383864463266,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-09-01,baseline_arima,embi,1.774587151236854,puntos_base,ARIMA univariado,M3,2026-05-05
+2027-10-01,baseline_arima,crecimiento,5.4900533158516005,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-10-01,baseline_arima,inflacion,3.9466225963280346,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-10-01,baseline_arima,interbancaria,7.4334685157600475,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-10-01,baseline_arima,deprec_fx,3.6318634389549134,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-10-01,baseline_arima,embi,1.774311880125948,puntos_base,ARIMA univariado,M3,2026-05-05
+2027-11-01,baseline_arima,crecimiento,5.179417018026537,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-11-01,baseline_arima,inflacion,4.037973499820733,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-11-01,baseline_arima,interbancaria,7.4314420777233785,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-11-01,baseline_arima,deprec_fx,3.627234151897152,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-11-01,baseline_arima,embi,1.7697913588175227,puntos_base,ARIMA univariado,M3,2026-05-05
+2027-12-01,baseline_arima,crecimiento,5.249974928571239,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-12-01,baseline_arima,inflacion,4.12863038461875,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-12-01,baseline_arima,interbancaria,7.432560557239341,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-12-01,baseline_arima,deprec_fx,3.4944228428916215,porcentaje,ARIMA univariado,M3,2026-05-05
+2027-12-01,baseline_arima,embi,1.7775559704961668,puntos_base,ARIMA univariado,M3,2026-05-05
+2026-01-01,baseline_var,crecimiento,3.70257215104617,porcentaje,VAR multivariado,M3,2026-05-05
+2026-01-01,baseline_var,inflacion,4.991605560096744,porcentaje,VAR multivariado,M3,2026-05-05
+2026-01-01,baseline_var,interbancaria,7.151639030144503,porcentaje,VAR multivariado,M3,2026-05-05
+2026-01-01,baseline_var,deprec_fx,3.8967949630465712,porcentaje,VAR multivariado,M3,2026-05-05
+2026-01-01,baseline_var,embi,2.0449378730260928,puntos_base,VAR multivariado,M3,2026-05-05
+2026-02-01,baseline_var,crecimiento,4.268322164208751,porcentaje,VAR multivariado,M3,2026-05-05
+2026-02-01,baseline_var,inflacion,5.055299345115358,porcentaje,VAR multivariado,M3,2026-05-05
+2026-02-01,baseline_var,interbancaria,7.381344017505948,porcentaje,VAR multivariado,M3,2026-05-05
+2026-02-01,baseline_var,deprec_fx,3.8728565469462506,porcentaje,VAR multivariado,M3,2026-05-05
+2026-02-01,baseline_var,embi,2.4102676615778287,puntos_base,VAR multivariado,M3,2026-05-05
+2026-03-01,baseline_var,crecimiento,4.36236303429179,porcentaje,VAR multivariado,M3,2026-05-05
+2026-03-01,baseline_var,inflacion,5.050265211921701,porcentaje,VAR multivariado,M3,2026-05-05
+2026-03-01,baseline_var,interbancaria,7.624705463336516,porcentaje,VAR multivariado,M3,2026-05-05
+2026-03-01,baseline_var,deprec_fx,3.9371067290026467,porcentaje,VAR multivariado,M3,2026-05-05
+2026-03-01,baseline_var,embi,2.754729986765793,puntos_base,VAR multivariado,M3,2026-05-05
+2026-04-01,baseline_var,crecimiento,4.284389159174033,porcentaje,VAR multivariado,M3,2026-05-05
+2026-04-01,baseline_var,inflacion,5.0027958463584685,porcentaje,VAR multivariado,M3,2026-05-05
+2026-04-01,baseline_var,interbancaria,7.837638194331351,porcentaje,VAR multivariado,M3,2026-05-05
+2026-04-01,baseline_var,deprec_fx,3.9917427514345496,porcentaje,VAR multivariado,M3,2026-05-05
+2026-04-01,baseline_var,embi,3.0577477091148513,puntos_base,VAR multivariado,M3,2026-05-05
+2026-05-01,baseline_var,crecimiento,4.153268403135961,porcentaje,VAR multivariado,M3,2026-05-05
+2026-05-01,baseline_var,inflacion,4.928597169029921,porcentaje,VAR multivariado,M3,2026-05-05
+2026-05-01,baseline_var,interbancaria,8.005307701402982,porcentaje,VAR multivariado,M3,2026-05-05
+2026-05-01,baseline_var,deprec_fx,4.021694739783703,porcentaje,VAR multivariado,M3,2026-05-05
+2026-05-01,baseline_var,embi,3.316284086881818,puntos_base,VAR multivariado,M3,2026-05-05
+2026-06-01,baseline_var,crecimiento,4.014489222546229,porcentaje,VAR multivariado,M3,2026-05-05
+2026-06-01,baseline_var,inflacion,4.838021731234759,porcentaje,VAR multivariado,M3,2026-05-05
+2026-06-01,baseline_var,interbancaria,8.127041372966426,porcentaje,VAR multivariado,M3,2026-05-05
+2026-06-01,baseline_var,deprec_fx,4.0333351628162255,porcentaje,VAR multivariado,M3,2026-05-05
+2026-06-01,baseline_var,embi,3.5316248202344007,puntos_base,VAR multivariado,M3,2026-05-05
+2026-07-01,baseline_var,crecimiento,3.8872668826227277,porcentaje,VAR multivariado,M3,2026-05-05
+2026-07-01,baseline_var,inflacion,4.739031396764302,porcentaje,VAR multivariado,M3,2026-05-05
+2026-07-01,baseline_var,interbancaria,8.207218044807387,porcentaje,VAR multivariado,M3,2026-05-05
+2026-07-01,baseline_var,deprec_fx,4.03536147463509,porcentaje,VAR multivariado,M3,2026-05-05
+2026-07-01,baseline_var,embi,3.706506237058827,puntos_base,VAR multivariado,M3,2026-05-05
+2026-08-01,baseline_var,crecimiento,3.7802255985288093,porcentaje,VAR multivariado,M3,2026-05-05
+2026-08-01,baseline_var,inflacion,4.637920249076171,porcentaje,VAR multivariado,M3,2026-05-05
+2026-08-01,baseline_var,interbancaria,8.25161600548325,porcentaje,VAR multivariado,M3,2026-05-05
+2026-08-01,baseline_var,deprec_fx,4.034072461303677,porcentaje,VAR multivariado,M3,2026-05-05
+2026-08-01,baseline_var,embi,3.844467130089251,puntos_base,VAR multivariado,M3,2026-05-05
+2026-09-01,baseline_var,crecimiento,3.6968101257571067,porcentaje,VAR multivariado,M3,2026-05-05
+2026-09-01,baseline_var,inflacion,4.539451460186145,porcentaje,VAR multivariado,M3,2026-05-05
+2026-09-01,baseline_var,interbancaria,8.26615973098799,porcentaje,VAR multivariado,M3,2026-05-05
+2026-09-01,baseline_var,deprec_fx,4.032972286182364,porcentaje,VAR multivariado,M3,2026-05-05
+2026-09-01,baseline_var,embi,3.949561718382791,puntos_base,VAR multivariado,M3,2026-05-05
+2026-10-01,baseline_var,crecimiento,3.637535536450925,porcentaje,VAR multivariado,M3,2026-05-05
+2026-10-01,baseline_var,inflacion,4.446996426710934,porcentaje,VAR multivariado,M3,2026-05-05
+2026-10-01,baseline_var,interbancaria,8.256493641592684,porcentaje,VAR multivariado,M3,2026-05-05
+2026-10-01,baseline_var,deprec_fx,4.033459369906266,porcentaje,VAR multivariado,M3,2026-05-05
+2026-10-01,baseline_var,embi,4.0261019959957105,puntos_base,VAR multivariado,M3,2026-05-05
+2026-11-01,baseline_var,crecimiento,3.6011635799259576,porcentaje,VAR multivariado,M3,2026-05-05
+2026-11-01,baseline_var,inflacion,4.362747713203522,porcentaje,VAR multivariado,M3,2026-05-05
+2026-11-01,baseline_var,interbancaria,8.227811952953362,porcentaje,VAR multivariado,M3,2026-05-05
+2026-11-01,baseline_var,deprec_fx,4.035610238588456,porcentaje,VAR multivariado,M3,2026-05-05
+2026-11-01,baseline_var,embi,4.078418510203952,puntos_base,VAR multivariado,M3,2026-05-05
+2026-12-01,baseline_var,crecimiento,3.5854317612348243,porcentaje,VAR multivariado,M3,2026-05-05
+2026-12-01,baseline_var,inflacion,4.287959727337151,porcentaje,VAR multivariado,M3,2026-05-05
+2026-12-01,baseline_var,interbancaria,8.18477528912676,porcentaje,VAR multivariado,M3,2026-05-05
+2026-12-01,baseline_var,deprec_fx,4.038798125220872,porcentaje,VAR multivariado,M3,2026-05-05
+2026-12-01,baseline_var,embi,4.110666731018377,puntos_base,VAR multivariado,M3,2026-05-05
+2027-01-01,baseline_var,crecimiento,3.587543655463128,porcentaje,VAR multivariado,M3,2026-05-05
+2027-01-01,baseline_var,inflacion,4.223175598399754,porcentaje,VAR multivariado,M3,2026-05-05
+2027-01-01,baseline_var,interbancaria,8.131471011283155,porcentaje,VAR multivariado,M3,2026-05-05
+2027-01-01,baseline_var,deprec_fx,4.042116645323746,porcentaje,VAR multivariado,M3,2026-05-05
+2027-01-01,baseline_var,embi,4.126691323353941,puntos_base,VAR multivariado,M3,2026-05-05
+2027-02-01,baseline_var,crecimiento,3.604504628391455,porcentaje,VAR multivariado,M3,2026-05-05
+2027-02-01,baseline_var,inflacion,4.168420596625909,porcentaje,VAR multivariado,M3,2026-05-05
+2027-02-01,baseline_var,interbancaria,8.0714053719557,porcentaje,VAR multivariado,M3,2026-05-05
+2027-02-01,baseline_var,deprec_fx,4.044642923861608,porcentaje,VAR multivariado,M3,2026-05-05
+2027-02-01,baseline_var,embi,4.12994547182842,puntos_base,VAR multivariado,M3,2026-05-05
+2027-03-01,baseline_var,crecimiento,3.633347327194464,porcentaje,VAR multivariado,M3,2026-05-05
+2027-03-01,baseline_var,inflacion,4.123357567926147,porcentaje,VAR multivariado,M3,2026-05-05
+2027-03-01,baseline_var,interbancaria,8.007520573867147,porcentaje,VAR multivariado,M3,2026-05-05
+2027-03-01,baseline_var,deprec_fx,4.0455841950902505,porcentaje,VAR multivariado,M3,2026-05-05
+2027-03-01,baseline_var,embi,4.123454927441604,puntos_base,VAR multivariado,M3,2026-05-05
+2027-04-01,baseline_var,crecimiento,3.6712764001926725,porcentaje,VAR multivariado,M3,2026-05-05
+2027-04-01,baseline_var,inflacion,4.087407295985415,porcentaje,VAR multivariado,M3,2026-05-05
+2027-04-01,baseline_var,interbancaria,7.9422299216435075,porcentaje,VAR multivariado,M3,2026-05-05
+2027-04-01,baseline_var,deprec_fx,4.044345670506615,porcentaje,VAR multivariado,M3,2026-05-05
+2027-04-01,baseline_var,embi,4.109814717098598,puntos_base,VAR multivariado,M3,2026-05-05
+2027-05-01,baseline_var,crecimiento,3.7157544018197526,porcentaje,VAR multivariado,M3,2026-05-05
+2027-05-01,baseline_var,inflacion,4.0598393912323365,porcentaje,VAR multivariado,M3,2026-05-05
+2027-05-01,baseline_var,interbancaria,7.877464560156344,porcentaje,VAR multivariado,M3,2026-05-05
+2027-05-01,baseline_var,deprec_fx,4.040548276581432,porcentaje,VAR multivariado,M3,2026-05-05
+2027-05-01,baseline_var,embi,4.0912076519959655,puntos_base,VAR multivariado,M3,2026-05-05
+2027-06-01,baseline_var,crecimiento,3.764545739841382,porcentaje,VAR multivariado,M3,2026-05-05
+2027-06-01,baseline_var,inflacion,4.039839635510564,porcentaje,VAR multivariado,M3,2026-05-05
+2027-06-01,baseline_var,interbancaria,7.814726287287997,porcentaje,VAR multivariado,M3,2026-05-05
+2027-06-01,baseline_var,deprec_fx,4.034016609799195,porcentaje,VAR multivariado,M3,2026-05-05
+2027-06-01,baseline_var,embi,4.06943600112607,puntos_base,VAR multivariado,M3,2026-05-05
+2027-07-01,baseline_var,crecimiento,3.815731516049017,porcentaje,VAR multivariado,M3,2026-05-05
+2027-07-01,baseline_var,inflacion,4.02655906413764,porcentaje,VAR multivariado,M3,2026-05-05
+2027-07-01,baseline_var,interbancaria,7.75514222209475,porcentaje,VAR multivariado,M3,2026-05-05
+2027-07-01,baseline_var,deprec_fx,4.024750995409338,porcentaje,VAR multivariado,M3,2026-05-05
+2027-07-01,baseline_var,embi,4.0459599899767085,puntos_base,VAR multivariado,M3,2026-05-05
+2027-08-01,baseline_var,crecimiento,3.8677048805522047,porcentaje,VAR multivariado,M3,2026-05-05
+2027-08-01,baseline_var,inflacion,4.019149131494666,porcentaje,VAR multivariado,M3,2026-05-05
+2027-08-01,baseline_var,interbancaria,7.6995183616501635,porcentaje,VAR multivariado,M3,2026-05-05
+2027-08-01,baseline_var,deprec_fx,4.012892773137378,porcentaje,VAR multivariado,M3,2026-05-05
+2027-08-01,baseline_var,embi,4.021938743716328,puntos_base,VAR multivariado,M3,2026-05-05
+2027-09-01,baseline_var,crecimiento,3.9191539553783694,porcentaje,VAR multivariado,M3,2026-05-05
+2027-09-01,baseline_var,inflacion,4.016786386339757,porcentaje,VAR multivariado,M3,2026-05-05
+2027-09-01,baseline_var,interbancaria,7.648390107231063,porcentaje,VAR multivariado,M3,2026-05-05
+2027-09-01,baseline_var,deprec_fx,3.9986885410719903,porcentaje,VAR multivariado,M3,2026-05-05
+2027-09-01,baseline_var,embi,3.9982708168249617,puntos_base,VAR multivariado,M3,2026-05-05
+2027-10-01,baseline_var,crecimiento,3.969037396939078,porcentaje,VAR multivariado,M3,2026-05-05
+2027-10-01,baseline_var,inflacion,4.018689291426529,porcentaje,VAR multivariado,M3,2026-05-05
+2027-10-01,baseline_var,interbancaria,7.602068642027084,porcentaje,VAR multivariado,M3,2026-05-05
+2027-10-01,baseline_var,deprec_fx,3.9824567362510512,porcentaje,VAR multivariado,M3,2026-05-05
+2027-10-01,baseline_var,embi,3.9756325657979716,puntos_base,VAR multivariado,M3,2026-05-05
+2027-11-01,baseline_var,crecimiento,4.0165561633008835,porcentaje,VAR multivariado,M3,2026-05-05
+2027-11-01,baseline_var,inflacion,4.024129183858044,porcentaje,VAR multivariado,M3,2026-05-05
+2027-11-01,baseline_var,interbancaria,7.560682618565724,porcentaje,VAR multivariado,M3,2026-05-05
+2027-11-01,baseline_var,deprec_fx,3.9645583404088276,porcentaje,VAR multivariado,M3,2026-05-05
+2027-11-01,baseline_var,embi,3.9545134016433487,puntos_base,VAR multivariado,M3,2026-05-05
+2027-12-01,baseline_var,crecimiento,4.06112393585544,porcentaje,VAR multivariado,M3,2026-05-05
+2027-12-01,baseline_var,inflacion,4.032436876885763,porcentaje,VAR multivariado,M3,2026-05-05
+2027-12-01,baseline_var,interbancaria,7.524215006931411,porcentaje,VAR multivariado,M3,2026-05-05
+2027-12-01,baseline_var,deprec_fx,3.9453724569271653,porcentaje,VAR multivariado,M3,2026-05-05
+2027-12-01,baseline_var,embi,3.935247483474449,puntos_base,VAR multivariado,M3,2026-05-05
+2026-01-01,montecarlo_p05,crecimiento,-2.3737022840581083,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-01-01,montecarlo_p05,inflacion,3.9219108753417555,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-01-01,montecarlo_p05,interbancaria,6.174034217977491,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-01-01,montecarlo_p05,deprec_fx,2.6779033428554087,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-01-01,montecarlo_p05,embi,0.9359496997192416,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-02-01,montecarlo_p05,crecimiento,-3.3934500292112197,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-02-01,montecarlo_p05,inflacion,3.161996684071198,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-02-01,montecarlo_p05,interbancaria,5.92679751468698,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-02-01,montecarlo_p05,deprec_fx,1.857822825342873,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-02-01,montecarlo_p05,embi,0.6696021846514784,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-03-01,montecarlo_p05,crecimiento,-3.9432010420372303,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-03-01,montecarlo_p05,inflacion,2.506813457333323,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-03-01,montecarlo_p05,interbancaria,5.870417761199846,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-03-01,montecarlo_p05,deprec_fx,1.2685945133296606,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-03-01,montecarlo_p05,embi,0.6276744900779632,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-04-01,montecarlo_p05,crecimiento,-4.406777448328091,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-04-01,montecarlo_p05,inflacion,1.9611807065374924,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-04-01,montecarlo_p05,interbancaria,5.805805603931521,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-04-01,montecarlo_p05,deprec_fx,0.8925906926692366,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-04-01,montecarlo_p05,embi,0.6760090415696313,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-05-01,montecarlo_p05,crecimiento,-4.925729081202032,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-05-01,montecarlo_p05,inflacion,1.5007628750806457,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-05-01,montecarlo_p05,interbancaria,5.7317136145732475,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-05-01,montecarlo_p05,deprec_fx,0.4354124076564132,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-05-01,montecarlo_p05,embi,0.8117839532528928,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-06-01,montecarlo_p05,crecimiento,-5.072064632298246,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-06-01,montecarlo_p05,inflacion,1.145047365742292,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-06-01,montecarlo_p05,interbancaria,5.635172587031934,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-06-01,montecarlo_p05,deprec_fx,0.14499252690382494,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-06-01,montecarlo_p05,embi,0.8665378539185792,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-07-01,montecarlo_p05,crecimiento,-5.218640136695535,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-07-01,montecarlo_p05,inflacion,0.8756370217031592,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-07-01,montecarlo_p05,interbancaria,5.519019945047264,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-07-01,montecarlo_p05,deprec_fx,-0.08491592778409507,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-07-01,montecarlo_p05,embi,0.9148369819867214,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-08-01,montecarlo_p05,crecimiento,-5.573206718457515,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-08-01,montecarlo_p05,inflacion,0.6894051180307261,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-08-01,montecarlo_p05,interbancaria,5.399984271205813,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-08-01,montecarlo_p05,deprec_fx,-0.315103870778858,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-08-01,montecarlo_p05,embi,1.0181074987325078,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-09-01,montecarlo_p05,crecimiento,-5.573311410830987,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-09-01,montecarlo_p05,inflacion,0.4149377629740484,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-09-01,montecarlo_p05,interbancaria,5.184107852084027,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-09-01,montecarlo_p05,deprec_fx,-0.4603419915546052,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-09-01,montecarlo_p05,embi,1.0992512602464737,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-10-01,montecarlo_p05,crecimiento,-5.753446482451634,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-10-01,montecarlo_p05,inflacion,0.28233160925710943,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-10-01,montecarlo_p05,interbancaria,5.025588556986824,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-10-01,montecarlo_p05,deprec_fx,-0.6114358321288133,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-10-01,montecarlo_p05,embi,1.1051997729159848,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-11-01,montecarlo_p05,crecimiento,-5.553186977992401,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-11-01,montecarlo_p05,inflacion,0.09814210298899098,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-11-01,montecarlo_p05,interbancaria,4.87615282438196,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-11-01,montecarlo_p05,deprec_fx,-0.6947553858883299,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-11-01,montecarlo_p05,embi,1.085697905593793,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-12-01,montecarlo_p05,crecimiento,-5.555178887832361,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-12-01,montecarlo_p05,inflacion,-0.047118313719103536,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-12-01,montecarlo_p05,interbancaria,4.662500250757515,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-12-01,montecarlo_p05,deprec_fx,-0.7091486933720679,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-12-01,montecarlo_p05,embi,1.0082063394865093,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-01-01,montecarlo_p05,crecimiento,-5.3933315508948265,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-01-01,montecarlo_p05,inflacion,-0.145443937428564,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-01-01,montecarlo_p05,interbancaria,4.440134361536137,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-01-01,montecarlo_p05,deprec_fx,-0.6107075672612298,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-01-01,montecarlo_p05,embi,1.0077178116876937,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-02-01,montecarlo_p05,crecimiento,-5.767535399782044,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-02-01,montecarlo_p05,inflacion,-0.24035310647342667,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-02-01,montecarlo_p05,interbancaria,4.249520792499913,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-02-01,montecarlo_p05,deprec_fx,-0.7141092308947555,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-02-01,montecarlo_p05,embi,0.876447059681301,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-03-01,montecarlo_p05,crecimiento,-5.949517122178586,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-03-01,montecarlo_p05,inflacion,-0.2469180666750705,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-03-01,montecarlo_p05,interbancaria,4.123718139760632,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-03-01,montecarlo_p05,deprec_fx,-0.7125955632759366,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-03-01,montecarlo_p05,embi,0.771841496240008,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-04-01,montecarlo_p05,crecimiento,-5.844496434865727,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-04-01,montecarlo_p05,inflacion,-0.3080893039387963,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-04-01,montecarlo_p05,interbancaria,3.986806281138317,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-04-01,montecarlo_p05,deprec_fx,-0.7598228709409323,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-04-01,montecarlo_p05,embi,0.7977941887255133,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-05-01,montecarlo_p05,crecimiento,-5.77650193137174,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-05-01,montecarlo_p05,inflacion,-0.33410235742504324,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-05-01,montecarlo_p05,interbancaria,3.872132074071149,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-05-01,montecarlo_p05,deprec_fx,-0.7842727855139916,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-05-01,montecarlo_p05,embi,0.7706281202680227,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-06-01,montecarlo_p05,crecimiento,-5.615372437356826,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-06-01,montecarlo_p05,inflacion,-0.3893348262504848,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-06-01,montecarlo_p05,interbancaria,3.7059195100680626,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-06-01,montecarlo_p05,deprec_fx,-0.9674830145055832,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-06-01,montecarlo_p05,embi,0.7755664907829893,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-07-01,montecarlo_p05,crecimiento,-5.966093430820087,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-07-01,montecarlo_p05,inflacion,-0.45124603721418816,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-07-01,montecarlo_p05,interbancaria,3.565564421707135,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-07-01,montecarlo_p05,deprec_fx,-1.0191135367515456,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-07-01,montecarlo_p05,embi,0.807514484945081,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-08-01,montecarlo_p05,crecimiento,-5.527420001350112,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-08-01,montecarlo_p05,inflacion,-0.4902666540344587,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-08-01,montecarlo_p05,interbancaria,3.545323076518132,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-08-01,montecarlo_p05,deprec_fx,-0.8214527204780099,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-08-01,montecarlo_p05,embi,0.6911799115351904,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-09-01,montecarlo_p05,crecimiento,-5.79505824498902,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-09-01,montecarlo_p05,inflacion,-0.5248632465784022,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-09-01,montecarlo_p05,interbancaria,3.50285645829778,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-09-01,montecarlo_p05,deprec_fx,-0.8818876240033585,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-09-01,montecarlo_p05,embi,0.6302876349764064,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-10-01,montecarlo_p05,crecimiento,-5.890138821608641,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-10-01,montecarlo_p05,inflacion,-0.5384696365753988,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-10-01,montecarlo_p05,interbancaria,3.461334671890311,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-10-01,montecarlo_p05,deprec_fx,-0.832439089084849,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-10-01,montecarlo_p05,embi,0.5995315747670592,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-11-01,montecarlo_p05,crecimiento,-5.951962901265798,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-11-01,montecarlo_p05,inflacion,-0.553918248470274,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-11-01,montecarlo_p05,interbancaria,3.3986733580049955,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-11-01,montecarlo_p05,deprec_fx,-0.8986410053548638,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-11-01,montecarlo_p05,embi,0.646870444480799,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-12-01,montecarlo_p05,crecimiento,-5.864236925949209,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-12-01,montecarlo_p05,inflacion,-0.6311859411771736,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-12-01,montecarlo_p05,interbancaria,3.3199070547823544,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-12-01,montecarlo_p05,deprec_fx,-0.993730457805169,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-12-01,montecarlo_p05,embi,0.5720925236198517,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-01-01,montecarlo_p50,crecimiento,3.6461793813585373,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-01-01,montecarlo_p50,inflacion,4.995574230739703,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-01-01,montecarlo_p50,interbancaria,7.161745562365617,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-01-01,montecarlo_p50,deprec_fx,3.9020452208111562,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-01-01,montecarlo_p50,embi,2.040974633687987,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-02-01,montecarlo_p50,crecimiento,4.190301802382191,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-02-01,montecarlo_p50,inflacion,5.053034759040038,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-02-01,montecarlo_p50,interbancaria,7.38236727535128,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-02-01,montecarlo_p50,deprec_fx,3.8707969239725246,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-02-01,montecarlo_p50,embi,2.4113296883203637,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-03-01,montecarlo_p50,crecimiento,4.348476720919553,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-03-01,montecarlo_p50,inflacion,5.077797093971874,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-03-01,montecarlo_p50,interbancaria,7.6389012156978495,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-03-01,montecarlo_p50,deprec_fx,3.928142729162075,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-03-01,montecarlo_p50,embi,2.746188369792323,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-04-01,montecarlo_p50,crecimiento,4.187255596440707,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-04-01,montecarlo_p50,inflacion,5.025461904689024,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-04-01,montecarlo_p50,interbancaria,7.8396011434410715,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-04-01,montecarlo_p50,deprec_fx,3.9865002974425128,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-04-01,montecarlo_p50,embi,3.0412067060600805,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-05-01,montecarlo_p50,crecimiento,4.107071503816065,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-05-01,montecarlo_p50,inflacion,4.973039935748099,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-05-01,montecarlo_p50,interbancaria,8.038655573542146,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-05-01,montecarlo_p50,deprec_fx,3.9813407592489307,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-05-01,montecarlo_p50,embi,3.29872495023867,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-06-01,montecarlo_p50,crecimiento,4.024064857755779,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-06-01,montecarlo_p50,inflacion,4.873542712330896,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-06-01,montecarlo_p50,interbancaria,8.167416696049695,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-06-01,montecarlo_p50,deprec_fx,3.9960521483599516,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-06-01,montecarlo_p50,embi,3.5460562077089746,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-07-01,montecarlo_p50,crecimiento,3.8989028116276616,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-07-01,montecarlo_p50,inflacion,4.783916171411301,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-07-01,montecarlo_p50,interbancaria,8.256180485585293,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-07-01,montecarlo_p50,deprec_fx,3.99583121019317,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-07-01,montecarlo_p50,embi,3.70888202206306,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-08-01,montecarlo_p50,crecimiento,3.887833049596644,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-08-01,montecarlo_p50,inflacion,4.616329231095231,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-08-01,montecarlo_p50,interbancaria,8.309176185041576,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-08-01,montecarlo_p50,deprec_fx,3.9986685031018445,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-08-01,montecarlo_p50,embi,3.829838891435953,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-09-01,montecarlo_p50,crecimiento,3.7642085086729393,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-09-01,montecarlo_p50,inflacion,4.532403472138569,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-09-01,montecarlo_p50,interbancaria,8.334441279397815,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-09-01,montecarlo_p50,deprec_fx,4.024838860409632,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-09-01,montecarlo_p50,embi,3.9552932380293173,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-10-01,montecarlo_p50,crecimiento,3.6035212381495025,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-10-01,montecarlo_p50,inflacion,4.429621956507987,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-10-01,montecarlo_p50,interbancaria,8.31214245377895,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-10-01,montecarlo_p50,deprec_fx,4.026056144473876,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-10-01,montecarlo_p50,embi,4.027637601412364,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-11-01,montecarlo_p50,crecimiento,3.523630646306935,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-11-01,montecarlo_p50,inflacion,4.3219395916424315,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-11-01,montecarlo_p50,interbancaria,8.278128506423279,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-11-01,montecarlo_p50,deprec_fx,3.9979523944522724,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-11-01,montecarlo_p50,embi,4.075724673051694,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-12-01,montecarlo_p50,crecimiento,3.506933397607507,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-12-01,montecarlo_p50,inflacion,4.284771730831994,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-12-01,montecarlo_p50,interbancaria,8.202488919268486,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-12-01,montecarlo_p50,deprec_fx,4.007147402672228,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-12-01,montecarlo_p50,embi,4.098241325833973,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-01-01,montecarlo_p50,crecimiento,3.549910173110506,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-01-01,montecarlo_p50,inflacion,4.248731008999966,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-01-01,montecarlo_p50,interbancaria,8.144239137259294,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-01-01,montecarlo_p50,deprec_fx,4.066395495377012,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-01-01,montecarlo_p50,embi,4.1386857604989995,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-02-01,montecarlo_p50,crecimiento,3.520128919229006,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-02-01,montecarlo_p50,inflacion,4.142552055607862,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-02-01,montecarlo_p50,interbancaria,8.114509809172901,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-02-01,montecarlo_p50,deprec_fx,4.116517860546688,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-02-01,montecarlo_p50,embi,4.13405048323807,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-03-01,montecarlo_p50,crecimiento,3.764600757827271,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-03-01,montecarlo_p50,inflacion,4.096533355344018,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-03-01,montecarlo_p50,interbancaria,8.005538294864362,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-03-01,montecarlo_p50,deprec_fx,4.094512301830175,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-03-01,montecarlo_p50,embi,4.118107536913447,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-04-01,montecarlo_p50,crecimiento,3.754108446877386,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-04-01,montecarlo_p50,inflacion,4.042667209897667,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-04-01,montecarlo_p50,interbancaria,7.955360818400921,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-04-01,montecarlo_p50,deprec_fx,4.057614211647913,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-04-01,montecarlo_p50,embi,4.084219907224863,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-05-01,montecarlo_p50,crecimiento,3.8522081990680244,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-05-01,montecarlo_p50,inflacion,4.021650407924924,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-05-01,montecarlo_p50,interbancaria,7.9152273085042815,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-05-01,montecarlo_p50,deprec_fx,3.976777270251788,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-05-01,montecarlo_p50,embi,4.066170195583439,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-06-01,montecarlo_p50,crecimiento,3.8963866625556585,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-06-01,montecarlo_p50,inflacion,4.014279498138562,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-06-01,montecarlo_p50,interbancaria,7.84300725504034,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-06-01,montecarlo_p50,deprec_fx,3.9516278951432304,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-06-01,montecarlo_p50,embi,4.057901302086714,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-07-01,montecarlo_p50,crecimiento,3.7217926010779077,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-07-01,montecarlo_p50,inflacion,3.9687344058837075,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-07-01,montecarlo_p50,interbancaria,7.77227221703816,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-07-01,montecarlo_p50,deprec_fx,3.9751599179111,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-07-01,montecarlo_p50,embi,4.0078984439721115,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-08-01,montecarlo_p50,crecimiento,3.683372245287027,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-08-01,montecarlo_p50,inflacion,3.9615619779854514,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-08-01,montecarlo_p50,interbancaria,7.693708557886931,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-08-01,montecarlo_p50,deprec_fx,3.9380982298057083,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-08-01,montecarlo_p50,embi,3.989030243068428,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-09-01,montecarlo_p50,crecimiento,3.8102955941839127,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-09-01,montecarlo_p50,inflacion,3.9972414618170573,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-09-01,montecarlo_p50,interbancaria,7.655036665553094,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-09-01,montecarlo_p50,deprec_fx,3.9744502351156443,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-09-01,montecarlo_p50,embi,3.972050883284413,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-10-01,montecarlo_p50,crecimiento,3.996176801575964,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-10-01,montecarlo_p50,inflacion,4.001074710107066,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-10-01,montecarlo_p50,interbancaria,7.603881565406323,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-10-01,montecarlo_p50,deprec_fx,3.981272900907749,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-10-01,montecarlo_p50,embi,3.948688250214129,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-11-01,montecarlo_p50,crecimiento,4.06058315006522,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-11-01,montecarlo_p50,inflacion,4.056950402540471,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-11-01,montecarlo_p50,interbancaria,7.563791273086457,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-11-01,montecarlo_p50,deprec_fx,3.956346748841408,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-11-01,montecarlo_p50,embi,3.95755240189182,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-12-01,montecarlo_p50,crecimiento,4.049101635615614,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-12-01,montecarlo_p50,inflacion,4.070424326661292,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-12-01,montecarlo_p50,interbancaria,7.5302001257156705,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-12-01,montecarlo_p50,deprec_fx,3.9675540946826113,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-12-01,montecarlo_p50,embi,3.9407415651513427,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-01-01,montecarlo_p95,crecimiento,9.800496079066452,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-01-01,montecarlo_p95,inflacion,6.069713791870379,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-01-01,montecarlo_p95,interbancaria,8.107106211918474,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-01-01,montecarlo_p95,deprec_fx,5.122978365161772,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-01-01,montecarlo_p95,embi,3.1341654619539367,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-02-01,montecarlo_p95,crecimiento,11.928431526279324,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-02-01,montecarlo_p95,inflacion,6.972116616837549,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-02-01,montecarlo_p95,interbancaria,8.843724347552453,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-02-01,montecarlo_p95,deprec_fx,5.899575007495587,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-02-01,montecarlo_p95,embi,4.209622877107457,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-03-01,montecarlo_p95,crecimiento,12.917707095375084,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-03-01,montecarlo_p95,inflacion,7.645356207848069,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-03-01,montecarlo_p95,interbancaria,9.442446106401624,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-03-01,montecarlo_p95,deprec_fx,6.547231392244946,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-03-01,montecarlo_p95,embi,4.8990673600400765,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-04-01,montecarlo_p95,crecimiento,13.171639916036144,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-04-01,montecarlo_p95,inflacion,8.073672827330869,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-04-01,montecarlo_p95,interbancaria,9.93670565707584,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-04-01,montecarlo_p95,deprec_fx,7.10078738340228,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-04-01,montecarlo_p95,embi,5.3642886241396655,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-05-01,montecarlo_p95,crecimiento,13.164967341388415,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-05-01,montecarlo_p95,inflacion,8.342983780534908,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-05-01,montecarlo_p95,interbancaria,10.351991186016974,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-05-01,montecarlo_p95,deprec_fx,7.518651380260452,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-05-01,montecarlo_p95,embi,5.8451244821416015,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-06-01,montecarlo_p95,crecimiento,13.264236170294653,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-06-01,montecarlo_p95,inflacion,8.535522922800807,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-06-01,montecarlo_p95,interbancaria,10.652678882847487,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-06-01,montecarlo_p95,deprec_fx,7.910561357846455,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-06-01,montecarlo_p95,embi,6.165481936216637,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-07-01,montecarlo_p95,crecimiento,12.982203944318387,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-07-01,montecarlo_p95,inflacion,8.656339668597772,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-07-01,montecarlo_p95,interbancaria,10.950709911105829,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-07-01,montecarlo_p95,deprec_fx,8.058658162633739,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-07-01,montecarlo_p95,embi,6.496698217486586,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-08-01,montecarlo_p95,crecimiento,12.864470553142416,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-08-01,montecarlo_p95,inflacion,8.715069937174933,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-08-01,montecarlo_p95,interbancaria,11.18426435151185,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-08-01,montecarlo_p95,deprec_fx,8.26312593091175,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-08-01,montecarlo_p95,embi,6.6831439497689225,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-09-01,montecarlo_p95,crecimiento,12.96836259429157,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-09-01,montecarlo_p95,inflacion,8.70666607630501,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-09-01,montecarlo_p95,interbancaria,11.35372298578749,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-09-01,montecarlo_p95,deprec_fx,8.412516158675263,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-09-01,montecarlo_p95,embi,6.81231799137436,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-10-01,montecarlo_p95,crecimiento,12.74784729954619,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-10-01,montecarlo_p95,inflacion,8.693503950904415,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-10-01,montecarlo_p95,interbancaria,11.57171039602774,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-10-01,montecarlo_p95,deprec_fx,8.559203360886436,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-10-01,montecarlo_p95,embi,7.032056934558353,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-11-01,montecarlo_p95,crecimiento,12.702523032645697,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-11-01,montecarlo_p95,inflacion,8.66904559835807,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-11-01,montecarlo_p95,interbancaria,11.68667967205079,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-11-01,montecarlo_p95,deprec_fx,8.662510435396097,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-11-01,montecarlo_p95,embi,7.130632020671154,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-12-01,montecarlo_p95,crecimiento,12.794463731337695,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-12-01,montecarlo_p95,inflacion,8.627648232349248,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-12-01,montecarlo_p95,interbancaria,11.740619872586684,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-12-01,montecarlo_p95,deprec_fx,8.764848745762995,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2026-12-01,montecarlo_p95,embi,7.132109540946712,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-01-01,montecarlo_p95,crecimiento,13.303331058304995,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-01-01,montecarlo_p95,inflacion,8.60967431479463,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-01-01,montecarlo_p95,interbancaria,11.818215972567767,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-01-01,montecarlo_p95,deprec_fx,8.884180139359074,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-01-01,montecarlo_p95,embi,7.193553902560449,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-02-01,montecarlo_p95,crecimiento,13.170685734688906,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-02-01,montecarlo_p95,inflacion,8.594441915198157,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-02-01,montecarlo_p95,interbancaria,11.932360805320219,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-02-01,montecarlo_p95,deprec_fx,8.901559377084222,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-02-01,montecarlo_p95,embi,7.26941344484849,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-03-01,montecarlo_p95,crecimiento,12.951175477383293,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-03-01,montecarlo_p95,inflacion,8.605655695097647,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-03-01,montecarlo_p95,interbancaria,11.959637050363693,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-03-01,montecarlo_p95,deprec_fx,8.916530059482861,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-03-01,montecarlo_p95,embi,7.320911155583196,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-04-01,montecarlo_p95,crecimiento,13.294136967678195,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-04-01,montecarlo_p95,inflacion,8.60530033546286,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-04-01,montecarlo_p95,interbancaria,11.965369031975152,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-04-01,montecarlo_p95,deprec_fx,8.913514929845347,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-04-01,montecarlo_p95,embi,7.310617368927733,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-05-01,montecarlo_p95,crecimiento,13.27239697149059,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-05-01,montecarlo_p95,inflacion,8.612222515493137,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-05-01,montecarlo_p95,interbancaria,11.933537576346433,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-05-01,montecarlo_p95,deprec_fx,8.805087313540726,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-05-01,montecarlo_p95,embi,7.266147347370783,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-06-01,montecarlo_p95,crecimiento,13.35729376670895,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-06-01,montecarlo_p95,inflacion,8.499901939420454,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-06-01,montecarlo_p95,interbancaria,11.923209341247349,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-06-01,montecarlo_p95,deprec_fx,8.814707023012001,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-06-01,montecarlo_p95,embi,7.302737537572384,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-07-01,montecarlo_p95,crecimiento,13.101485595543533,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-07-01,montecarlo_p95,inflacion,8.445947818605246,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-07-01,montecarlo_p95,interbancaria,11.886865295840908,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-07-01,montecarlo_p95,deprec_fx,8.868573873120042,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-07-01,montecarlo_p95,embi,7.370383616235139,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-08-01,montecarlo_p95,crecimiento,13.178613372842122,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-08-01,montecarlo_p95,inflacion,8.572533828388076,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-08-01,montecarlo_p95,interbancaria,11.961428671803672,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-08-01,montecarlo_p95,deprec_fx,8.933378514415365,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-08-01,montecarlo_p95,embi,7.422526147675655,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-09-01,montecarlo_p95,crecimiento,13.245229330686614,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-09-01,montecarlo_p95,inflacion,8.574637829131856,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-09-01,montecarlo_p95,interbancaria,11.88759441847802,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-09-01,montecarlo_p95,deprec_fx,8.89796725934399,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-09-01,montecarlo_p95,embi,7.434924333942284,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-10-01,montecarlo_p95,crecimiento,13.698649777381737,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-10-01,montecarlo_p95,inflacion,8.550514533091446,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-10-01,montecarlo_p95,interbancaria,11.862488223485162,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-10-01,montecarlo_p95,deprec_fx,8.89762822683749,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-10-01,montecarlo_p95,embi,7.4313971651371,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-11-01,montecarlo_p95,crecimiento,14.12671857606213,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-11-01,montecarlo_p95,inflacion,8.581713708573204,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-11-01,montecarlo_p95,interbancaria,11.789979513490922,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-11-01,montecarlo_p95,deprec_fx,8.899746747739004,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-11-01,montecarlo_p95,embi,7.390174212674122,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2027-12-01,montecarlo_p95,crecimiento,13.884620606745926,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-12-01,montecarlo_p95,inflacion,8.693478047980904,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-12-01,montecarlo_p95,interbancaria,11.761584303923454,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-12-01,montecarlo_p95,deprec_fx,8.812726629790008,porcentaje,VAR + Monte Carlo,M3,2026-05-05
+2027-12-01,montecarlo_p95,embi,7.461211425458699,puntos_base,VAR + Monte Carlo,M3,2026-05-05
+2026-01-01,adverso_historico,crecimiento,8.24359417434044,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-01-01,adverso_historico,inflacion,8.3271769373356,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-01-01,adverso_historico,interbancaria,8.92,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-01-01,adverso_historico,deprec_fx,1.333945969392758,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-01-01,adverso_historico,embi,3.75,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-02-01,adverso_historico,crecimiento,5.680805329643057,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-02-01,adverso_historico,inflacion,9.24734743686244,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-02-01,adverso_historico,interbancaria,9.95,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-02-01,adverso_historico,deprec_fx,3.2241598663902415,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-02-01,adverso_historico,embi,4.57,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-03-01,adverso_historico,crecimiento,13.494017426160454,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-03-01,adverso_historico,inflacion,10.294246194194656,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-03-01,adverso_historico,interbancaria,9.98,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-03-01,adverso_historico,deprec_fx,5.231129456801087,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-03-01,adverso_historico,embi,4.43,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-04-01,adverso_historico,crecimiento,3.803355087099458,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-04-01,adverso_historico,inflacion,9.570509452306819,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-04-01,adverso_historico,interbancaria,10.29,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-04-01,adverso_historico,deprec_fx,5.541917814843211,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-04-01,adverso_historico,embi,4.02,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-05-01,adverso_historico,crecimiento,6.077819626194891,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-05-01,adverso_historico,inflacion,11.511636740946773,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-05-01,adverso_historico,interbancaria,10.93,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-05-01,adverso_historico,deprec_fx,5.087871659837528,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-05-01,adverso_historico,embi,4.09,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-06-01,adverso_historico,crecimiento,5.018855665038036,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-06-01,adverso_historico,inflacion,12.864313652316994,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-06-01,adverso_historico,interbancaria,13.23,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-06-01,adverso_historico,deprec_fx,3.702481244575795,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-06-01,adverso_historico,embi,4.89,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-07-01,adverso_historico,crecimiento,-3.122321365124492,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-07-01,adverso_historico,inflacion,13.601368929229096,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-07-01,adverso_historico,interbancaria,13.96,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-07-01,adverso_historico,deprec_fx,5.159582048273359,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-07-01,adverso_historico,embi,5.09,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-08-01,adverso_historico,crecimiento,-4.614552587281118,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-08-01,adverso_historico,inflacion,13.606614375240156,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-08-01,adverso_historico,interbancaria,15.06,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-08-01,adverso_historico,deprec_fx,4.356777312114124,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-08-01,adverso_historico,embi,5.4,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-09-01,adverso_historico,crecimiento,-0.13242842524672227,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-09-01,adverso_historico,inflacion,12.071759352344191,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-09-01,adverso_historico,interbancaria,15.43,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-09-01,adverso_historico,deprec_fx,4.368778597092238,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-09-01,adverso_historico,embi,12.5,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-10-01,adverso_historico,crecimiento,-5.999765932628165,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-10-01,adverso_historico,inflacion,6.965974612848225,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-10-01,adverso_historico,interbancaria,15.51,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-10-01,adverso_historico,deprec_fx,5.200881525762213,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-10-01,adverso_historico,embi,16.37,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-11-01,adverso_historico,crecimiento,-0.951606852904785,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-11-01,adverso_historico,inflacion,4.416727840462276,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-11-01,adverso_historico,interbancaria,15.51,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-11-01,adverso_historico,deprec_fx,5.011910559471211,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-11-01,adverso_historico,embi,17.09,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-12-01,adverso_historico,crecimiento,-3.6355343669629114,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-12-01,adverso_historico,inflacion,3.611955837702485,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-12-01,adverso_historico,interbancaria,14.33,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-12-01,adverso_historico,deprec_fx,4.613098103944502,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-12-01,adverso_historico,embi,13.98,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-01-01,adverso_historico,crecimiento,-3.5915926108511798,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-01-01,adverso_historico,inflacion,3.9627534397388864,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-01-01,adverso_historico,interbancaria,11.36,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-01-01,adverso_historico,deprec_fx,4.856578541715839,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-01-01,adverso_historico,embi,11.01,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-02-01,adverso_historico,crecimiento,-1.5413625510350748,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-02-01,adverso_historico,inflacion,2.4079071492277393,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-02-01,adverso_historico,interbancaria,8.72,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-02-01,adverso_historico,deprec_fx,4.957324956575304,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-02-01,adverso_historico,embi,12.12,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-03-01,adverso_historico,crecimiento,-2.2302229225359405,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-03-01,adverso_historico,inflacion,0.6833220727092026,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-03-01,adverso_historico,interbancaria,7.5,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-03-01,adverso_historico,deprec_fx,5.082452606770449,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-03-01,adverso_historico,embi,9.73,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-04-01,adverso_historico,crecimiento,-3.8363529425382126,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-04-01,adverso_historico,inflacion,0.4696622526145333,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-04-01,adverso_historico,interbancaria,7.55,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-04-01,adverso_historico,deprec_fx,5.4452669821521305,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-04-01,adverso_historico,embi,8.92,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-05-01,adverso_historico,crecimiento,-0.45969544094495163,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-05-01,adverso_historico,inflacion,0.26666682469151937,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-05-01,adverso_historico,interbancaria,7.85,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-05-01,adverso_historico,deprec_fx,4.92486025695924,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-05-01,adverso_historico,embi,8.17,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-06-01,adverso_historico,crecimiento,-0.8273224251145628,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-06-01,adverso_historico,inflacion,-1.2336769770673328,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-06-01,adverso_historico,interbancaria,7.97,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-06-01,adverso_historico,deprec_fx,4.769567047127277,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-06-01,adverso_historico,embi,8.7,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-07-01,adverso_historico,crecimiento,3.3069316382484004,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-07-01,adverso_historico,inflacion,-0.46776872312044304,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-07-01,adverso_historico,interbancaria,8.13,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-07-01,adverso_historico,deprec_fx,3.667547855840647,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-07-01,adverso_historico,embi,8.04,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-08-01,adverso_historico,crecimiento,5.84795656698347,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-08-01,adverso_historico,inflacion,-1.58283998711779,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-08-01,adverso_historico,interbancaria,6.64,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-08-01,adverso_historico,deprec_fx,3.320507647972981,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-08-01,adverso_historico,embi,5.76,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-09-01,adverso_historico,crecimiento,3.4514251132655716,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-09-01,adverso_historico,inflacion,-0.2916304195788477,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-09-01,adverso_historico,interbancaria,5.99,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-09-01,adverso_historico,deprec_fx,3.0037345928851877,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-09-01,adverso_historico,embi,4.73,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-10-01,adverso_historico,crecimiento,9.10932821205801,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-10-01,adverso_historico,inflacion,4.099659917662191,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-10-01,adverso_historico,interbancaria,5.33,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-10-01,adverso_historico,deprec_fx,2.378067022824748,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-10-01,adverso_historico,embi,4.95,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-11-01,adverso_historico,crecimiento,6.787124038595493,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-11-01,adverso_historico,inflacion,5.610612161297279,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-11-01,adverso_historico,interbancaria,5.59,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-11-01,adverso_historico,deprec_fx,2.1524241166603453,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-11-01,adverso_historico,embi,4.35,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-12-01,adverso_historico,crecimiento,3.884311342437652,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-12-01,adverso_historico,inflacion,6.64113855981574,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-12-01,adverso_historico,interbancaria,5.74,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-12-01,adverso_historico,deprec_fx,1.9531870917246064,porcentaje,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2027-12-01,adverso_historico,embi,4.14,puntos_base,peor ventana histórica 24m con índice VAR,M3,2026-05-05
+2026-01-01,adverso_hipotetico,crecimiento,0.7025721510461702,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-01-01,adverso_hipotetico,inflacion,7.491605560096744,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-01-01,adverso_hipotetico,interbancaria,9.651639030144503,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-01-01,adverso_hipotetico,deprec_fx,13.89679496304657,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-01-01,adverso_hipotetico,embi,4.044937873026093,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2026-02-01,adverso_hipotetico,crecimiento,1.268322164208751,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-02-01,adverso_hipotetico,inflacion,7.555299345115358,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-02-01,adverso_hipotetico,interbancaria,9.881344017505949,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-02-01,adverso_hipotetico,deprec_fx,13.87285654694625,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-02-01,adverso_hipotetico,embi,4.410267661577828,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2026-03-01,adverso_hipotetico,crecimiento,1.36236303429179,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-03-01,adverso_hipotetico,inflacion,7.550265211921701,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-03-01,adverso_hipotetico,interbancaria,10.124705463336516,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-03-01,adverso_hipotetico,deprec_fx,13.937106729002647,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-03-01,adverso_hipotetico,embi,4.754729986765793,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2026-04-01,adverso_hipotetico,crecimiento,1.284389159174033,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-04-01,adverso_hipotetico,inflacion,7.5027958463584685,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-04-01,adverso_hipotetico,interbancaria,10.337638194331351,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-04-01,adverso_hipotetico,deprec_fx,13.99174275143455,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-04-01,adverso_hipotetico,embi,5.057747709114851,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2026-05-01,adverso_hipotetico,crecimiento,1.1532684031359608,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-05-01,adverso_hipotetico,inflacion,7.428597169029921,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-05-01,adverso_hipotetico,interbancaria,10.505307701402982,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-05-01,adverso_hipotetico,deprec_fx,14.021694739783703,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-05-01,adverso_hipotetico,embi,5.316284086881819,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2026-06-01,adverso_hipotetico,crecimiento,1.0144892225462288,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-06-01,adverso_hipotetico,inflacion,7.338021731234759,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-06-01,adverso_hipotetico,interbancaria,10.627041372966426,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-06-01,adverso_hipotetico,deprec_fx,14.033335162816226,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-06-01,adverso_hipotetico,embi,5.5316248202344,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2026-07-01,adverso_hipotetico,crecimiento,-0.11273311737727232,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-07-01,adverso_hipotetico,inflacion,8.739031396764302,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-07-01,adverso_hipotetico,interbancaria,12.207218044807387,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-07-01,adverso_hipotetico,deprec_fx,12.03536147463509,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-07-01,adverso_hipotetico,embi,7.206506237058827,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2026-08-01,adverso_hipotetico,crecimiento,-0.21977440147119065,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-08-01,adverso_hipotetico,inflacion,8.63792024907617,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-08-01,adverso_hipotetico,interbancaria,12.25161600548325,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-08-01,adverso_hipotetico,deprec_fx,12.034072461303676,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-08-01,adverso_hipotetico,embi,7.344467130089251,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2026-09-01,adverso_hipotetico,crecimiento,-0.30318987424289334,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-09-01,adverso_hipotetico,inflacion,8.539451460186145,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-09-01,adverso_hipotetico,interbancaria,12.26615973098799,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-09-01,adverso_hipotetico,deprec_fx,12.032972286182364,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-09-01,adverso_hipotetico,embi,7.449561718382791,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2026-10-01,adverso_hipotetico,crecimiento,-0.3624644635490748,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-10-01,adverso_hipotetico,inflacion,8.446996426710934,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-10-01,adverso_hipotetico,interbancaria,12.256493641592684,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-10-01,adverso_hipotetico,deprec_fx,12.033459369906266,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-10-01,adverso_hipotetico,embi,7.5261019959957105,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2026-11-01,adverso_hipotetico,crecimiento,-0.3988364200740424,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-11-01,adverso_hipotetico,inflacion,8.362747713203522,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-11-01,adverso_hipotetico,interbancaria,12.227811952953362,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-11-01,adverso_hipotetico,deprec_fx,12.035610238588456,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-11-01,adverso_hipotetico,embi,7.578418510203952,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2026-12-01,adverso_hipotetico,crecimiento,-0.4145682387651757,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-12-01,adverso_hipotetico,inflacion,8.287959727337151,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-12-01,adverso_hipotetico,interbancaria,12.18477528912676,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-12-01,adverso_hipotetico,deprec_fx,12.038798125220872,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2026-12-01,adverso_hipotetico,embi,7.610666731018377,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2027-01-01,adverso_hipotetico,crecimiento,1.587543655463128,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-01-01,adverso_hipotetico,inflacion,7.223175598399754,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-01-01,adverso_hipotetico,interbancaria,11.131471011283155,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-01-01,adverso_hipotetico,deprec_fx,9.042116645323745,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-01-01,adverso_hipotetico,embi,6.626691323353941,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2027-02-01,adverso_hipotetico,crecimiento,1.6045046283914548,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-02-01,adverso_hipotetico,inflacion,7.168420596625909,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-02-01,adverso_hipotetico,interbancaria,11.0714053719557,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-02-01,adverso_hipotetico,deprec_fx,9.044642923861609,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-02-01,adverso_hipotetico,embi,6.62994547182842,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2027-03-01,adverso_hipotetico,crecimiento,1.633347327194464,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-03-01,adverso_hipotetico,inflacion,7.123357567926147,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-03-01,adverso_hipotetico,interbancaria,11.007520573867147,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-03-01,adverso_hipotetico,deprec_fx,9.04558419509025,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-03-01,adverso_hipotetico,embi,6.623454927441604,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2027-04-01,adverso_hipotetico,crecimiento,1.6712764001926725,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-04-01,adverso_hipotetico,inflacion,7.087407295985415,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-04-01,adverso_hipotetico,interbancaria,10.942229921643507,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-04-01,adverso_hipotetico,deprec_fx,9.044345670506615,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-04-01,adverso_hipotetico,embi,6.609814717098598,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2027-05-01,adverso_hipotetico,crecimiento,1.7157544018197526,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-05-01,adverso_hipotetico,inflacion,7.0598393912323365,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-05-01,adverso_hipotetico,interbancaria,10.877464560156344,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-05-01,adverso_hipotetico,deprec_fx,9.040548276581433,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-05-01,adverso_hipotetico,embi,6.5912076519959655,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2027-06-01,adverso_hipotetico,crecimiento,1.764545739841382,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-06-01,adverso_hipotetico,inflacion,7.039839635510564,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-06-01,adverso_hipotetico,interbancaria,10.814726287287996,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-06-01,adverso_hipotetico,deprec_fx,9.034016609799195,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-06-01,adverso_hipotetico,embi,6.56943600112607,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2027-07-01,adverso_hipotetico,crecimiento,2.815731516049017,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-07-01,adverso_hipotetico,inflacion,5.52655906413764,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-07-01,adverso_hipotetico,interbancaria,9.25514222209475,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-07-01,adverso_hipotetico,deprec_fx,7.024750995409338,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-07-01,adverso_hipotetico,embi,5.5459599899767085,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2027-08-01,adverso_hipotetico,crecimiento,2.8677048805522047,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-08-01,adverso_hipotetico,inflacion,5.519149131494666,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-08-01,adverso_hipotetico,interbancaria,9.199518361650163,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-08-01,adverso_hipotetico,deprec_fx,7.012892773137378,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-08-01,adverso_hipotetico,embi,5.521938743716328,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2027-09-01,adverso_hipotetico,crecimiento,2.9191539553783694,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-09-01,adverso_hipotetico,inflacion,5.516786386339757,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-09-01,adverso_hipotetico,interbancaria,9.148390107231062,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-09-01,adverso_hipotetico,deprec_fx,6.99868854107199,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-09-01,adverso_hipotetico,embi,5.498270816824961,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2027-10-01,adverso_hipotetico,crecimiento,2.969037396939078,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-10-01,adverso_hipotetico,inflacion,5.518689291426529,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-10-01,adverso_hipotetico,interbancaria,9.102068642027085,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-10-01,adverso_hipotetico,deprec_fx,6.982456736251051,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-10-01,adverso_hipotetico,embi,5.475632565797971,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2027-11-01,adverso_hipotetico,crecimiento,3.0165561633008835,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-11-01,adverso_hipotetico,inflacion,5.524129183858044,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-11-01,adverso_hipotetico,interbancaria,9.060682618565725,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-11-01,adverso_hipotetico,deprec_fx,6.964558340408828,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-11-01,adverso_hipotetico,embi,5.454513401643348,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05
+2027-12-01,adverso_hipotetico,crecimiento,3.0611239358554396,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-12-01,adverso_hipotetico,inflacion,5.532436876885763,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-12-01,adverso_hipotetico,interbancaria,9.02421500693141,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-12-01,adverso_hipotetico,deprec_fx,6.945372456927165,porcentaje,VAR baseline + shock hipotético,M3,2026-05-05
+2027-12-01,adverso_hipotetico,embi,5.435247483474448,puntos_base,VAR baseline + shock hipotético,M3,2026-05-05

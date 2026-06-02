@@ -1,0 +1,1384 @@
+\documentclass{beamer}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usetheme{metropolis}% modern fork of the metropolis theme
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+
+\definecolor{mPurple}{RGB}{91,48,105}
+\setbeamercolor{palette primary}{bg=mPurple}
+\setbeamercolor{normal text}{fg=black}
+%\usetheme{Madrid}
+
+\title{Stress Testing en Sistemas de Pensiones}
+\subtitle{Módulo 2: Identificación y Medición de Riesgos Previsionales}
+\author{MACROPOL}
+\date{\today}
+
+\begin{document}
+
+%------------------------------------------------
+\frame{\titlepage}
+%\begin{frame}{Contenido}
+%\tableofcontents    
+%\end{frame}
+%------------------------------------------------
+\section{Módulo 2: Identificación y Medición de Riesgos Previsionales}
+
+%------------------------------------------------
+\begin{frame}[t]{Objetivo del Módulo}
+\begin{itemize}
+
+\item Identificar los principales riesgos que afectan los sistemas de pensiones
+\item Medir su impacto sobre variables previsionales clave
+\item Construir la base para escenarios de stress testing
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Idea central:} No se puede evaluar lo que no se mide correctamente
+\end{frame}
+%-----------------------------------------------
+\begin{frame}{Concepto de riesgo en pensiones y Stress Testing}
+\begin{itemize}
+
+    \item En los sistemas de pensiones de capitalización individual, el concepto de riesgo es central porque determina la sostenibilidad de pensiones futuras y la estabilidad del sistema.
+    \vspace{0.3cm}
+    \item Por \textbf{riesgo previsional} debe entenderse como una combinación de incertidumbre económica, financiera y demográfica, pero tratada de forma cuantificable mediante herramientas de stress testing.
+\end{itemize}   
+\end{frame}
+%-----------------------------------------------
+
+\begin{frame}{Riesgo vs. Incertidumbre}
+
+\begin{itemize}
+
+      \item \textbf{Riesgo:} situaciones donde los resultados posibles y sus probabilidades pueden ser estimados $\rightarrow$ \textbf{medible y modelable}
+      \vspace{0.2cm}
+      \item \textbf{Incertidumbre:} situaciones donde no se conocen las probabilidades $\rightarrow$ \textbf{no modelable directamente}
+      \vspace{0.2cm}
+      \item Intuición económica:      
+         \begin{itemize}
+            \item En pensiones operan bajo horizonte largo
+            \vspace{0.2cm}
+            \item riesgo = volatilidad de retornos, longevidad estimable
+            \vspace{0.2cm}
+            \item incertidumbre = cambios estructurales (reformas, shocks extremos)
+        \end{itemize}
+\end{itemize}
+  
+\end{frame}
+
+%-------------------------------------------------
+\begin{frame}{Riesgo en finanzas}
+
+    \begin{itemize}
+        \item El riesgo se define como variabilidad de los retornos esperados
+        \vspace{0.3cm}
+        \item Medido por: 
+        \begin{itemize}
+            \item varianza, 
+            \item volatilidad
+            \item VaR
+        \end{itemize}
+        \vspace{0.3cm}
+        \item Supuesto: estabilidad estadística    
+        \vspace{0.3cm}
+        \item Limitaciones del enfoque tradicional
+        \begin{itemize}
+            \item Subestima eventos extremos
+            \item No captura crisis sistémicas
+            \item Dependencia de datos históricos
+        \end{itemize}
+\end{itemize} 
+    
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Riesgos Previsionales: Definición y Alcance}
+\footnotesize
+\begin{itemize}
+
+\item \textbf{Riesgo de mercado}: Pérdidas potenciales en el valor del portafolio previsional debido a fluctuaciones en precios de activos financieros (acciones, bonos, tipo de cambio). Afecta directamente la acumulación del fondo individual.
+
+\vspace{0.3cm}
+
+\item \textbf{Riesgo de longevidad}: 
+Riesgo de que los afiliados vivan más de lo esperado, aumentando la duración del pago de pensiones y reduciendo la tasa de reemplazo esperada.
+
+\vspace{0.3cm}
+
+\item \textbf{Riesgo de tasa de interés}: 
+Impacto de cambios en la estructura temporal de tasas sobre el valor de los activos y las rentas vitalicias, afectando tanto acumulación como desacumulación.
+
+\vspace{0.3cm}
+
+\item \textbf{Riesgo de densidad de cotización}:
+Incertidumbre asociada a la frecuencia y continuidad de las contribuciones. Bajos niveles de cotización reducen el saldo acumulado final.
+
+\vspace{0.3cm}
+
+\item \textbf{Riesgo regulatorio}:
+Cambios en normativa (comisiones, edad de retiro, tasas de contribución, reglas de inversión) que afectan los retornos esperados y la sostenibilidad del sistema.
+
+\end{itemize}
+\end{frame}
+
+%-----------------------------------------------
+\begin{frame}[t]{Característica del riesgo previsional}
+\vspace{0.5cm}
+\begin{itemize}
+    \item Horizonte de largo plazo
+    \item Interacción macro-financiera-demográfica
+    \item Impacto en tasa de reemplazo
+\end{itemize}
+    
+\end{frame}
+%------------------------------------------------
+
+\begin{frame}[t]{Riesgo diversificable vs. no diversificable}
+
+\textbf{Distinción clave en teoría de portafolio y stress testing}
+
+\begin{itemize}
+
+    \item \textbf{Riesgo diversificable (idiosincrático)}  
+    \begin{itemize}
+        \item Riesgo específico de un activo, emisor o sector
+        \item No está correlacionado perfectamente con el mercado
+        \item \textbf{Definición:} componente del riesgo que puede eliminarse mediante diversificación
+        \item $\rightarrow$ \text{Se reduce al aumentar el número de activos en el portafolio}
+    \end{itemize}
+    
+   
+    \item \textbf{Riesgo no diversificable (sistémico)}  
+    \begin{itemize}
+        \item Riesgo común a todos los activos (factores macroeconómicos)
+        \item Ejemplos: shocks de tasas de interés, inflación, crisis financieras
+        \item \textbf{Definición:} componente del riesgo que no puede eliminarse mediante diversificación
+        \item $\rightarrow$ \text{Determinado por factores agregados del sistema}
+    \end{itemize}
+     
+\end{itemize}
+
+\end{frame}
+%----------------------------------------------------
+\begin{frame}[t]{Riesgo diversificable vs. no diversificable}
+
+  \textbf{Aplicación en pensiones}
+    \begin{itemize}
+        \item Portafolios previsionales altamente expuestos a \textbf{riesgo sistémico global}
+        \item \textbf{Mercado financiero:} principal fuente de riesgo no diversificable
+        \item \textbf{Riesgo de longevidad:} 
+        \begin{itemize}
+            \item componente idiosincrático (individual)
+            \item componente sistémico (mejoras estructurales en esperanza de vida)
+        \end{itemize}
+    \end{itemize}
+
+\vspace{0.3cm}
+\textit{Implicación para stress testing: los escenarios adversos deben modelar principalmente shocks sobre factores sistémicos.}
+    
+\end{frame}
+%----------------------------------------------------
+\begin{frame}{Riesgo en Stress Testing}
+\begin{itemize}
+    \item El stress testing redefine el riesgo como:
+    riesgo = pérdida bajo escenarios extremos plausibles
+    \vspace{0.3cm}
+    \item No depende solo de probabilidades históricas
+    \vspace{0.3cm}
+    
+    \item Se enfoca en:
+    \begin{itemize}
+        \item eventos raros
+        \item colas de distribución
+        \item interacciones macro-financieras
+    \end{itemize}
+    \item Rol clave en regulación
+    \begin{itemize}
+        \item evaluar resiliencia del sistema
+        \item identificar vulnerabilidades sistémicas
+    \end{itemize}
+\end{itemize}
+    
+\end{frame}
+% ------------------------------------------------
+\begin{frame}{Diferencias clave}
+\begin{itemize}
+    \item Finanzas tradicionales: basado en probabilidades
+    \item Stress testing: basado en escenarios, enfoque forward looking
+\end{itemize}
+    
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Canales de transmisión del riesgo previsional}
+\textbf{Mecanismos de impacto}
+
+\begin{itemize}
+\item \textbf{Portafolio} $\rightarrow$ valor del fondo acumulado
+\item \textbf{Mercado laboral} $\rightarrow$ densidad de cotización
+\item \textbf{Demografía} $\rightarrow$ duración de beneficios
+\item \textbf{Tasas de interés} $\rightarrow$ valorización de activos y rentas
+\item \textbf{Regulación} $\rightarrow$ reglas de contribución y retiro
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Variable final de interés:}
+\begin{itemize}
+\item Tasa de reemplazo (resultado integrado del sistema)
+\end{itemize}
+
+\vspace{0.2cm}
+\textbf{Clave:} interacción simultánea de riesgos
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Riesgo de Mercado}
+\textbf{Intuición económica}
+\begin{itemize}
+\item Caídas en precios $\rightarrow$ menor acumulación de ahorro
+\item Alta correlación en crisis $\rightarrow$ pérdida sistémica
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Modelo cuantitativo}
+\begin{itemize}
+\item Retornos logarítmicos: $r_t = \ln(P_t/P_{t-1})$
+\item Dinámica de volatilidad (GARCH)
+\item Correlaciones dependientes del ciclo
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Métricas}
+\begin{itemize}
+\item Volatilidad del portafolio
+\item Value at Risk (VaR)
+\item Pérdidas bajo stress (escenarios)
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Riesgo de Longevidad}
+\textbf{Intuición económica}
+\begin{itemize}
+\item Mayor esperanza de vida $\rightarrow$ mayor período de pago de pensiones
+\item Riesgo sistémico (no diversificable completamente)
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Modelo actuarial}
+\begin{itemize}
+\item Tablas de mortalidad
+\item Modelo Lee-Carter:
+\[
+\ln m_{x,t} = a_x + b_x k_t + \epsilon_{x,t}
+\]
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Impacto}
+\begin{itemize}
+\item Reducción de tasa de reemplazo
+\item Incremento del pasivo previsional implícito
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Riesgo de Tasa de Interés}
+\textbf{Intuición económica}
+\begin{itemize}
+\item Cambios en tasas afectan:
+\begin{itemize}
+\item Valorización de bonos
+\item Tasas de descuento de pensiones
+\end{itemize}
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Modelo}
+\begin{itemize}
+\item Estructura temporal de tasas (curva yield)
+\item Modelos: Vasicek / CIR
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Métrica}
+\begin{itemize}
+\item Duración y convexidad del portafolio
+\item Sensibilidad del valor presente
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Riesgo de Densidad de Cotización}
+\textbf{Intuición económica}
+\begin{itemize}
+\item Trayectorias laborales incompletas reducen ahorro acumulado
+\item Alta informalidad $\rightarrow$ menor cobertura previsional
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Modelo}
+\begin{itemize}
+\item Probabilidad de cotizar en el tiempo
+\item Procesos estocásticos de empleo/desempleo
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Impacto}
+\begin{itemize}
+\item Menor saldo acumulado
+\item Alta dispersión en tasas de reemplazo
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Riesgo Macroeconómico}
+\textbf{Intuición económica}
+\begin{itemize}
+\item Choques macro afectan simultáneamente:
+\begin{itemize}
+\item Retornos financieros
+\item Empleo y salarios
+\end{itemize}
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Variables clave}
+\begin{itemize}
+\item PIB
+\item Inflación
+\item Tasas de interés
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Herramienta}
+\begin{itemize}
+\item Modelos VAR / escenarios macro-financieros
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Riesgo de Liquidez}
+\textbf{Intuición económica}
+\begin{itemize}
+\item Necesidad de liquidar activos en condiciones adversas
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Escenarios relevantes}
+\begin{itemize}
+\item Retiros masivos
+\item Crisis financieras
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Métrica}
+\begin{itemize}
+\item Ratio activos líquidos / obligaciones
+\item Haircuts en escenarios de stress
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Riesgo Regulatorio}
+\textbf{Intuición económica}
+\begin{itemize}
+\item Cambios en reglas alteran incentivos y resultados
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Ejemplos}
+\begin{itemize}
+\item Cambios en tasas de contribución
+\item Retiros extraordinarios
+\item Modificación de edad de jubilación
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Naturaleza}
+\begin{itemize}
+\item No probabilístico (incertidumbre)
+\item Se modela vía escenarios
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Integración de Riesgos}
+\textbf{Clave conceptual}
+
+\begin{itemize}
+\item Los riesgos no son independientes
+\item Existen efectos de amplificación:
+\begin{itemize}
+\item Crisis $\rightarrow$ mercado + empleo + liquidez
+\end{itemize}
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Enfoque de stress testing}
+\begin{itemize}
+\item Escenarios conjuntos (macro + financiero + demográfico)
+\item Evaluación de impacto en tasa de reemplazo
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Objetivo}
+\begin{itemize}
+\item Medir resiliencia del sistema previsional
+\end{itemize}
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}{Indicadores de Vulnerabilidad}
+\textbf{De riesgo a impacto previsional}
+
+\begin{itemize}
+\item \textbf{Métricas financieras}
+\begin{itemize}
+\item Value at Risk (VaR)
+\item Expected Shortfall (ES)
+\end{itemize}
+
+\vspace{0.2cm}
+
+\item \textbf{Métricas previsionales}
+\begin{itemize}
+\item Tasa de reemplazo proyectada
+\item Probabilidad de insuficiencia previsional
+\end{itemize}
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Clave conceptual:}
+\begin{itemize}
+\item Shock $\rightarrow$ portafolio $\rightarrow$ saldo $\rightarrow$ pensión $\rightarrow$ RR
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Objetivo:} traducir riesgo en métricas de política pública
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Value at Risk (VaR)}
+\textbf{Definición}
+
+\[
+VaR_\alpha = \inf \{x : P(L > x) \leq 1-\alpha \}
+\]
+
+\vspace{0.3cm}
+
+\textbf{Intuición}
+\begin{itemize}
+\item Pérdida máxima esperada bajo condiciones normales
+\item No captura eventos extremos (colas)
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Limitación en pensiones}
+\begin{itemize}
+\item Horizonte corto
+\item No refleja impacto en tasa de reemplazo
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Expected Shortfall (ES)}
+\textbf{Definición}
+
+\[
+ES_\alpha = E[L \mid L > VaR_\alpha]
+\]
+
+\vspace{0.3cm}
+
+\textbf{Intuición}
+\begin{itemize}
+\item Pérdida promedio en escenarios extremos
+\item Captura riesgo de cola
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Ventaja}
+\begin{itemize}
+\item Métrica coherente de riesgo
+\item Más relevante para stress testing
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Tasa de Reemplazo (RR)}
+\textbf{Definición}
+
+\[
+RR = \frac{\text{Pensión}}{\text{Salario}}
+\]
+
+\vspace{0.3cm}
+
+\textbf{Determinantes}
+\begin{itemize}
+\item Retornos del portafolio
+\item Densidad de cotización
+\item Esperanza de vida
+\item Tasas de interés
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Interpretación}
+\begin{itemize}
+\item Métrica central de suficiencia previsional
+\item Variable objetivo del stress testing
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Probabilidad de Insuficiencia Previsional}
+\textbf{Definición}
+
+\[
+P(RR < RR^*)
+\]
+
+\vspace{0.3cm}
+
+\textbf{Interpretación}
+\begin{itemize}
+\item Probabilidad de no alcanzar un umbral mínimo de pensión
+\item Métrica clave para regulación y política social
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Enfoque}
+\begin{itemize}
+\item Requiere simulación (Monte Carlo)
+\item Integra múltiples riesgos simultáneamente
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{De Riesgo Financiero a Riesgo Previsional}
+\textbf{Cadena de transmisión}
+
+\begin{itemize}
+\item Shock financiero $\rightarrow$ retornos
+\item Retornos $\rightarrow$ saldo acumulado
+\item Saldo $\rightarrow$ pensión
+\item Pensión $\rightarrow$ tasa de reemplazo
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Insight clave}
+\begin{itemize}
+\item El riesgo relevante no es la pérdida del portafolio
+\item Es la caída en la tasa de reemplazo
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Enfoque de Stress Testing}
+\textbf{Metodología}
+
+\begin{itemize}
+\item Definir escenario (baseline vs adverso)
+\item Simular trayectorias de variables
+\item Evaluar distribución de RR
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Outputs}
+\begin{itemize}
+\item RR promedio
+\item Percentiles (p5, p50, p95)
+\item Probabilidad de insuficiencia
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Uso}
+\begin{itemize}
+\item Evaluación de resiliencia del sistema
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Mensaje Clave del Módulo}
+\begin{itemize}
+\item El riesgo financiero es solo un medio
+\item El objetivo es medir impacto previsional
+\item Stress testing conecta ambos mundos
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Resultado final}
+\begin{itemize}
+\item Evaluación de suficiencia y sostenibilidad
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{LAB 1: Simulación de Riesgo Previsional}
+
+\textbf{Objetivo}
+\vspace{0.3cm}
+Cuantificar el impacto del riesgo financiero sobre:
+
+\begin{itemize}
+\item Saldo acumulado
+\item Pensión
+\item Tasa de reemplazo (RR)
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Enfoque}
+\begin{itemize}
+\item Simulación Monte Carlo
+\item Baseline vs escenario adverso
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Modelo Conceptual}
+
+\textbf{Canal de transmisión}
+
+\[
+\text{Retornos} \rightarrow \text{Saldo} \rightarrow \text{Pensión} \rightarrow RR
+\]
+
+\vspace{0.5cm}
+
+\textbf{Ecuaciones clave}
+
+\begin{itemize}
+\item Acumulación:
+\[
+W_{t+1} = W_t (1 + r_t) + c \cdot salario
+\]
+
+\item Pensión:
+\[
+P = \frac{W_T}{a}
+\]
+
+\item Tasa de reemplazo:
+\[
+RR = \frac{P}{salario}
+\]
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Supuestos del Modelo (Baseline)}
+
+\begin{itemize}
+\item Horizonte: 30 años
+\item Salario constante
+\item Tasa de contribución: 10\%
+\item Retornos: normales
+\item Factor de anualidad fijo
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Parámetros}
+
+\begin{itemize}
+\item $\mu = 5\%$
+\item $\sigma = 12\%$
+\item $a = 15$
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}[fragile]{Implementación en R (Simulación)}
+\scriptsize
+    \begin{verbatim}
+    set.seed(123)
+    
+    T <- 30
+    n_sim <- 5000
+    
+    salario <- 1000
+    contribucion <- 0.10 * salario
+    mu <- 0.05
+    sigma <- 0.12
+    a <- 15
+    
+    RR <- numeric(n_sim)
+    
+    for(i in 1:n_sim){
+      W <- 0
+      
+      for(t in 1:T){
+        r <- rnorm(1, mu, sigma)
+        W <- W * (1 + r) + contribucion
+      }
+      
+      pension <- W / a
+      RR[i] <- pension / salario
+    }
+    \end{verbatim}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}[fragile]{Resultados}
+\textbf{Cálculo de indicadores}
+
+\vspace{0.3cm}
+
+\textbf{En R:}
+\scriptsize
+\begin{verbatim}
+mean(RR)
+mean(RR < 0.4)
+\end{verbatim}
+
+\vspace{0.4cm}
+
+\textbf{Interpretación}
+
+\begin{itemize}
+\item RR promedio
+\item Probabilidad de insuficiencia: $P(RR < 0.4)$
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Ejercicio: Escenario Adverso}
+
+\textbf{Modificar parámetros}
+
+\begin{itemize}
+\item $\mu = -2\%$
+\item $\sigma = 20\%$
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Preguntas}
+
+\begin{itemize}
+\item ¿Cómo cambia la distribución de RR?
+\item ¿Qué ocurre con $P(RR < 0.4)$?
+\item ¿Qué riesgo domina?
+\end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Interpretación Económica}
+\begin{itemize}
+\item Mayor volatilidad $\rightarrow$ mayor dispersión de RR
+\item Menores retornos $\rightarrow$ menor pensión
+\item Aumenta la probabilidad de insuficiencia
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Insight clave}
+
+\begin{itemize}
+\item El riesgo relevante no es la pérdida financiera
+\item Es la caída en la tasa de reemplazo
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Conexión con Stress Testing}
+\begin{itemize}
+\item Comparación baseline vs adverso
+\item Evaluación de distribuciones
+\item Medición de vulnerabilidad previsional
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Output clave}
+
+\[
+P(RR < RR^*)
+\]
+
+\vspace{0.3cm}
+
+\textbf{Aplicación}
+
+\begin{itemize}
+\item Regulación
+\item Diseño de políticas previsionales
+\end{itemize}
+\end{frame}
+%----------------------------------------------
+\begin{frame}{De Riesgos a Escenarios}
+
+\textbf{Problema:}  
+Los riesgos identificados son abstractos
+
+\vspace{0.3cm}
+
+\textbf{Solución:}  
+Traducir riesgos en escenarios macro-financieros coherentes
+
+\vspace{0.3cm}
+
+\begin{itemize}
+\item Riesgos $\rightarrow$ Factores (retornos, inflación, longevidad)
+\item Factores $\rightarrow$ Shocks (magnitud + correlación)
+\item Shocks $\rightarrow$ Escenarios (trayectorias en el tiempo)
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Idea clave:}  
+Un stress test evalúa estados del mundo, no shocks aislados
+
+\end{frame}
+
+%---------------------------------------
+\begin{frame}{Limitaciones del Enfoque Determinístico}
+
+\begin{itemize}
+\item Un solo escenario ignora la incertidumbre real
+\item Resultados altamente sensibles a supuestos puntuales
+\item No captura eventos extremos (riesgo de cola)
+\item No permite asignar probabilidades a resultados
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Problema central:}  
+No sabemos qué tan probable es el escenario adverso
+
+\end{frame}
+%------------------------------
+\begin{frame}{Motivación para Simulación}
+
+\begin{itemize}
+\item El sistema previsional enfrenta múltiples futuros posibles
+\item Los shocks son dinámicos y acumulativos
+\item Las correlaciones importan (crisis = shocks conjuntos)
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Necesidad:}  
+Pasar de un escenario único a una distribución de resultados
+
+\end{frame}
+%----------------------------------
+\begin{frame}{Simulación Monte Carlo}
+
+\begin{itemize}
+\item Genera múltiples trayectorias consistentes con los datos
+\item Incorpora volatilidad, correlaciones y no linealidades
+\item Aproxima la distribución completa de resultados
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Aplicación en pensiones:}
+\begin{itemize}
+\item Evolución del fondo acumulado
+\item Tasa de reemplazo
+\item Probabilidad de insuficiencia
+\end{itemize}
+
+\end{frame}
+%---------------------------------
+\begin{frame}{Modelo Conceptual del Sistema Previsional}
+
+\[
+W_{t+1}^{(i)} = W_t^{(i)} (1 + r_t^{(i)}) + c_t
+\]
+
+\begin{itemize}
+\item Cada $i$ representa un escenario posible
+\item $r_t$ incorpora shocks macro-financieros
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Resultado:}
+\begin{itemize}
+\item Distribución de riqueza final $W_T$
+\item Distribución de tasa de reemplazo
+\end{itemize}
+
+\end{frame}
+%----------------------------------
+\begin{frame}{De Escenarios a Distribuciones}
+
+\begin{itemize}
+\item Cada simulación genera un resultado distinto
+\item El conjunto define una distribución de resultados
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Métricas clave:}
+\begin{itemize}
+\item Valor esperado
+\item VaR (riesgo cuantílico)
+\item Expected Shortfall (riesgo extremo)
+\item Probabilidad de insuficiencia
+\end{itemize}
+
+\end{frame}
+%------------------------------
+\begin{frame}{Mensaje Clave}
+
+\begin{itemize}
+\item El riesgo previsional es multidimensional
+\item La incertidumbre es inherente al sistema
+\end{itemize}
+
+\vspace{0.5cm}
+
+\centering
+\textbf{Un stress test transforma escenarios en decisiones de política}
+
+\end{frame}
+%--------------------------
+%------------------------------------------------
+\section{Ejercicio Integrador: De Riesgos a Escenarios}
+
+%------------------------------------------------
+\begin{frame}{Ejercicio: Construcción de Escenarios}
+
+\textbf{Objetivo:}  
+Traducir riesgos previsionales en escenarios macro-financieros consistentes
+
+\vspace{0.4cm}
+
+\textbf{Contexto:}
+\begin{itemize}
+\item Una AFP desea evaluar su vulnerabilidad
+\item Se han identificado los riesgos principales:
+\begin{itemize}
+\item Riesgo de mercado
+\item Inflación
+\item Longevidad
+\end{itemize}
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Tarea:}  
+Construir escenarios y evaluar su impacto en la tasa de reemplazo
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Estructura del Ejercicio}
+
+\begin{enumerate}
+\item Definir factores de riesgo
+\item Construir escenarios (baseline vs adverso)
+\item Traducir narrativa a shocks
+\item Simular trayectorias
+\item Analizar resultados
+\item Extensión: simulación Monte Carlo
+\end{enumerate}
+
+\vspace{0.4cm}
+
+\textbf{Resultado esperado:}  
+Comprender cómo los escenarios afectan la suficiencia previsional
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Parte 1: De Riesgos a Factores}
+
+\textbf{Pregunta 1:}  
+¿Cómo se traduce cada riesgo en una variable observable?
+
+\vspace{0.4cm}
+
+\begin{itemize}
+\item Mercado $\rightarrow$ retorno del portafolio ($r_t$)
+\item Inflación $\rightarrow$ inflación ($\pi_t$)
+\item Longevidad $\rightarrow$ años de retiro ($L$)
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Pregunta 2:}  
+¿Por qué es necesario pasar de riesgos abstractos a variables medibles?
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Parte 2: Construcción de Escenarios}
+
+\textbf{Definir dos escenarios:}
+
+\vspace{0.3cm}
+
+\textbf{Baseline:}
+\begin{itemize}
+\item Condiciones económicas normales
+\item Retornos estables
+\item Inflación controlada
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Adverso:}
+\begin{itemize}
+\item Crisis financiera
+\item Caída de activos
+\item Alta inflación
+\item Aumento de longevidad
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Pregunta 3:}  
+¿Qué hace que un escenario sea \textit{coherente}?
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Parte 3: Traducción a Shocks}
+
+\begin{center}
+\begin{tabular}{lcc}
+\hline
+Variable & Baseline & Adverso \\
+\hline
+Retorno & 5\% & -15\% (shock inicial) \\
+Inflación & 2\% & 8\% \\
+Longevidad & 15 años & 17 años \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.4cm}
+
+\textbf{Pregunta 4:}
+\begin{itemize}
+\item ¿Qué variable tiene mayor impacto potencial?
+\item ¿Qué ocurre si el shock persiste más de un período?
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Parte 4: Modelo Previsional}
+
+\[
+W_{t+1} = W_t (1 + r_t) + c
+\]
+
+\vspace{0.3cm}
+
+\begin{itemize}
+\item $W_t$: ahorro acumulado
+\item $r_t$: retorno
+\item $c$: contribución
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Tarea:}
+\begin{itemize}
+\item Simular riqueza final bajo ambos escenarios
+\item Calcular tasa de reemplazo
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Parte 5: Métricas Clave}
+
+\textbf{Calcular:}
+
+\begin{itemize}
+\item Tasa de reemplazo esperada
+\item Diferencia baseline vs adverso
+\item Probabilidad de insuficiencia (extensión)
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Pregunta 5:}
+\begin{itemize}
+\item ¿Qué explica la caída en la tasa de reemplazo?
+\item ¿Es más importante el shock inicial o la persistencia?
+\end{itemize}
+
+\end{frame}
+%-----------------------------------------------
+\begin{frame}[fragile]{Código R: Escenario Determinístico}
+\tiny
+\begin{verbatim}
+#----------------------------------------
+# Parámetros generales
+#----------------------------------------
+T <- 30              # horizonte (años)
+W0 <- 10000          # ahorro inicial
+c <- 1000            # contribución anual
+salary <- 20000      # salario base
+
+#----------------------------------------
+# Escenario BASELINE
+#----------------------------------------
+r_base <- rep(0.05, T)   # retornos constantes (5%)
+L_base <- 15             # años de retiro
+
+#----------------------------------------
+# Escenario ADVERSO
+#----------------------------------------
+r_adv <- c(-0.15, rep(0.03, T-1))  # shock inicial + recuperación lenta
+L_adv <- 17                        # mayor longevidad
+
+#----------------------------------------
+# Función de simulación
+#----------------------------------------
+simulate_path <- function(r, W0, c, T){
+  W <- W0
+  for(t in 1:T){
+    W <- W * (1 + r[t]) + c
+  }
+  return(W)
+}
+\end{verbatim}
+   
+\end{frame}
+%-----------------------------------------------
+\begin{frame}[fragile]{Código R: Escenario Determinístico}
+\tiny
+\begin{verbatim}
+    
+#----------------------------------------
+# Simulación
+#----------------------------------------
+W_base <- simulate_path(r_base, W0, c, T)
+W_adv  <- simulate_path(r_adv,  W0, c, T)
+
+#----------------------------------------
+# Tasa de reemplazo
+#----------------------------------------
+RR_base <- W_base / (L_base * salary)
+RR_adv  <- W_adv  / (L_adv  * salary)
+
+#----------------------------------------
+# Resultados
+#----------------------------------------
+cat("Escenario Baseline - RR:", RR_base, "\n")
+cat("Escenario Adverso  - RR:", RR_adv, "\n")
+cat("Caída en RR:", RR_base - RR_adv, "\n")
+
+\end{verbatim}
+    
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Extensión: Simulación Monte Carlo}
+
+\textbf{Motivación:}
+\begin{itemize}
+\item El futuro no es único
+\item Necesitamos múltiples trayectorias
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Simular:}
+\begin{itemize}
+\item 1000 trayectorias de retornos
+\item Distribución de la tasa de reemplazo
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Pregunta 6:}
+\begin{itemize}
+\item ¿Qué cambia al pasar de un escenario a una distribución?
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Métricas de Riesgo}
+
+\begin{itemize}
+\item Valor esperado
+\item VaR (percentil 5\%)
+\item Expected Shortfall
+\item Probabilidad de insuficiencia
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Pregunta 7:}
+\begin{itemize}
+\item ¿Dónde está el riesgo relevante?
+\item ¿Por qué la cola es crítica en pensiones?
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------
+\begin{frame}[fragile]{Código R: Simulación Monte Carlo}
+\tiny
+\begin{verbatim}
+#----------------------------------------
+# Simulación Monte Carlo
+#----------------------------------------
+set.seed(123)
+
+N <- 5000
+T <- 30
+W0 <- 10000
+c <- 1000
+salary <- 20000
+
+RR_sim <- numeric(N)
+
+for(i in 1:N){  
+  W <- W0  
+  for(t in 1:T){
+    # retornos aleatorios (media 5%, volatilidad 15%)
+    r <- rnorm(1, mean = 0.05, sd = 0.15)
+    W <- W * (1 + r) + c
+  }  
+  RR_sim[i] <- W / (15 * salary)
+}
+
+
+#----------------------------------------
+# Métricas de riesgo
+#----------------------------------------
+mean_RR <- mean(RR_sim)
+VaR_5   <- quantile(RR_sim, 0.05)
+ES_5    <- mean(RR_sim[RR_sim <= VaR_5])
+prob_insuf <- mean(RR_sim < 0.3)  # umbral de suficiencia
+
+
+\end{verbatim}
+    
+\end{frame}
+%------------------------------------------------
+\begin{frame}[fragile]{Código R: Simulación Monte Carlo}
+\tiny
+\begin{verbatim}
+    
+#----------------------------------------
+# Histograma
+#----------------------------------------
+hist(RR_sim,
+     breaks = 50,
+     main = "Distribución de la Tasa de Reemplazo",
+     xlab = "Tasa de Reemplazo",
+     border = "white")
+
+# Línea VaR
+abline(v = VaR_5, lwd = 2, lty = 2)
+
+# Línea ES
+abline(v = ES_5, lwd = 2, lty = 3)
+
+#----------------------------------------
+# Leyenda
+#----------------------------------------
+legend("topright",
+       legend = c("VaR 5%", "Expected Shortfall"),
+       lty = c(2,3),
+       lwd = 2)
+
+\end{verbatim}
+    
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Comparación: Determinístico vs Monte Carlo}
+
+\begin{itemize}
+\item 1 escenario $\rightarrow$ un resultado
+\item Monte Carlo $\rightarrow$ distribución completa
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Insight:}
+\begin{itemize}
+\item El riesgo no es un número, es una distribución
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Pregunta 8:}
+\begin{itemize}
+\item ¿Qué información adicional aporta Monte Carlo?
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Dinámica en Clase}
+
+\textbf{Trabajo en grupos:}
+
+\begin{itemize}
+\item Grupo 1: escenario base
+\item Grupo 2: escenario adverso moderado
+\item Grupo 3: escenario adverso severo
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Cada grupo debe:}
+\begin{itemize}
+\item Definir narrativa económica
+\item Traducir a shocks
+\item Simular resultados
+\item Presentar métricas clave
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Discusión:}
+¿Cuál escenario representa mayor riesgo sistémico?
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Evaluación Final}
+
+\textbf{Responder:}
+
+\begin{itemize}
+\item ¿Cuál es la diferencia entre riesgo, shock y escenario?
+\item ¿Por qué un escenario debe ser coherente?
+\item ¿Qué limitaciones tiene el enfoque determinístico?
+\item ¿Qué aporta Monte Carlo al stress testing?
+\end{itemize}
+
+\vspace{0.5cm}
+
+\centering
+\textbf{Conclusión:}  
+Los escenarios transforman riesgos en decisiones
+
+\end{frame}
+
+%------------------------------------------------
+
+\end{document}

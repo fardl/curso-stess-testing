@@ -1,0 +1,6 @@
+\babel@toc {spanish}{}\relax 
+\beamer@sectionintoc {1}{Contexto}{8}{0}{1}
+\beamer@sectionintoc {2}{Modelo / Herramienta}{12}{0}{2}
+\beamer@sectionintoc {3}{Implementación}{24}{0}{3}
+\beamer@sectionintoc {4}{Ejercicio}{34}{0}{4}
+\beamer@sectionintoc {5}{Interpretación}{38}{0}{5}

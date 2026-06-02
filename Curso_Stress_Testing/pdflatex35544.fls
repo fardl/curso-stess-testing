@@ -1,0 +1,5 @@
+PWD c:/Users/t490/Documents/MacroPol/stress-testing/Curso_Stress_Testing
+INPUT c:/texlive/2026/texmf.cnf
+INPUT c:/texlive/2026/texmf-dist/web2c/texmf.cnf
+INPUT c:/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT c:/Users/t490/Documents/MacroPol/stress-testing/Curso_Stress_Testing/Slides-M2.tex

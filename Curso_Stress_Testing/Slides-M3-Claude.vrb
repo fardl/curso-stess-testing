@@ -1,0 +1,34 @@
+\frametitle{Demo 4: Escenarios adversos}
+\begin{lstlisting}
+# ESCENARIO BASE: percentil 50 de Monte Carlo
+escenario_base <- p50
+
+# ESCENARIO ADVERSO HISTORICO (Crisis 2008)
+# Caida: inflacion +1.5sd, tasa +150pb, fx +15%
+shock_historico <- c(
+  inflacion = +1.5,    # puntos porcentuales
+  tasa      = +1.5,
+  fx        = +15
+)
+escenario_hist <- t(t(p50) + shock_historico)
+
+# ESCENARIO ADVERSO HIPOTETICO (Tasas + depreciacion)
+# Narrativa: endurecimiento monetario y salida de capitales
+shock_hip <- c(
+  inflacion = +2.0,    # inflacion mas persistente
+  tasa      = +2.5,    # suba mas fuerte
+  fx        = +20      # depreciacion severa
+)
+escenario_hip <- t(t(p50) + shock_hip)
+
+# Comparar: impacto en rentabilidad real
+# r_real = tasa - inflacion
+r_real_base <- escenario_base[, "tasa"] - escenario_base[, "inflacion"]
+r_real_hist <- escenario_hist[, "tasa"] - escenario_hist[, "inflacion"]
+r_real_hip  <- escenario_hip[, "tasa"] - escenario_hip[, "inflacion"]
+
+data.frame(horizonte = 1:H,
+           base = r_real_base,
+           historico = r_real_hist,
+           hipotetico = r_real_hip)
+\end{lstlisting}

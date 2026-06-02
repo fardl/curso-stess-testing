@@ -1,0 +1,29 @@
+\frametitle{Código R: Simulación Monte Carlo}
+\tiny
+\begin{verbatim}
+
+#----------------------------------------
+# Histograma
+#----------------------------------------
+hist(RR_sim,
+     breaks = 50,
+     main = "Distribución de la Tasa de Reemplazo",
+     xlab = "Tasa de Reemplazo",
+     border = "white")
+
+# Línea VaR
+abline(v = VaR_5, lwd = 2, lty = 2)
+
+# Línea ES
+abline(v = ES_5, lwd = 2, lty = 3)
+
+#----------------------------------------
+# Leyenda
+#----------------------------------------
+legend("topright",
+       legend = c("VaR 5%", "Expected Shortfall"),
+       lty = c(2,3),
+       lwd = 2)
+
+\end{verbatim}
+

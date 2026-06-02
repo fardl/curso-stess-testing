@@ -1,0 +1,9 @@
+\babel@toc {spanish}{}\relax 
+\beamer@sectionintoc {1}{1. De los shocks macro a las pensiones}{5}{0}{1}
+\beamer@sectionintoc {2}{2. Datos y preparación del taller}{12}{0}{2}
+\beamer@sectionintoc {3}{3. De shocks a trayectorias cuantitativas}{15}{0}{3}
+\beamer@sectionintoc {4}{4. Modelos ARIMA}{19}{0}{4}
+\beamer@sectionintoc {5}{5. Modelos VAR}{29}{0}{5}
+\beamer@sectionintoc {6}{6. Simulación Monte Carlo con \texttt {macropenstress}}{44}{0}{6}
+\beamer@sectionintoc {7}{8. Taller práctico en R}{52}{0}{7}
+\beamer@sectionintoc {8}{Taller práctico: VAR para economía abierta}{57}{0}{8}

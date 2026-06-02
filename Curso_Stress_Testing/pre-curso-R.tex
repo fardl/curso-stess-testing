@@ -1,0 +1,875 @@
+\documentclass[10pt]{beamer}
+
+%------------------------------------------------
+% Tema
+%------------------------------------------------
+\usetheme{moloch}
+\definecolor{mPurple}{RGB}{91,48,105}
+\setbeamercolor{palette primary}{bg=mPurple}
+\setbeamercolor{normal text}{fg=black}
+
+%------------------------------------------------
+% Paquetes esenciales
+%------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Código
+\usepackage{listings}
+\usepackage{xcolor}
+
+%------------------------------------------------
+% Configuración de código (R)
+%------------------------------------------------
+\lstset{
+  language=R,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  numbers=left,
+  numberstyle=\tiny,
+  stepnumber=1,
+  numbersep=5pt,
+  backgroundcolor=\color{gray!10},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  frame=single,
+  breaklines=true,
+  breakatwhitespace=true
+}
+
+%------------------------------------------------
+% Información del documento
+%------------------------------------------------
+\title{Pre-Curso de R para Stress Testing en Pensiones}
+\author{MACROPOL}
+\date{\today}
+
+%------------------------------------------------
+\begin{document}
+
+%------------------------------------------------
+\begin{frame}
+\titlepage
+\end{frame}
+
+%------------------------------------------------
+%\begin{frame}{Contenido}
+%\tableofcontents
+%\end{frame}
+%------------------------------------------------
+
+%------------------------------------------------
+\subsection{Objetivo}
+
+\begin{frame}{Pre-Curso de R para Stress Testing}
+
+\textbf{Objetivo:}
+\begin{itemize}
+\item Preparar a los participantes para implementar ejercicios en R
+\item Enfocado en simulación y análisis de riesgo
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Importante:}
+\begin{itemize}
+\item No es un curso de programación
+\item Es un curso de \textbf{R aplicado a pensiones}
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{¿Qué necesitamos de R?}
+
+\textbf{Capacidad mínima:}
+
+\begin{itemize}
+\item Ejecutar código
+\item Modificar parámetros
+\item Interpretar resultados
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Aplicación en el curso:}
+\begin{itemize}
+\item Simulación Monte Carlo
+\item Cálculo de métricas (VaR, ES)
+\item Construcción de escenarios
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}[t]{Agenda}
+
+\begin{enumerate}
+\item Instalación
+\item Variables y vectores
+\item Estructuras de control
+\item Funciones
+\item Simulación aleatoria
+\item Métricas de riesgo
+\item Visualización
+\end{enumerate}
+
+\end{frame}
+
+%------------------------------------------------
+%------------------------------------------------
+\begin{frame}{Hilo conductor del pre-curso}
+
+\textbf{Objetivo práctico}
+
+\vspace{0.3cm}
+Construiremos paso a paso un modelo de riesgo previsional:
+
+\begin{enumerate}
+\item Ahorro individual (determinístico)
+\item Incorporar incertidumbre (retornos)
+\item Simular múltiples escenarios
+\item Medir riesgo (VaR)
+\item Visualizar distribución
+\end{enumerate}
+
+\vspace{0.5cm}
+
+\textbf{Resultado final:}
+Capacidad de hacer un stress testing básico en pensiones
+
+\end{frame}
+
+%---------------------------------------------
+
+
+
+\begin{frame}{Instalación de R y RStudio}
+
+\textbf{Contexto}
+
+\vspace{0.2cm}
+Antes de implementar modelos de stress testing, es necesario contar con un entorno reproducible en R.
+
+\vspace{0.4cm}
+
+\textbf{Herramientas}
+\begin{itemize}
+\item R: Motor de cálculo estadístico
+\item RStudio: Entorno de desarrollo (IDE)
+\item Paquetes clave: \texttt{tidyverse, quantmod, forecast, vars, rugarch}
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Instalación}
+\begin{itemize}
+\item Descargar R: \texttt{https://cran.r-project.org}
+\item Descargar RStudio: \texttt{https://posit.co/download/rstudio-desktop/}
+\item Instalar con configuración por defecto
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}[fragile]{Configuración inicial en R}
+\footnotesize
+\textbf{Verificación}
+
+\begin{lstlisting}
+version
+\end{lstlisting}
+
+\vspace{0.3cm}
+
+\textbf{Instalación de paquetes}
+
+\begin{lstlisting}
+install.packages(c(
+ "tidyverse",
+ "quantmod",
+ "forecast",
+ "vars",
+ "rugarch",
+ "PerformanceAnalytics"
+))
+\end{lstlisting}
+
+
+\textbf{Carga de librerías}
+
+\begin{lstlisting}
+library(tidyverse)
+library(quantmod)
+library(forecast)
+library(vars)
+library(rugarch)
+library(PerformanceAnalytics)
+\end{lstlisting}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}[fragile]{1. Variables y Vectores}
+
+\textbf{Asignación:}
+
+\begin{verbatim}
+x <- 10
+\end{verbatim}
+
+\vspace{0.3cm}
+
+\textbf{Vectores:}
+
+\begin{verbatim}
+v <- c(1,2,3,4,5)
+\end{verbatim}
+
+\vspace{0.3cm}
+
+\textbf{Operaciones:}
+
+\begin{verbatim}
+mean(v) # media
+sum(v)  # suma
+\end{verbatim}
+
+\vspace{0.3cm}
+
+
+\textbf{Ejercicio 1}
+    \begin{itemize}
+        \item Crear un vector 
+        \item Calcular su media
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}[fragile]{2. Estructuras de Control}
+
+\textbf{Loop:}
+
+\begin{verbatim}
+for(i in 1:10){
+  print(i)
+}
+\end{verbatim}
+
+\vspace{0.3cm}
+
+\textbf{Condicional:}
+
+\begin{verbatim}
+if(x > 0){
+  print("positivo")
+}
+\end{verbatim}
+
+\vspace{0.3cm}
+
+\textbf{Aplicación:}
+Simulación de trayectorias
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Ejercicio 2}
+
+\textbf{Tarea:}
+
+\begin{itemize}
+\item Simular la evolución de un ahorro durante 10 años
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Pregunta:}
+¿Qué representa cada iteración del loop?
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}[fragile]{3. Funciones}
+
+\textbf{Definición:}
+
+\begin{verbatim}
+simulate <- function(W){
+  return(W * 1.05)
+}
+\end{verbatim}
+
+\vspace{0.3cm}
+
+\textbf{Uso:}
+
+\begin{verbatim}
+simulate(1000)
+\end{verbatim}
+
+\textbf{Interpretación:}
+
+\begin{itemize}
+\item Cada iteración representa un período (mes/año)
+\item Estamos construyendo acumulación de riqueza
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Siguiente paso:}
+Formalizar este proceso en una función reutilizable
+\end{frame}
+%------------------------------------------------
+%------------------------------------------------
+\begin{frame}{De código a modelo previsional}
+
+\textbf{Intuición}
+
+\vspace{0.3cm}
+Hasta ahora hemos visto:
+
+\begin{itemize}
+\item Variables
+\item Loops
+\item Funciones
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Ahora:}
+
+Usaremos estas herramientas para construir un modelo de acumulación de pensiones
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Ejercicio 3: Función de riqueza final}
+
+\textbf{Contexto}
+
+\vspace{0.2cm}
+En el sistema de capitalización individual, la riqueza acumulada depende de:
+\begin{itemize}
+\item Aportes periódicos
+\item Rentabilidad del portafolio
+\item Horizonte de inversión
+\end{itemize}
+
+Este tipo de dinámica es la base de cualquier stress testing previsional.
+
+\vspace{0.4cm}
+
+\textbf{Modelo}
+
+La riqueza final puede aproximarse como:
+
+\begin{itemize}
+\item Acumulación de aportes capitalizados
+\item Bajo una tasa de retorno constante (baseline)
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Tarea (Paso a paso)}
+
+\begin{enumerate}
+\item Definir una función en R que reciba:
+\begin{itemize}
+\item aporte mensual (\texttt{c})
+\item tasa de retorno (\texttt{r})
+\item número de períodos (\texttt{n})
+\end{itemize}
+
+\item Calcular la riqueza acumulada iterativamente
+\end{enumerate}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}[fragile]{Implementación en R}
+
+\textbf{Paso 1: Definir la función}
+
+\begin{lstlisting}
+riqueza_final <- function(c, r, n) {
+  W <- 0
+  for (t in 1:n) {
+    W <- (W + c) * (1 + r)
+  }
+  return(W)
+}
+\end{lstlisting}
+
+\vspace{0.4cm}
+
+\textbf{Paso 2: Ejecutar el modelo (baseline)}
+
+\begin{lstlisting}
+riqueza_final(c = 100, r = 0.005, n = 360)
+\end{lstlisting}
+
+\vspace{0.3cm}
+
+\textbf{Interpretación}
+\begin{itemize}
+\item Representa acumulación en escenario base (sin estrés)
+\item Supone retorno constante
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+%------------------------------------------------
+\begin{frame}{Limitación del modelo baseline}
+
+\textbf{Problema}
+
+\vspace{0.3cm}
+El modelo anterior asume:
+
+\begin{itemize}
+\item Retornos constantes
+\item No hay incertidumbre
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Realidad}
+
+\begin{itemize}
+\item Los mercados son volátiles
+\item Los retornos son inciertos
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Solución:}
+Introducir simulación aleatoria
+
+\end{frame}
+%------------------------------------------------
+\begin{frame}[fragile]{4. Simulación Aleatoria}
+
+\textbf{Normal:}
+
+\begin{verbatim}
+rnorm(100, mean=0.05, sd=0.15)
+\end{verbatim}
+
+\vspace{0.3cm}
+
+\textbf{Interpretación:}
+Cada número representa un posible retorno
+
+\vspace{0.3cm}
+
+\textbf{Aplicación:}
+Monte Carlo
+
+\end{frame}
+%-------------------------------------------------
+
+\begin{frame}[fragile]{Ejercicio 4: Escenario adverso}
+
+\textbf{Narrativa económica}
+
+\vspace{0.2cm}
+Shock financiero:
+\begin{itemize}
+\item Caída en retornos
+\item Mayor volatilidad
+\end{itemize}
+
+\textbf{Modificación del modelo}
+
+\begin{lstlisting}
+set.seed(123)
+
+riqueza_estocastica <- function(c, mu, sigma, n) {
+  W <- 0
+  for (t in 1:n) {
+    r_t <- rnorm(1, mean = mu, sd = sigma)
+    W <- (W + c) * (1 + r_t)
+  }
+  return(W)
+}
+\end{lstlisting}
+
+\vspace{0.3cm}
+
+\textbf{Ejecutar escenario adverso}
+
+\begin{lstlisting}
+riqueza_estocastica(100, 0.002, 0.02, 360)
+\end{lstlisting}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Discusión conceptual}
+
+\textbf{Pregunta clave}
+
+\vspace{0.3cm}
+¿Por qué es útil encapsular el modelo en una función?
+
+\vspace{0.4cm}
+
+\textbf{Respuesta esperada}
+
+\begin{itemize}
+\item Permite reutilizar el modelo en múltiples escenarios
+\item Facilita simulaciones Monte Carlo
+\item Mejora trazabilidad y auditoría (clave regulatoria)
+\item Separa supuestos (inputs) de resultados (outputs)
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Conexión con stress testing}
+
+\begin{itemize}
+\item Baseline vs adverso se define cambiando parámetros
+\item Permite escalar a miles de simulaciones
+\item Base para análisis de distribución de pensiones futuras
+\end{itemize}
+
+\textbf{Limitación}
+
+\begin{itemize}
+\item Una sola simulación no es suficiente
+\item Necesitamos una distribución de resultados
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Siguiente paso:}
+Simular muchas trayectorias (Monte Carlo)
+
+\end{frame}
+%------------------------------------------------
+\begin{frame}[fragile]{5. Métricas de Riesgo}
+
+\textbf{Cálculo:}
+
+\begin{verbatim}
+mean(x)
+quantile(x, 0.05)
+\end{verbatim}
+
+\vspace{0.3cm}
+
+\textbf{Conceptos:}
+
+\begin{itemize}
+\item Media: resultado esperado
+\item VaR: riesgo
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Ejercicio 5: VaR sobre riqueza previsional}
+
+\textbf{Contexto}
+
+\vspace{0.2cm}
+A partir del ejercicio anterior, ahora contamos con un modelo que genera riqueza bajo incertidumbre.
+
+\vspace{0.2cm}
+El siguiente paso en stress testing es medir el riesgo de resultados adversos.
+
+\vspace{0.4cm}
+
+\textbf{Tarea}
+
+\begin{enumerate}
+\item Simular múltiples trayectorias de riqueza final
+\item Construir la distribución de resultados
+\item Calcular el Value at Risk (VaR)
+\end{enumerate}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}[fragile]{Implementación en R}
+
+\textbf{Paso 1: Simulación Monte Carlo}
+
+\begin{lstlisting}
+set.seed(123)
+
+N <- 1000
+
+simulaciones <- replicate(N,
+  riqueza_estocastica(100, 0.002, 0.02, 360)
+)
+\end{lstlisting}
+
+\vspace{0.4cm}
+
+\textbf{Paso 2: Calcular VaR (percentil 5\%)}
+
+\begin{lstlisting}
+VaR_95 <- quantile(simulaciones, 0.05)
+VaR_95
+\end{lstlisting}
+
+\vspace{0.3cm}
+
+\textbf{Interpretación}
+\begin{itemize}
+\item Representa el nivel de riqueza en un escenario adverso extremo
+\item 5\% de los casos tienen resultados peores
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Discusión: Relevancia del VaR en pensiones}
+
+\textbf{Pregunta}
+
+\vspace{0.3cm}
+¿Por qué el VaR es relevante en pensiones?
+
+\vspace{0.4cm}
+
+\textbf{Respuesta esperada}
+
+\begin{itemize}
+\item Mide riesgo de insuficiencia de ahorro previsional
+\item Permite evaluar escenarios adversos (cola de la distribución)
+\item Es clave para stress testing regulatorio
+\item Ayuda a identificar vulnerabilidad de afiliados
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Limitación importante}
+
+\begin{itemize}
+\item No captura severidad más allá del percentil (tail risk)
+\item Debe complementarse con Expected Shortfall
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Interpretación para política pública}
+
+\textbf{Intuición económica}
+
+\begin{itemize}
+\item El VaR traduce incertidumbre financiera en riesgo social
+\item Permite cuantificar probabilidad de pensiones insuficientes
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Aplicación regulatoria}
+
+\begin{itemize}
+\item Definición de límites de riesgo en portafolios previsionales
+\item Evaluación de sostenibilidad del sistema
+\item Diseño de políticas de mitigación (garantías mínimas)
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Conexión con el curso}
+
+\begin{itemize}
+\item Módulo 3: Simulación de escenarios
+\item Módulo 4: Riesgo de portafolio
+\item Módulo 6: Reporte regulatorio
+\end{itemize}
+
+\textbf{Limitación del VaR}
+
+\begin{itemize}
+\item Es una medida puntual
+\item No muestra la forma completa del riesgo
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Siguiente paso:}
+Visualizar toda la distribución
+\end{frame}
+%------------------------------------------------
+\begin{frame}[fragile]{6. Visualización}
+
+\textbf{Histograma:}
+
+\begin{verbatim}
+hist(x)
+\end{verbatim}
+
+\vspace{0.3cm}
+
+\textbf{Aplicación:}
+Distribución de resultados
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Ejercicio 6: Distribución de retornos}
+
+\textbf{Contexto}
+
+\vspace{0.2cm}
+Luego de simular múltiples trayectorias, es fundamental visualizar la distribución de resultados para identificar riesgos.
+
+\vspace{0.4cm}
+
+\textbf{Tarea}
+
+\begin{enumerate}
+\item Obtener retornos simulados
+\item Graficar su distribución
+\item Identificar zonas de riesgo
+\end{enumerate}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}[fragile]{Implementación en R}
+
+\textbf{Paso 1: Usar simulaciones anteriores}
+
+\begin{lstlisting}
+hist(simulaciones, breaks = 30,
+     main = "Distribución de riqueza final",
+     xlab = "Riqueza")
+
+VaR_95 <- quantile(simulaciones, 0.05)
+abline(v = VaR_95, col = "red", lwd = 2)
+
+\end{lstlisting}
+\vspace{0.4cm}
+
+
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Interpretación económica}
+
+\textbf{Pregunta}
+
+\vspace{0.3cm}
+¿Dónde está el riesgo?
+
+\vspace{0.4cm}
+
+\textbf{Respuesta esperada}
+
+\begin{itemize}
+\item En la cola izquierda de la distribución
+\item Donde se concentran pérdidas extremas
+\item Representa escenarios adversos de mercado
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Intuición}
+
+\begin{itemize}
+\item No importa solo el promedio
+\item El riesgo está en eventos poco probables pero severos
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Conexión con pensiones y stress testing}
+
+\textbf{Aplicación previsional}
+
+\begin{itemize}
+\item Caídas en retornos afectan acumulación de fondos
+\item Impacto directo en tasas de reemplazo
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Baseline vs adverso}
+
+\begin{itemize}
+\item Baseline: distribución centrada, menor dispersión
+\item Adverso: mayor volatilidad, colas más pesadas
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Relevancia regulatoria}
+
+\begin{itemize}
+\item Supervisores analizan distribución completa, no solo media
+\item Identificación de riesgos extremos (tail risk)
+\item Base para políticas de mitigación
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Integración Final}
+
+\textbf{Pipeline completo}
+
+\begin{enumerate}
+\item Modelo de acumulación
+\item Introducción de incertidumbre
+\item Simulación Monte Carlo
+\item Medición de riesgo (VaR)
+\item Visualización de resultados
+\end{enumerate}
+
+\vspace{0.5cm}
+
+\textbf{Interpretación:}
+Esto es un stress testing simplificado de un sistema de pensiones
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Evaluación Final}
+
+\textbf{Responder:}
+
+\begin{itemize}
+\item ¿Qué es Monte Carlo?
+\item ¿Qué representa un vector?
+\item ¿Qué mide el VaR?
+\end{itemize}
+
+\vspace{0.5cm}
+
+\centering
+\textbf{Conclusión:}  
+R permite transformar incertidumbre en decisiones de política previsional
+
+\end{frame}
+
+%------------------------------------------------
+
+\end{document}

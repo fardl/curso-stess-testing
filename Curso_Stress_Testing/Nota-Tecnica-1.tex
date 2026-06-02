@@ -1,0 +1,188 @@
+\documentclass[11pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{setspace}
+\geometry{margin=1.5cm}
+
+\title{Módulo 1: Fundamentos de Stress Testing en Sistemas de Pensiones}
+\author{MACROPOL}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+\section{Introducción}
+
+El stress testing se ha consolidado como una herramienta central en la gestión de riesgos y la regulación financiera, especialmente después de la crisis financiera global. Su objetivo es evaluar la resiliencia de sistemas financieros ante escenarios adversos plausibles.
+
+En el contexto de los sistemas de pensiones de capitalización individual, el stress testing permite analizar cómo choques macroeconómicos, financieros y demográficos afectan los niveles de pensión futura y la sostenibilidad del sistema.
+
+Esta nota técnica tiene como propósito presentar un marco conceptual y metodológico para la aplicación de ejercicios de stress testing en sistemas previsionales, integrando dimensiones macroeconómicas, financieras y actuariales. En particular, la nota describe cómo construir escenarios macro-financieros, cómo modelar su transmisión hacia los portafolios de inversión y las variables demográficas, y cómo evaluar su impacto sobre indicadores clave como la tasa de reemplazo y la suficiencia de las pensiones.
+
+En este marco, el objetivo de este curso es capacitar a los participantes en el diseño e implementación de ejercicios de stress testing aplicados a sistemas previsionales de capitalización individual, integrando de manera coherente los riesgos macroeconómicos, financieros y actuariales. El curso busca desarrollar capacidades para construir escenarios adversos, modelar su transmisión hacia los portafolios de inversión y variables demográficas, y evaluar su impacto sobre la sostenibilidad del sistema y el bienestar de los afiliados.
+
+\section{¿En qué consiste el Stress Testing?}
+
+Un stress test es una simulación que evalúa el comportamiento de un sistema bajo escenarios extremos pero plausibles. Formalmente, se puede representar como:
+
+\begin{equation}
+Resultados = f(Escenario, Modelo, Datos)
+\end{equation}
+
+Donde:
+
+\begin{itemize}
+\item Escenario: trayectoria de variables macroeconómicas bajo condiciones adversas
+\item Modelo: conjunto de relaciones económicas y financieras
+\item Datos: información del sistema (afiliados, portafolio, demografía)
+\end{itemize}
+
+Se distinguen dos tipos de escenarios:
+
+\begin{itemize}
+\item Baseline: evolución esperada o escenario central
+\item Adverso: condiciones de estrés o escenario estresado
+\end{itemize}
+
+\section{Flujo de trabajo del Stress Testing}
+
+El desarrollo de un ejercicio de stress testing sigue una secuencia estructurada:
+
+\begin{enumerate}
+\item Definición del objetivo
+\item Construcción de escenarios macroeconómicos
+\item Identificación de factores de riesgo
+\item Modelación del portafolio
+\item Modelación de afiliados
+\item Cálculo de pensiones
+\item Evaluación de impacto
+\end{enumerate}
+
+Este flujo transforma un shock macroeconómico en un resultado relevante para política pública.
+
+\section{Información requerida}
+
+La implementación de un stress test requiere cuatro bloques de información, resumidos en la siguiente tabla:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Bloque de información} & \textbf{Variables clave} \\
+\hline
+
+Datos Macroeconómicos &
+\begin{tabular}[c]{@{}l@{}}
+- Retornos de activos \\
+- Inflación \\
+- Crecimiento salarial
+\end{tabular} \\
+\hline
+
+Datos Financieros &
+\begin{tabular}[c]{@{}l@{}}
+- Composición del portafolio \\
+- Volatilidad y correlaciones
+\end{tabular} \\
+\hline
+
+Datos de Afiliados &
+\begin{tabular}[c]{@{}l@{}}
+- Edad \\
+- Salario \\
+- Saldo acumulado \\
+- Densidad de cotización
+\end{tabular} \\
+\hline
+
+Datos Actuariales &
+\begin{tabular}[c]{@{}l@{}}
+- Tablas de mortalidad \\
+- Edad de retiro
+\end{tabular} \\
+\hline
+
+\end{tabular}
+\caption{Información requerida para la implementación de un stress test previsional}
+\end{table}
+
+\section{Herramientas analíticas}
+
+El desarrollo de un stress test requiere dominar un conjunto de herramientas analíticas, resumidas en la siguiente tabla:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Tipo de Herramienta} & \textbf{Modelos / Técnicas} \\
+\hline
+
+Modelos Macroeconómicos &
+\begin{tabular}[c]{@{}l@{}}
+- ARIMA \\
+- VAR
+\end{tabular} \\
+\hline
+
+Modelos Financieros &
+\begin{tabular}[c]{@{}l@{}}
+- CAPM \\
+- GARCH
+\end{tabular} \\
+\hline
+
+Simulación &
+\begin{tabular}[c]{@{}l@{}}
+- Monte Carlo
+\end{tabular} \\
+\hline
+
+Modelos Actuariales &
+\begin{tabular}[c]{@{}l@{}}
+- Cálculo de anualidades \\
+- Modelos de supervivencia
+\end{tabular} \\
+\hline
+
+Integración &
+\begin{tabular}[c]{@{}l@{}}
+- Simulación dinámica integrada
+\end{tabular} \\
+\hline
+
+\end{tabular}
+\caption{Herramientas analíticas para el desarrollo de stress testing previsional}
+\end{table}
+\section{Rol en Sistemas de Pensiones}
+
+El stress testing permite:
+
+\begin{itemize}
+\item Evaluar la suficiencia de las pensiones
+\item Analizar la sostenibilidad del sistema
+\item Informar decisiones regulatorias
+\end{itemize}
+
+A diferencia del sector bancario, el foco no es la solvencia inmediata, sino los resultados de largo plazo.
+
+\section{Particularidades en Pensiones}
+
+Los sistemas previsionales presentan características específicas:
+
+\begin{itemize}
+\item Horizonte de largo plazo
+\item Importancia de la longevidad
+\item Dependencia de trayectorias laborales
+\end{itemize}
+
+El resultado relevante es la pensión futura, no el capital acumulado.
+
+\section{Conclusión}
+
+El stress testing en pensiones es un proceso integrado que combina modelos macroeconómicos, financieros y actuariales para evaluar riesgos sistémicos y apoyar la formulación de políticas públicas.
+
+\end{document}

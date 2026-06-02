@@ -1,0 +1,7 @@
+\babel@toc {spanish}{}\relax 
+\beamer@sectionintoc {1}{1. Contexto}{5}{0}{1}
+\beamer@sectionintoc {2}{2. ARIMA}{8}{0}{2}
+\beamer@sectionintoc {3}{3. VAR}{11}{0}{3}
+\beamer@sectionintoc {4}{4. Monte Carlo}{14}{0}{4}
+\beamer@sectionintoc {5}{5. Choques}{17}{0}{5}
+\beamer@sectionintoc {6}{6. Taller}{20}{0}{6}

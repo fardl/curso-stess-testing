@@ -1,0 +1,371 @@
+\documentclass[12pt]{article}
+
+% -------------------------------------------------
+% PAQUETES
+% -------------------------------------------------
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{setspace}
+
+% -------------------------------------------------
+% CONFIGURACIÓN DE PÁGINA
+% -------------------------------------------------
+
+\geometry{
+    left=2.5cm,
+    right=2.5cm,
+    top=2.5cm,
+    bottom=2.5cm
+}
+
+\setstretch{1.2}
+
+% -------------------------------------------------
+% FORMATO DE TÍTULOS
+% -------------------------------------------------
+
+\titleformat{\section}
+{\large\bfseries}
+{\thesection.}{0.5em}{}
+
+\titleformat{\subsection}
+{\normalsize\bfseries}
+{\thesubsection.}{0.5em}{}
+
+% -------------------------------------------------
+% DOCUMENTO
+% -------------------------------------------------
+
+\begin{document}
+
+% -------------------------------------------------
+% PORTADA
+% -------------------------------------------------
+
+\begin{titlepage}
+
+\centering
+
+\vspace*{2cm}
+
+{\Large \textbf{MACROPOL: Economía Aplicada y Políticas Públicas}} \\[1cm]
+
+{\LARGE \textbf{Stress Testing en Sistemas de Pensiones}} \\[0.5cm]
+
+{\Large Taller de Escenarios Macro-Financieros} \\[2cm]
+
+{\large Módulo 3: Construcción de Escenarios Macro-Financieros} \\[1cm]
+
+\vfill
+
+\textbf{Duración del ejercicio:} 45 minutos \\[0.5cm]
+
+\textbf{Modalidad:} Trabajo grupal \\[0.5cm]
+
+\textbf{Horizonte de simulación:} 24 meses
+
+\vfill
+
+{\large \today}
+
+\end{titlepage}
+
+% -------------------------------------------------
+% CONTENIDO
+% -------------------------------------------------
+
+\section*{Contexto}
+
+Este ejercicio corresponde al módulo de construcción de escenarios macro-financieros 
+aplicados al stress testing de sistemas de pensiones de capitalización individual.
+
+Cada grupo deberá analizar la lógica de construcción de los escenarios y comprender
+cómo distintos modelos cuantitativos producen trayectorias macroeconómicas diferentes.
+
+\vspace{0.5cm}
+
+\section*{Objetivo}
+
+Comprender:
+
+\begin{itemize}
+    \item cómo se construyen escenarios macro-financieros;
+    \item cómo interactúan las variables en cada metodología;
+    \item cómo interpretar escenarios baseline y adversos;
+    \item cómo distinguir narrativa económica de resultados cuantitativos.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\section*{Instrucciones Generales}
+
+Cada grupo deberá:
+
+\begin{enumerate}
+    \item Analizar el escenario asignado.
+    
+    \item Explicar:
+    
+    \begin{itemize}
+        \item cómo fue construido;
+        \item qué supuestos utiliza;
+        \item qué variables dominan el escenario;
+        \item qué dinámica económica representa.
+    \end{itemize}
+    
+    \item Presentar resultados en un máximo de 10 minutos.
+\end{enumerate}
+
+\vspace{0.5cm}
+
+\section*{Estructura Obligatoria de la Presentación}
+
+\subsection*{1. Construcción del Escenario}
+
+Responder:
+
+\begin{itemize}
+    \item ¿Qué metodología se utilizó?
+    \item ¿El escenario es estadístico, histórico o hipotético?
+    \item ¿Las variables interactúan entre sí?
+\end{itemize}
+
+\subsection*{2. Supuestos}
+
+Identificar claramente:
+
+\begin{itemize}
+    \item supuestos del modelo;
+    \item supuestos narrativos;
+    \item horizonte temporal;
+    \item naturaleza de los shocks.
+\end{itemize}
+
+\subsection*{3. Interpretación Económica}
+
+Analizar:
+
+\begin{itemize}
+    \item crecimiento;
+    \item inflación;
+    \item tasa interbancaria;
+    \item depreciación cambiaria;
+    \item EMBI.
+\end{itemize}
+
+Responder:
+
+\begin{itemize}
+    \item ¿Qué variable domina el escenario?
+    \item ¿Existe persistencia del shock?
+    \item ¿El escenario parece coherente?
+    \item ¿Qué tipo de episodio económico representa?
+\end{itemize}
+
+\vspace{0.5cm}
+
+% -------------------------------------------------
+% GRUPOS
+% -------------------------------------------------
+
+\section*{Grupos de Trabajo}
+
+% -------------------------------------------------
+
+\subsection*{Grupo 1 — Baseline ARIMA}
+
+Analizar el escenario:
+
+\begin{itemize}
+    \item \texttt{baseline\_arima}
+\end{itemize}
+
+Preguntas guía:
+
+\begin{enumerate}
+    \item ¿Cómo funciona un modelo ARIMA?
+    \item ¿Por qué este enfoque es univariado?
+    \item ¿Qué ventajas tiene para proyección baseline?
+    \item ¿Qué limitaciones presenta?
+\end{enumerate}
+
+% -------------------------------------------------
+
+\subsection*{Grupo 2 — Baseline VAR}
+
+Analizar el escenario:
+
+\begin{itemize}
+    \item \texttt{baseline\_var}
+\end{itemize}
+
+Preguntas guía:
+
+\begin{enumerate}
+    \item ¿Cómo funciona un modelo VAR?
+    \item ¿Qué significa interdependencia entre variables?
+    \item ¿Qué aporta el VAR frente al ARIMA?
+    \item ¿Qué dinámica macroeconómica captura mejor?
+\end{enumerate}
+
+% -------------------------------------------------
+
+\subsection*{Grupo 3 — Monte Carlo VAR}
+
+Analizar:
+
+\begin{itemize}
+    \item \texttt{montecarlo\_p05};
+    \item \texttt{montecarlo\_p50};
+    \item \texttt{montecarlo\_p95}.
+\end{itemize}
+
+Preguntas guía:
+
+\begin{enumerate}
+    \item ¿Cómo se construye una simulación Monte Carlo?
+    \item ¿Qué representan los percentiles?
+    \item ¿Qué variable presenta mayor incertidumbre?
+    \item ¿Cómo cambia la dispersión a través del tiempo?
+\end{enumerate}
+
+% -------------------------------------------------
+
+\subsection*{Grupo 4 — Escenario Adverso Histórico}
+
+Analizar:
+
+\begin{itemize}
+    \item \texttt{adverso\_historico}
+\end{itemize}
+
+Índice de estrés utilizado:
+
+\[
+0.25 \times inflacion +
+0.20 \times interbancaria +
+0.20 \times deprec\_fx +
+0.20 \times embi -
+0.15 \times crecimiento
+\]
+
+Preguntas guía:
+
+\begin{enumerate}
+    \item ¿Cómo se identificó la peor ventana histórica?
+    \item ¿Qué variable domina el estrés?
+    \item ¿Qué episodio económico parece representar?
+    \item ¿Qué ventajas y limitaciones tiene este enfoque?
+\end{enumerate}
+
+% -------------------------------------------------
+
+\subsection*{Grupo 5 — Escenario Adverso Hipotético}
+
+Analizar:
+
+\begin{itemize}
+    \item \texttt{adverso\_hipotetico}
+\end{itemize}
+
+Preguntas guía:
+
+\begin{enumerate}
+    \item ¿Cómo se construyó el shock hipotético?
+    \item ¿Qué narrativa económica representa?
+    \item ¿Los shocks son persistentes o transitorios?
+    \item ¿El escenario parece plausible?
+\end{enumerate}
+
+\vspace{0.5cm}
+
+% -------------------------------------------------
+% PRODUCTO FINAL
+% -------------------------------------------------
+
+\section*{Producto Esperado}
+
+Cada grupo deberá entregar:
+
+\begin{enumerate}
+    \item Un resumen ejecutivo de máximo una página.
+    
+    \item Un gráfico con las principales trayectorias del escenario.
+    
+    \item Una explicación clara de:
+    
+    \begin{itemize}
+        \item metodología;
+        \item supuestos;
+        \item interpretación económica.
+    \end{itemize}
+\end{enumerate}
+
+\vspace{0.5cm}
+
+% -------------------------------------------------
+% CRITERIOS
+% -------------------------------------------------
+
+\section*{Criterios de Evaluación}
+
+\begin{table}[H]
+\centering
+
+\begin{tabular}{lc}
+
+\toprule
+
+\textbf{Criterio} & \textbf{Peso} \\
+
+\midrule
+
+Comprensión metodológica & 35\% \\
+
+Interpretación económica & 35\% \\
+
+Claridad de exposición & 30\% \\
+
+\bottomrule
+
+\end{tabular}
+
+\end{table}
+
+\vspace{1cm}
+
+% -------------------------------------------------
+% MENSAJE FINAL
+% -------------------------------------------------
+
+\section*{Mensaje Final}
+
+\begin{quote}
+\itshape
+“El objetivo del ejercicio no es producir pronósticos exactos, 
+sino comprender cómo distintas metodologías construyen 
+escenarios macro-financieros y cómo deben interpretarse.”
+\end{quote}
+
+\vfill
+
+\begin{center}
+\textbf{MACROPOL — Economía Aplicada y Políticas Públicas}
+\end{center}
+
+% -------------------------------------------------
+
+\end{document}

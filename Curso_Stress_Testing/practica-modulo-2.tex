@@ -1,0 +1,189 @@
+\documentclass[12pt]{article}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{booktabs}
+
+\geometry{margin=1in}
+
+\title{Módulo 2: Ejercicios Prácticos en R\\
+Identificación y Medición de Riesgos Previsionales}
+\author{MACROPOL}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Contexto}
+
+El objetivo de estos ejercicios es traducir riesgos financieros en métricas previsionales relevantes. Se parte de la medición de riesgo de mercado y se avanza hacia la evaluación del impacto sobre la tasa de reemplazo y la suficiencia de pensiones.
+
+\section{Ejercicio 1: Value at Risk (VaR) y Expected Shortfall (ES)}
+
+\subsection{Objetivo}
+Medir el riesgo de mercado de un portafolio.
+
+\subsection{Código en R}
+\begin{verbatim}
+set.seed(123)
+
+returns <- rnorm(1000, mean = 0.0005, sd = 0.02)
+
+VaR_95 <- quantile(returns, 0.05)
+ES_95 <- mean(returns[returns < VaR_95])
+
+VaR_95
+ES_95
+\end{verbatim}
+
+\subsection{Preguntas}
+\begin{itemize}
+\item ¿Qué representa el VaR?
+\item ¿Por qué el ES es más informativo en escenarios extremos?
+\end{itemize}
+
+\subsection{Interpretación}
+El VaR mide un umbral de pérdida, mientras que el ES captura la severidad de pérdidas en crisis.
+
+\section{Ejercicio 2: Dinámica del Fondo de Pensiones}
+
+\subsection{Modelo}
+\begin{equation}
+W_{t+1} = W_t (1 + r_t) + c_t
+\end{equation}
+
+\subsection{Código en R}
+\begin{verbatim}
+T <- 30
+W <- numeric(T)
+W[1] <- 10000
+c <- 1000
+
+returns <- rnorm(T, 0.05, 0.15)
+
+for(t in 2:T){
+  W[t] <- W[t-1]*(1 + returns[t]) + c
+}
+
+plot(W, type="l")
+\end{verbatim}
+
+\subsection{Preguntas}
+\begin{itemize}
+\item ¿Cómo afecta la volatilidad la trayectoria del fondo?
+\item Compare con un escenario de retornos negativos.
+\end{itemize}
+
+\section{Ejercicio 3: Tasa de Reemplazo}
+
+\subsection{Modelo}
+\begin{equation}
+RR = \frac{W_T}{\text{factor actuarial} \times salario}
+\end{equation}
+
+\subsection{Código en R}
+\begin{verbatim}
+final_wealth <- W[T]
+salary <- 20000
+annuity_factor <- 15
+
+RR <- final_wealth / (annuity_factor * salary)
+RR
+\end{verbatim}
+
+\subsection{Pregunta}
+¿Es la tasa de reemplazo suficiente (por ejemplo, mayor a 40\%)?
+
+\section{Ejercicio 4: Probabilidad de Insuficiencia}
+
+\subsection{Objetivo}
+Calcular la probabilidad de no alcanzar una pensión mínima.
+
+\subsection{Código en R}
+\begin{verbatim}
+set.seed(123)
+
+N <- 5000
+RR_sim <- numeric(N)
+
+for(i in 1:N){
+  W <- 10000
+  
+  for(t in 1:30){
+    r <- rnorm(1, 0.05, 0.15)
+    W <- W*(1 + r) + 1000
+  }
+  
+  RR_sim[i] <- W / (15 * 20000)
+}
+
+prob_insuf <- mean(RR_sim < 0.4)
+prob_insuf
+\end{verbatim}
+
+\subsection{Pregunta}
+¿Qué proporción de afiliados no alcanza una pensión adecuada?
+
+\section{Ejercicio 5: Stress Test Integrado}
+
+\subsection{Escenario Adverso}
+\begin{itemize}
+\item Retornos negativos
+\item Mayor volatilidad
+\item Aumento de longevidad
+\end{itemize}
+
+\subsection{Código en R}
+\begin{verbatim}
+set.seed(123)
+
+N <- 5000
+RR_stress <- numeric(N)
+
+for(i in 1:N){
+  W <- 10000
+  
+  for(t in 1:30){
+    r <- rnorm(1, -0.02, 0.20)
+    W <- W*(1 + r) + 1000
+  }
+  
+  RR_stress[i] <- W / (20 * 20000)
+}
+
+mean(RR_stress)
+mean(RR_stress < 0.4)
+\end{verbatim}
+
+\section{Análisis Comparativo}
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Métrica & Baseline & Adverso \\
+\midrule
+Tasa de reemplazo &  &  \\
+Probabilidad de insuficiencia &  &  \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Interpretación}
+
+\begin{itemize}
+\item El VaR mide riesgo financiero, pero no bienestar previsional.
+\item El ES captura pérdidas en crisis.
+\item La tasa de reemplazo conecta con el resultado final del sistema.
+\item La probabilidad de insuficiencia mide el impacto social del riesgo.
+\end{itemize}
+
+\section{Mensaje Final}
+
+\begin{center}
+\textit{El riesgo no importa por sí mismo, sino por cómo afecta la pensión final.}
+\end{center}
+
+\end{document}
